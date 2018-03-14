@@ -1,2 +1,1 @@
-alias antlr4="/shares/public/tp/antlr/bin/antlr4"
-antlr4 -Dlanguage=Cpp -visitor -no-listener Expr.g4
+/shares/public/tp/antlr/bin/antlr4 -Dlanguage=Cpp -visitor -no-listener Prog.g4

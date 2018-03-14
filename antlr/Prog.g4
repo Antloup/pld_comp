@@ -1,4 +1,4 @@
-grammar Expr;
+grammar Prog;
 
 expr             : expr '*' expr # mult
       | expr '/' expr # div

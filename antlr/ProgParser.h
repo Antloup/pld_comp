@@ -1,5 +1,5 @@
 
-// Generated from Expr.g4 by ANTLR 4.7.1
+// Generated from Prog.g4 by ANTLR 4.7.1
 
 #pragma once
 
@@ -9,7 +9,7 @@
 
 
 
-class  ExprParser : public antlr4::Parser {
+class  ProgParser : public antlr4::Parser {
 public:
   enum {
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
@@ -29,8 +29,8 @@ public:
     RuleName = 19
   };
 
-  ExprParser(antlr4::TokenStream *input);
-  ~ExprParser();
+  ProgParser(antlr4::TokenStream *input);
+  ~ProgParser();
 
   virtual std::string getGrammarFileName() const override;
   virtual const antlr4::atn::ATN& getATN() const override { return _atn; };
