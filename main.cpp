@@ -1,9 +1,9 @@
 #include <iostream>
 
 #include "antlr4-runtime.h"
-#include "ExprLexer.h"
-#include "ExprParser.h"
-#include "Expr.h"
+#include "antlr/ExprLexer.h"
+#include "antlr/ExprParser.h"
+#include "antlr/Expr.h"
 
 using namespace std;
 using namespace antlr4;
