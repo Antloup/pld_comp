@@ -9,17 +9,23 @@ using namespace std;
 using namespace antlr4;
 
 int main(void){
-	string userInput;
-	cin>>userInput;
+	string userInput = "int32_t a=5;\nint32_t b=4;";
+//	cin>>userInput;
 	ANTLRInputStream input(userInput);
 	ProgLexer lexer(&input);
 	CommonTokenStream tokens(&lexer);
-
+    tokens.fill();
+    for (auto token : tokens.getTokens()) {
+        std::cout << token->toString() << std::endl;
+    }
 	ProgParser parser(&tokens);
 	tree::ParseTree* tree = parser.program();
+    std::cout<<tree->toStringTree(&parser)<<std::endl;
 
 	Prog visitor;
-	int resultat = (int)visitor.visit(tree);
-	cout << "Res "<< resultat << endl;
+
+    visitor.visit(tree);
+//	int resultat = (int)visitor.visit(tree);
+//	cout << "Res "<< resultat << endl;
 	return 0;
 }

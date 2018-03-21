@@ -19,6 +19,44 @@ public:
   /**
    * Visit parse trees produced by ProgParser.
    */
+    virtual antlrcpp::Any visitProgram(ProgParser::ProgramContext *context) = 0;
+
+    virtual antlrcpp::Any visitGlobalVar(ProgParser::GlobalVarContext *context) = 0;
+
+    virtual antlrcpp::Any visitFunction(ProgParser::FunctionContext *context) = 0;
+
+    virtual antlrcpp::Any visitBlockFunction(ProgParser::BlockFunctionContext *context) = 0;
+
+    virtual antlrcpp::Any visitInstruction(ProgParser::InstructionContext *context) = 0;
+
+    virtual antlrcpp::Any visitReturnStatement(ProgParser::ReturnStatementContext *context) = 0;
+
+    virtual antlrcpp::Any visitIfStatement(ProgParser::IfStatementContext *context) = 0;
+
+    virtual antlrcpp::Any visitElseStatement(ProgParser::ElseStatementContext *context) = 0;
+
+    virtual antlrcpp::Any visitWhileStatement(ProgParser::WhileStatementContext *context) = 0;
+
+    virtual antlrcpp::Any visitBlock(ProgParser::BlockContext *context) = 0;
+
+    virtual antlrcpp::Any visitDeclare(ProgParser::DeclareContext *context) = 0;
+
+    virtual antlrcpp::Any visitType(ProgParser::TypeContext *context) = 0;
+
+    virtual antlrcpp::Any visitSigType(ProgParser::SigTypeContext *context) = 0;
+
+    virtual antlrcpp::Any visitRetType(ProgParser::RetTypeContext *context) = 0;
+
+    virtual antlrcpp::Any visitSigParams(ProgParser::SigParamsContext *context) = 0;
+
+    virtual antlrcpp::Any visitSigDeclare(ProgParser::SigDeclareContext *context) = 0;
+
+    virtual antlrcpp::Any visitParams(ProgParser::ParamsContext *context) = 0;
+
+    virtual antlrcpp::Any visitVal(ProgParser::ValContext *context) = 0;
+
+    virtual antlrcpp::Any visitName(ProgParser::NameContext *context) = 0;
+
     virtual antlrcpp::Any visitPar(ProgParser::ParContext *context) = 0;
 
     virtual antlrcpp::Any visitInf(ProgParser::InfContext *context) = 0;
@@ -64,44 +102,6 @@ public:
     virtual antlrcpp::Any visitModulo(ProgParser::ModuloContext *context) = 0;
 
     virtual antlrcpp::Any visitInfegal(ProgParser::InfegalContext *context) = 0;
-
-    virtual antlrcpp::Any visitProgram(ProgParser::ProgramContext *context) = 0;
-
-    virtual antlrcpp::Any visitGlobalVar(ProgParser::GlobalVarContext *context) = 0;
-
-    virtual antlrcpp::Any visitFunction(ProgParser::FunctionContext *context) = 0;
-
-    virtual antlrcpp::Any visitBlockFunction(ProgParser::BlockFunctionContext *context) = 0;
-
-    virtual antlrcpp::Any visitInstruction(ProgParser::InstructionContext *context) = 0;
-
-    virtual antlrcpp::Any visitReturnStatement(ProgParser::ReturnStatementContext *context) = 0;
-
-    virtual antlrcpp::Any visitIfStatement(ProgParser::IfStatementContext *context) = 0;
-
-    virtual antlrcpp::Any visitElseStatement(ProgParser::ElseStatementContext *context) = 0;
-
-    virtual antlrcpp::Any visitWhileStatement(ProgParser::WhileStatementContext *context) = 0;
-
-    virtual antlrcpp::Any visitBlock(ProgParser::BlockContext *context) = 0;
-
-    virtual antlrcpp::Any visitDeclare(ProgParser::DeclareContext *context) = 0;
-
-    virtual antlrcpp::Any visitType(ProgParser::TypeContext *context) = 0;
-
-    virtual antlrcpp::Any visitSigType(ProgParser::SigTypeContext *context) = 0;
-
-    virtual antlrcpp::Any visitRetType(ProgParser::RetTypeContext *context) = 0;
-
-    virtual antlrcpp::Any visitSigParams(ProgParser::SigParamsContext *context) = 0;
-
-    virtual antlrcpp::Any visitSigDeclare(ProgParser::SigDeclareContext *context) = 0;
-
-    virtual antlrcpp::Any visitParams(ProgParser::ParamsContext *context) = 0;
-
-    virtual antlrcpp::Any visitVal(ProgParser::ValContext *context) = 0;
-
-    virtual antlrcpp::Any visitName(ProgParser::NameContext *context) = 0;
 
 
 };

@@ -1,33 +1,8 @@
 grammar Prog;
 
-expr             : expr '*' expr # mult
-      | expr '/' expr # div
-      | expr '+' expr # plus
-      | name '++' # postincr
-    | '++' name # preincr
-      | expr '-' expr # moins
-    | '-' expr #inv
-      | name '--' # postdecr
-    | '--' name # predecr
-      | expr '%' expr # modulo
-      | name '=' expr # affect
-      | expr '==' expr # egal
-      | expr '!=' expr # diff
-      | expr '>' expr # sup
-      | expr '>=' expr # supegal
-      | expr '<' expr # inf
-      | expr '<=' expr # infegal
-| expr '||' expr # ou
-         | expr '&&' expr # et
-      | '(' expr ')'  # par
-| '!'expr # non
-| FUNCTION_NAME'('params?')' # callfunction
-| val #valeur
-      ;
-
-//a skip        : #include ... | // ...;
+WS              : [ \t\n\r]+ ->skip;
 program             : globalVar* function*;
-globalVar        : type name '=' val;
+globalVar        : type name '=' val';';
 function        : retType FUNCTION_NAME(sigParams?) blockFunction;
 blockFunction    : '{'(declare';')* instruction* '}';
 instruction        : expr';'| ifStatement | whileStatement | returnStatement;
@@ -47,11 +22,31 @@ val            : name | NUMBER | CHARACTER;
 name            : NAME('['expr?']')?;
 
 
-FUNCTION_NAME    : ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-NAME            : ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-STRING        : .+?;
-CHARACTER        : '\''.'\'';
-NUMBER        : ('0'..'9')+;
+expr  : expr '*' expr # mult
+      | expr '/' expr # div
+      | expr '+' expr # plus
+      | name '++' # postincr
+      | '++' name # preincr
+      | expr '-' expr # moins
+      | '-' expr #inv
+      | name '--' # postdecr
+      | '--' name # predecr
+      | expr '%' expr # modulo
+      | name '=' expr # affect
+      | expr '==' expr # egal
+      | expr '!=' expr # diff
+      | expr '>' expr # sup
+      | expr '>=' expr # supegal
+      | expr '<' expr # inf
+      | expr '<=' expr # infegal
+      | expr '||' expr # ou
+      | expr '&&' expr # et
+      | '(' expr ')'  # par
+      | '!'expr # non
+      | FUNCTION_NAME'('params?')' # callfunction
+      | val #valeur
+      ;
+
 CHAR            : 'char';
 INT32_T        : 'int32_t';
 INT64_T        : 'int64_t';
@@ -60,3 +55,7 @@ ELSE             : 'else';
 RETURN			: 'return';
 WHILE			: 'while';
 VOID			: 'void';
+NAME            : ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+FUNCTION_NAME    : ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+CHARACTER        : '\''.'\'';
+NUMBER        : ('0'..'9')+;

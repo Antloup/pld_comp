@@ -15,9 +15,10 @@ public:
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
     T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, T__11 = 12, T__12 = 13, T__13 = 14, 
     T__14 = 15, T__15 = 16, T__16 = 17, T__17 = 18, T__18 = 19, T__19 = 20, 
-    T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, FUNCTION_NAME = 26, 
-    NAME = 27, STRING = 28, CHARACTER = 29, NUMBER = 30, CHAR = 31, INT32_T = 32, 
-    INT64_T = 33, IF = 34, ELSE = 35, RETURN = 36, WHILE = 37, VOID = 38
+    T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, WS = 26, 
+    CHAR = 27, INT32_T = 28, INT64_T = 29, IF = 30, ELSE = 31, RETURN = 32, 
+    WHILE = 33, VOID = 34, NAME = 35, FUNCTION_NAME = 36, CHARACTER = 37, 
+    NUMBER = 38
   };
 
   ProgLexer(antlr4::CharStream *input);
