@@ -3,7 +3,7 @@ grammar Prog;
 WS              : [ \t\n\r]+ ->skip;
 program             : globalVar* function*;
 globalVar        : type name '=' val';';
-function        : retType FUNCTION_NAME(sigParams?) blockFunction;
+function        : retType NAME'('sigParams?')' blockFunction;
 blockFunction    : '{'(declare';')* instruction* '}';
 instruction        : expr';'| ifStatement | whileStatement | returnStatement;
 returnStatement     : RETURN val?;
@@ -43,7 +43,7 @@ expr  : expr '*' expr # mult
       | expr '&&' expr # et
       | '(' expr ')'  # par
       | '!'expr # non
-      | FUNCTION_NAME'('params?')' # callfunction
+      | NAME'('params?')' # callfunction
       | val #valeur
       ;
 
@@ -55,7 +55,7 @@ ELSE             : 'else';
 RETURN			: 'return';
 WHILE			: 'while';
 VOID			: 'void';
+//FUNCTION_NAME    : ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 NAME            : ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-FUNCTION_NAME    : ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 CHARACTER        : '\''.'\'';
 NUMBER        : ('0'..'9')+;

@@ -9,7 +9,7 @@ using namespace std;
 using namespace antlr4;
 
 int main(void){
-	string userInput = "int32_t a=5;\nint32_t b=4;";
+	string userInput = "int32_t a=5;\nint32_t b=4; int32_t main(){int64_t c; c = 4 + a;}";
 //	cin>>userInput;
 	ANTLRInputStream input(userInput);
 	ProgLexer lexer(&input);
@@ -25,7 +25,5 @@ int main(void){
 	Prog visitor;
 
     visitor.visit(tree);
-//	int resultat = (int)visitor.visit(tree);
-//	cout << "Res "<< resultat << endl;
 	return 0;
 }

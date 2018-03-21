@@ -23,14 +23,17 @@ public:
     }
 
     virtual antlrcpp::Any visitFunction(ProgParser::FunctionContext *ctx) override {
+        std::cout<<"Visited Function"<<std::endl;
         return visitChildren(ctx);
     }
 
     virtual antlrcpp::Any visitBlockFunction(ProgParser::BlockFunctionContext *ctx) override {
+        std::cout<<"Visited Block Function"<<std::endl;
         return visitChildren(ctx);
     }
 
     virtual antlrcpp::Any visitInstruction(ProgParser::InstructionContext *ctx) override {
+        std::cout<<"Visited Instruction"<<std::endl;
         return visitChildren(ctx);
     }
 
