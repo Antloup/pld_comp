@@ -61,25 +61,23 @@ public:
 
     virtual antlrcpp::Any visitInf(ProgParser::InfContext *context) = 0;
 
+    virtual antlrcpp::Any visitNo(ProgParser::NoContext *context) = 0;
+
+    virtual antlrcpp::Any visitMinus(ProgParser::MinusContext *context) = 0;
+
     virtual antlrcpp::Any visitEgal(ProgParser::EgalContext *context) = 0;
 
     virtual antlrcpp::Any visitMult(ProgParser::MultContext *context) = 0;
 
-    virtual antlrcpp::Any visitValeur(ProgParser::ValeurContext *context) = 0;
+    virtual antlrcpp::Any visitOr(ProgParser::OrContext *context) = 0;
 
     virtual antlrcpp::Any visitAffect(ProgParser::AffectContext *context) = 0;
 
-    virtual antlrcpp::Any visitOu(ProgParser::OuContext *context) = 0;
-
     virtual antlrcpp::Any visitDiff(ProgParser::DiffContext *context) = 0;
-
-    virtual antlrcpp::Any visitNon(ProgParser::NonContext *context) = 0;
 
     virtual antlrcpp::Any visitPlus(ProgParser::PlusContext *context) = 0;
 
     virtual antlrcpp::Any visitSup(ProgParser::SupContext *context) = 0;
-
-    virtual antlrcpp::Any visitEt(ProgParser::EtContext *context) = 0;
 
     virtual antlrcpp::Any visitInv(ProgParser::InvContext *context) = 0;
 
@@ -95,9 +93,11 @@ public:
 
     virtual antlrcpp::Any visitSupegal(ProgParser::SupegalContext *context) = 0;
 
-    virtual antlrcpp::Any visitMoins(ProgParser::MoinsContext *context) = 0;
+    virtual antlrcpp::Any visitAnd(ProgParser::AndContext *context) = 0;
 
     virtual antlrcpp::Any visitPostincr(ProgParser::PostincrContext *context) = 0;
+
+    virtual antlrcpp::Any visitValue(ProgParser::ValueContext *context) = 0;
 
     virtual antlrcpp::Any visitModulo(ProgParser::ModuloContext *context) = 0;
 

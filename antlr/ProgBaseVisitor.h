@@ -99,6 +99,14 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitNo(ProgParser::NoContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitMinus(ProgParser::MinusContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitEgal(ProgParser::EgalContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -107,7 +115,7 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitValeur(ProgParser::ValeurContext *ctx) override {
+  virtual antlrcpp::Any visitOr(ProgParser::OrContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -115,15 +123,7 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitOu(ProgParser::OuContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual antlrcpp::Any visitDiff(ProgParser::DiffContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitNon(ProgParser::NonContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -132,10 +132,6 @@ public:
   }
 
   virtual antlrcpp::Any visitSup(ProgParser::SupContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitEt(ProgParser::EtContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -167,11 +163,15 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitMoins(ProgParser::MoinsContext *ctx) override {
+  virtual antlrcpp::Any visitAnd(ProgParser::AndContext *ctx) override {
     return visitChildren(ctx);
   }
 
   virtual antlrcpp::Any visitPostincr(ProgParser::PostincrContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitValue(ProgParser::ValueContext *ctx) override {
     return visitChildren(ctx);
   }
 
