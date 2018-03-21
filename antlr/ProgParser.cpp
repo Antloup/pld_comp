@@ -1,445 +1,445 @@
 
-// Generated from Expr.g4 by ANTLR 4.7.1
+// Generated from Prog.g4 by ANTLR 4.7.1
 
 
-#include "ExprVisitor.h"
+#include "ProgVisitor.h"
 
-#include "ExprParser.h"
+#include "ProgParser.h"
 
 
 using namespace antlrcpp;
 using namespace antlr4;
 
-ExprParser::ExprParser(TokenStream *input) : Parser(input) {
+ProgParser::ProgParser(TokenStream *input) : Parser(input) {
   _interpreter = new atn::ParserATNSimulator(this, _atn, _decisionToDFA, _sharedContextCache);
 }
 
-ExprParser::~ExprParser() {
+ProgParser::~ProgParser() {
   delete _interpreter;
 }
 
-std::string ExprParser::getGrammarFileName() const {
-  return "Expr.g4";
+std::string ProgParser::getGrammarFileName() const {
+  return "Prog.g4";
 }
 
-const std::vector<std::string>& ExprParser::getRuleNames() const {
+const std::vector<std::string>& ProgParser::getRuleNames() const {
   return _ruleNames;
 }
 
-dfa::Vocabulary& ExprParser::getVocabulary() const {
+dfa::Vocabulary& ProgParser::getVocabulary() const {
   return _vocabulary;
 }
 
 
 //----------------- ExprContext ------------------------------------------------------------------
 
-ExprParser::ExprContext::ExprContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::ExprContext::ExprContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
 
-size_t ExprParser::ExprContext::getRuleIndex() const {
-  return ExprParser::RuleExpr;
+size_t ProgParser::ExprContext::getRuleIndex() const {
+  return ProgParser::RuleExpr;
 }
 
-void ExprParser::ExprContext::copyFrom(ExprContext *ctx) {
+void ProgParser::ExprContext::copyFrom(ExprContext *ctx) {
   ParserRuleContext::copyFrom(ctx);
 }
 
 //----------------- ParContext ------------------------------------------------------------------
 
-ExprParser::ExprContext* ExprParser::ParContext::expr() {
-  return getRuleContext<ExprParser::ExprContext>(0);
+ProgParser::ExprContext* ProgParser::ParContext::expr() {
+  return getRuleContext<ProgParser::ExprContext>(0);
 }
 
-ExprParser::ParContext::ParContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::ParContext::ParContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::ParContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::ParContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitPar(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- InfContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::InfContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::InfContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::InfContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::InfContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::InfContext::InfContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::InfContext::InfContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::InfContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::InfContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitInf(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- EgalContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::EgalContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::EgalContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::EgalContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::EgalContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::EgalContext::EgalContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::EgalContext::EgalContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::EgalContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::EgalContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitEgal(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- MultContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::MultContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::MultContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::MultContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::MultContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::MultContext::MultContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::MultContext::MultContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::MultContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::MultContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitMult(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- ValeurContext ------------------------------------------------------------------
 
-ExprParser::ValContext* ExprParser::ValeurContext::val() {
-  return getRuleContext<ExprParser::ValContext>(0);
+ProgParser::ValContext* ProgParser::ValeurContext::val() {
+  return getRuleContext<ProgParser::ValContext>(0);
 }
 
-ExprParser::ValeurContext::ValeurContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::ValeurContext::ValeurContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::ValeurContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::ValeurContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitValeur(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- AffectContext ------------------------------------------------------------------
 
-ExprParser::NameContext* ExprParser::AffectContext::name() {
-  return getRuleContext<ExprParser::NameContext>(0);
+ProgParser::NameContext* ProgParser::AffectContext::name() {
+  return getRuleContext<ProgParser::NameContext>(0);
 }
 
-ExprParser::ExprContext* ExprParser::AffectContext::expr() {
-  return getRuleContext<ExprParser::ExprContext>(0);
+ProgParser::ExprContext* ProgParser::AffectContext::expr() {
+  return getRuleContext<ProgParser::ExprContext>(0);
 }
 
-ExprParser::AffectContext::AffectContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::AffectContext::AffectContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::AffectContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::AffectContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitAffect(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- OuContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::OuContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::OuContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::OuContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::OuContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::OuContext::OuContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::OuContext::OuContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::OuContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::OuContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitOu(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- DiffContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::DiffContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::DiffContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::DiffContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::DiffContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::DiffContext::DiffContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::DiffContext::DiffContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::DiffContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::DiffContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitDiff(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- NonContext ------------------------------------------------------------------
 
-ExprParser::ExprContext* ExprParser::NonContext::expr() {
-  return getRuleContext<ExprParser::ExprContext>(0);
+ProgParser::ExprContext* ProgParser::NonContext::expr() {
+  return getRuleContext<ProgParser::ExprContext>(0);
 }
 
-ExprParser::NonContext::NonContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::NonContext::NonContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::NonContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::NonContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitNon(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- PlusContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::PlusContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::PlusContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::PlusContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::PlusContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::PlusContext::PlusContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::PlusContext::PlusContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::PlusContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::PlusContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitPlus(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- SupContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::SupContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::SupContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::SupContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::SupContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::SupContext::SupContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::SupContext::SupContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::SupContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::SupContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitSup(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- EtContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::EtContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::EtContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::EtContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::EtContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::EtContext::EtContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::EtContext::EtContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::EtContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::EtContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitEt(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- InvContext ------------------------------------------------------------------
 
-ExprParser::ExprContext* ExprParser::InvContext::expr() {
-  return getRuleContext<ExprParser::ExprContext>(0);
+ProgParser::ExprContext* ProgParser::InvContext::expr() {
+  return getRuleContext<ProgParser::ExprContext>(0);
 }
 
-ExprParser::InvContext::InvContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::InvContext::InvContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::InvContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::InvContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitInv(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- DivContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::DivContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::DivContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::DivContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::DivContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::DivContext::DivContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::DivContext::DivContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::DivContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::DivContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitDiv(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- CallfunctionContext ------------------------------------------------------------------
 
-tree::TerminalNode* ExprParser::CallfunctionContext::FUNCTION_NAME() {
-  return getToken(ExprParser::FUNCTION_NAME, 0);
+tree::TerminalNode* ProgParser::CallfunctionContext::FUNCTION_NAME() {
+  return getToken(ProgParser::FUNCTION_NAME, 0);
 }
 
-ExprParser::ParamsContext* ExprParser::CallfunctionContext::params() {
-  return getRuleContext<ExprParser::ParamsContext>(0);
+ProgParser::ParamsContext* ProgParser::CallfunctionContext::params() {
+  return getRuleContext<ProgParser::ParamsContext>(0);
 }
 
-ExprParser::CallfunctionContext::CallfunctionContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::CallfunctionContext::CallfunctionContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::CallfunctionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::CallfunctionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitCallfunction(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- PredecrContext ------------------------------------------------------------------
 
-ExprParser::NameContext* ExprParser::PredecrContext::name() {
-  return getRuleContext<ExprParser::NameContext>(0);
+ProgParser::NameContext* ProgParser::PredecrContext::name() {
+  return getRuleContext<ProgParser::NameContext>(0);
 }
 
-ExprParser::PredecrContext::PredecrContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::PredecrContext::PredecrContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::PredecrContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::PredecrContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitPredecr(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- PreincrContext ------------------------------------------------------------------
 
-ExprParser::NameContext* ExprParser::PreincrContext::name() {
-  return getRuleContext<ExprParser::NameContext>(0);
+ProgParser::NameContext* ProgParser::PreincrContext::name() {
+  return getRuleContext<ProgParser::NameContext>(0);
 }
 
-ExprParser::PreincrContext::PreincrContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::PreincrContext::PreincrContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::PreincrContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::PreincrContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitPreincr(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- PostdecrContext ------------------------------------------------------------------
 
-ExprParser::NameContext* ExprParser::PostdecrContext::name() {
-  return getRuleContext<ExprParser::NameContext>(0);
+ProgParser::NameContext* ProgParser::PostdecrContext::name() {
+  return getRuleContext<ProgParser::NameContext>(0);
 }
 
-ExprParser::PostdecrContext::PostdecrContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::PostdecrContext::PostdecrContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::PostdecrContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::PostdecrContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitPostdecr(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- SupegalContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::SupegalContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::SupegalContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::SupegalContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::SupegalContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::SupegalContext::SupegalContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::SupegalContext::SupegalContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::SupegalContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::SupegalContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitSupegal(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- MoinsContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::MoinsContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::MoinsContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::MoinsContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::MoinsContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::MoinsContext::MoinsContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::MoinsContext::MoinsContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::MoinsContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::MoinsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitMoins(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- PostincrContext ------------------------------------------------------------------
 
-ExprParser::NameContext* ExprParser::PostincrContext::name() {
-  return getRuleContext<ExprParser::NameContext>(0);
+ProgParser::NameContext* ProgParser::PostincrContext::name() {
+  return getRuleContext<ProgParser::NameContext>(0);
 }
 
-ExprParser::PostincrContext::PostincrContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::PostincrContext::PostincrContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::PostincrContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::PostincrContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitPostincr(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- ModuloContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::ModuloContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::ModuloContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::ModuloContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::ModuloContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::ModuloContext::ModuloContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::ModuloContext::ModuloContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::ModuloContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::ModuloContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitModulo(this);
   else
     return visitor->visitChildren(this);
 }
 //----------------- InfegalContext ------------------------------------------------------------------
 
-std::vector<ExprParser::ExprContext *> ExprParser::InfegalContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::InfegalContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::InfegalContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::InfegalContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
-ExprParser::InfegalContext::InfegalContext(ExprContext *ctx) { copyFrom(ctx); }
+ProgParser::InfegalContext::InfegalContext(ExprContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any ExprParser::InfegalContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::InfegalContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitInfegal(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::ExprContext* ExprParser::expr() {
+ProgParser::ExprContext* ProgParser::expr() {
    return expr(0);
 }
 
-ExprParser::ExprContext* ExprParser::expr(int precedence) {
+ProgParser::ExprContext* ProgParser::expr(int precedence) {
   ParserRuleContext *parentContext = _ctx;
   size_t parentState = getState();
-  ExprParser::ExprContext *_localctx = _tracker.createInstance<ExprContext>(_ctx, parentState);
-  ExprParser::ExprContext *previousContext = _localctx;
+  ProgParser::ExprContext *_localctx = _tracker.createInstance<ExprContext>(_ctx, parentState);
+  ProgParser::ExprContext *previousContext = _localctx;
   size_t startState = 0;
-  enterRecursionRule(_localctx, 0, ExprParser::RuleExpr, precedence);
+  enterRecursionRule(_localctx, 0, ProgParser::RuleExpr, precedence);
 
     size_t _la = 0;
 
@@ -460,7 +460,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
       setState(41);
       name();
       setState(42);
-      match(ExprParser::T__3);
+      match(ProgParser::T__3);
       break;
     }
 
@@ -469,7 +469,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
       _ctx = _localctx;
       previousContext = _localctx;
       setState(44);
-      match(ExprParser::T__3);
+      match(ProgParser::T__3);
       setState(45);
       name();
       break;
@@ -480,7 +480,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
       _ctx = _localctx;
       previousContext = _localctx;
       setState(46);
-      match(ExprParser::T__4);
+      match(ProgParser::T__4);
       setState(47);
       expr(17);
       break;
@@ -493,7 +493,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
       setState(48);
       name();
       setState(49);
-      match(ExprParser::T__5);
+      match(ProgParser::T__5);
       break;
     }
 
@@ -502,7 +502,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
       _ctx = _localctx;
       previousContext = _localctx;
       setState(51);
-      match(ExprParser::T__5);
+      match(ProgParser::T__5);
       setState(52);
       name();
       break;
@@ -515,7 +515,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
       setState(53);
       name();
       setState(54);
-      match(ExprParser::T__7);
+      match(ProgParser::T__7);
       setState(55);
       expr(13);
       break;
@@ -526,11 +526,11 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
       _ctx = _localctx;
       previousContext = _localctx;
       setState(57);
-      match(ExprParser::T__16);
+      match(ProgParser::T__16);
       setState(58);
       expr(0);
       setState(59);
-      match(ExprParser::T__17);
+      match(ProgParser::T__17);
       break;
     }
 
@@ -539,7 +539,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
       _ctx = _localctx;
       previousContext = _localctx;
       setState(61);
-      match(ExprParser::T__18);
+      match(ProgParser::T__18);
       setState(62);
       expr(3);
       break;
@@ -550,28 +550,28 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
       _ctx = _localctx;
       previousContext = _localctx;
       setState(63);
-      match(ExprParser::FUNCTION_NAME);
+      match(ProgParser::FUNCTION_NAME);
       setState(64);
-      match(ExprParser::T__16);
+      match(ProgParser::T__16);
       setState(66);
       _errHandler->sync(this);
 
       _la = _input->LA(1);
       if ((((_la & ~ 0x3fULL) == 0) &&
-        ((1ULL << _la) & ((1ULL << ExprParser::T__3)
-        | (1ULL << ExprParser::T__4)
-        | (1ULL << ExprParser::T__5)
-        | (1ULL << ExprParser::T__16)
-        | (1ULL << ExprParser::T__18)
-        | (1ULL << ExprParser::FUNCTION_NAME)
-        | (1ULL << ExprParser::NAME)
-        | (1ULL << ExprParser::CHARACTER)
-        | (1ULL << ExprParser::NUMBER))) != 0)) {
+        ((1ULL << _la) & ((1ULL << ProgParser::T__3)
+        | (1ULL << ProgParser::T__4)
+        | (1ULL << ProgParser::T__5)
+        | (1ULL << ProgParser::T__16)
+        | (1ULL << ProgParser::T__18)
+        | (1ULL << ProgParser::FUNCTION_NAME)
+        | (1ULL << ProgParser::NAME)
+        | (1ULL << ProgParser::CHARACTER)
+        | (1ULL << ProgParser::NUMBER))) != 0)) {
         setState(65);
         params();
       }
       setState(68);
-      match(ExprParser::T__17);
+      match(ProgParser::T__17);
       break;
     }
 
@@ -605,7 +605,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 23))) throw FailedPredicateException(this, "precpred(_ctx, 23)");
           setState(73);
-          match(ExprParser::T__0);
+          match(ProgParser::T__0);
           setState(74);
           expr(24);
           break;
@@ -619,7 +619,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 22))) throw FailedPredicateException(this, "precpred(_ctx, 22)");
           setState(76);
-          match(ExprParser::T__1);
+          match(ProgParser::T__1);
           setState(77);
           expr(23);
           break;
@@ -633,7 +633,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 21))) throw FailedPredicateException(this, "precpred(_ctx, 21)");
           setState(79);
-          match(ExprParser::T__2);
+          match(ProgParser::T__2);
           setState(80);
           expr(22);
           break;
@@ -647,7 +647,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 18))) throw FailedPredicateException(this, "precpred(_ctx, 18)");
           setState(82);
-          match(ExprParser::T__4);
+          match(ProgParser::T__4);
           setState(83);
           expr(19);
           break;
@@ -661,7 +661,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 14))) throw FailedPredicateException(this, "precpred(_ctx, 14)");
           setState(85);
-          match(ExprParser::T__6);
+          match(ProgParser::T__6);
           setState(86);
           expr(15);
           break;
@@ -675,7 +675,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 12))) throw FailedPredicateException(this, "precpred(_ctx, 12)");
           setState(88);
-          match(ExprParser::T__8);
+          match(ProgParser::T__8);
           setState(89);
           expr(13);
           break;
@@ -689,7 +689,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 11))) throw FailedPredicateException(this, "precpred(_ctx, 11)");
           setState(91);
-          match(ExprParser::T__9);
+          match(ProgParser::T__9);
           setState(92);
           expr(12);
           break;
@@ -703,7 +703,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 10))) throw FailedPredicateException(this, "precpred(_ctx, 10)");
           setState(94);
-          match(ExprParser::T__10);
+          match(ProgParser::T__10);
           setState(95);
           expr(11);
           break;
@@ -717,7 +717,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 9))) throw FailedPredicateException(this, "precpred(_ctx, 9)");
           setState(97);
-          match(ExprParser::T__11);
+          match(ProgParser::T__11);
           setState(98);
           expr(10);
           break;
@@ -731,7 +731,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 8))) throw FailedPredicateException(this, "precpred(_ctx, 8)");
           setState(100);
-          match(ExprParser::T__12);
+          match(ProgParser::T__12);
           setState(101);
           expr(9);
           break;
@@ -745,7 +745,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 7))) throw FailedPredicateException(this, "precpred(_ctx, 7)");
           setState(103);
-          match(ExprParser::T__13);
+          match(ProgParser::T__13);
           setState(104);
           expr(8);
           break;
@@ -759,7 +759,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 6))) throw FailedPredicateException(this, "precpred(_ctx, 6)");
           setState(106);
-          match(ExprParser::T__14);
+          match(ProgParser::T__14);
           setState(107);
           expr(7);
           break;
@@ -773,7 +773,7 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
           if (!(precpred(_ctx, 5))) throw FailedPredicateException(this, "precpred(_ctx, 5)");
           setState(109);
-          match(ExprParser::T__15);
+          match(ProgParser::T__15);
           setState(110);
           expr(6);
           break;
@@ -796,41 +796,41 @@ ExprParser::ExprContext* ExprParser::expr(int precedence) {
 
 //----------------- ProgramContext ------------------------------------------------------------------
 
-ExprParser::ProgramContext::ProgramContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::ProgramContext::ProgramContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<ExprParser::GlobalVarContext *> ExprParser::ProgramContext::globalVar() {
-  return getRuleContexts<ExprParser::GlobalVarContext>();
+std::vector<ProgParser::GlobalVarContext *> ProgParser::ProgramContext::globalVar() {
+  return getRuleContexts<ProgParser::GlobalVarContext>();
 }
 
-ExprParser::GlobalVarContext* ExprParser::ProgramContext::globalVar(size_t i) {
-  return getRuleContext<ExprParser::GlobalVarContext>(i);
+ProgParser::GlobalVarContext* ProgParser::ProgramContext::globalVar(size_t i) {
+  return getRuleContext<ProgParser::GlobalVarContext>(i);
 }
 
-std::vector<ExprParser::FunctionContext *> ExprParser::ProgramContext::function() {
-  return getRuleContexts<ExprParser::FunctionContext>();
+std::vector<ProgParser::FunctionContext *> ProgParser::ProgramContext::function() {
+  return getRuleContexts<ProgParser::FunctionContext>();
 }
 
-ExprParser::FunctionContext* ExprParser::ProgramContext::function(size_t i) {
-  return getRuleContext<ExprParser::FunctionContext>(i);
+ProgParser::FunctionContext* ProgParser::ProgramContext::function(size_t i) {
+  return getRuleContext<ProgParser::FunctionContext>(i);
 }
 
 
-size_t ExprParser::ProgramContext::getRuleIndex() const {
-  return ExprParser::RuleProgram;
+size_t ProgParser::ProgramContext::getRuleIndex() const {
+  return ProgParser::RuleProgram;
 }
 
-antlrcpp::Any ExprParser::ProgramContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::ProgramContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitProgram(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::ProgramContext* ExprParser::program() {
+ProgParser::ProgramContext* ProgParser::program() {
   ProgramContext *_localctx = _tracker.createInstance<ProgramContext>(_ctx, getState());
-  enterRule(_localctx, 2, ExprParser::RuleProgram);
+  enterRule(_localctx, 2, ProgParser::RuleProgram);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -855,10 +855,10 @@ ExprParser::ProgramContext* ExprParser::program() {
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << ExprParser::CHAR)
-      | (1ULL << ExprParser::INT32_T)
-      | (1ULL << ExprParser::INT64_T)
-      | (1ULL << ExprParser::VOID))) != 0)) {
+      ((1ULL << _la) & ((1ULL << ProgParser::CHAR)
+      | (1ULL << ProgParser::INT32_T)
+      | (1ULL << ProgParser::INT64_T)
+      | (1ULL << ProgParser::VOID))) != 0)) {
       setState(122);
       function();
       setState(127);
@@ -878,37 +878,37 @@ ExprParser::ProgramContext* ExprParser::program() {
 
 //----------------- GlobalVarContext ------------------------------------------------------------------
 
-ExprParser::GlobalVarContext::GlobalVarContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::GlobalVarContext::GlobalVarContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-ExprParser::TypeContext* ExprParser::GlobalVarContext::type() {
-  return getRuleContext<ExprParser::TypeContext>(0);
+ProgParser::TypeContext* ProgParser::GlobalVarContext::type() {
+  return getRuleContext<ProgParser::TypeContext>(0);
 }
 
-ExprParser::NameContext* ExprParser::GlobalVarContext::name() {
-  return getRuleContext<ExprParser::NameContext>(0);
+ProgParser::NameContext* ProgParser::GlobalVarContext::name() {
+  return getRuleContext<ProgParser::NameContext>(0);
 }
 
-ExprParser::ValContext* ExprParser::GlobalVarContext::val() {
-  return getRuleContext<ExprParser::ValContext>(0);
+ProgParser::ValContext* ProgParser::GlobalVarContext::val() {
+  return getRuleContext<ProgParser::ValContext>(0);
 }
 
 
-size_t ExprParser::GlobalVarContext::getRuleIndex() const {
-  return ExprParser::RuleGlobalVar;
+size_t ProgParser::GlobalVarContext::getRuleIndex() const {
+  return ProgParser::RuleGlobalVar;
 }
 
-antlrcpp::Any ExprParser::GlobalVarContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::GlobalVarContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitGlobalVar(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::GlobalVarContext* ExprParser::globalVar() {
+ProgParser::GlobalVarContext* ProgParser::globalVar() {
   GlobalVarContext *_localctx = _tracker.createInstance<GlobalVarContext>(_ctx, getState());
-  enterRule(_localctx, 4, ExprParser::RuleGlobalVar);
+  enterRule(_localctx, 4, ProgParser::RuleGlobalVar);
 
   auto onExit = finally([=] {
     exitRule();
@@ -920,7 +920,7 @@ ExprParser::GlobalVarContext* ExprParser::globalVar() {
     setState(129);
     name();
     setState(130);
-    match(ExprParser::T__7);
+    match(ProgParser::T__7);
     setState(131);
     val();
    
@@ -936,41 +936,41 @@ ExprParser::GlobalVarContext* ExprParser::globalVar() {
 
 //----------------- FunctionContext ------------------------------------------------------------------
 
-ExprParser::FunctionContext::FunctionContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::FunctionContext::FunctionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-ExprParser::RetTypeContext* ExprParser::FunctionContext::retType() {
-  return getRuleContext<ExprParser::RetTypeContext>(0);
+ProgParser::RetTypeContext* ProgParser::FunctionContext::retType() {
+  return getRuleContext<ProgParser::RetTypeContext>(0);
 }
 
-tree::TerminalNode* ExprParser::FunctionContext::FUNCTION_NAME() {
-  return getToken(ExprParser::FUNCTION_NAME, 0);
+tree::TerminalNode* ProgParser::FunctionContext::FUNCTION_NAME() {
+  return getToken(ProgParser::FUNCTION_NAME, 0);
 }
 
-ExprParser::BlockFunctionContext* ExprParser::FunctionContext::blockFunction() {
-  return getRuleContext<ExprParser::BlockFunctionContext>(0);
+ProgParser::BlockFunctionContext* ProgParser::FunctionContext::blockFunction() {
+  return getRuleContext<ProgParser::BlockFunctionContext>(0);
 }
 
-ExprParser::SigParamsContext* ExprParser::FunctionContext::sigParams() {
-  return getRuleContext<ExprParser::SigParamsContext>(0);
+ProgParser::SigParamsContext* ProgParser::FunctionContext::sigParams() {
+  return getRuleContext<ProgParser::SigParamsContext>(0);
 }
 
 
-size_t ExprParser::FunctionContext::getRuleIndex() const {
-  return ExprParser::RuleFunction;
+size_t ProgParser::FunctionContext::getRuleIndex() const {
+  return ProgParser::RuleFunction;
 }
 
-antlrcpp::Any ExprParser::FunctionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::FunctionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitFunction(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::FunctionContext* ExprParser::function() {
+ProgParser::FunctionContext* ProgParser::function() {
   FunctionContext *_localctx = _tracker.createInstance<FunctionContext>(_ctx, getState());
-  enterRule(_localctx, 6, ExprParser::RuleFunction);
+  enterRule(_localctx, 6, ProgParser::RuleFunction);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -981,16 +981,16 @@ ExprParser::FunctionContext* ExprParser::function() {
     setState(133);
     retType();
     setState(134);
-    match(ExprParser::FUNCTION_NAME);
+    match(ProgParser::FUNCTION_NAME);
 
     setState(136);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << ExprParser::CHAR)
-      | (1ULL << ExprParser::INT32_T)
-      | (1ULL << ExprParser::INT64_T))) != 0)) {
+      ((1ULL << _la) & ((1ULL << ProgParser::CHAR)
+      | (1ULL << ProgParser::INT32_T)
+      | (1ULL << ProgParser::INT64_T))) != 0)) {
       setState(135);
       sigParams();
     }
@@ -1009,41 +1009,41 @@ ExprParser::FunctionContext* ExprParser::function() {
 
 //----------------- BlockFunctionContext ------------------------------------------------------------------
 
-ExprParser::BlockFunctionContext::BlockFunctionContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::BlockFunctionContext::BlockFunctionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<ExprParser::DeclareContext *> ExprParser::BlockFunctionContext::declare() {
-  return getRuleContexts<ExprParser::DeclareContext>();
+std::vector<ProgParser::DeclareContext *> ProgParser::BlockFunctionContext::declare() {
+  return getRuleContexts<ProgParser::DeclareContext>();
 }
 
-ExprParser::DeclareContext* ExprParser::BlockFunctionContext::declare(size_t i) {
-  return getRuleContext<ExprParser::DeclareContext>(i);
+ProgParser::DeclareContext* ProgParser::BlockFunctionContext::declare(size_t i) {
+  return getRuleContext<ProgParser::DeclareContext>(i);
 }
 
-std::vector<ExprParser::InstructionContext *> ExprParser::BlockFunctionContext::instruction() {
-  return getRuleContexts<ExprParser::InstructionContext>();
+std::vector<ProgParser::InstructionContext *> ProgParser::BlockFunctionContext::instruction() {
+  return getRuleContexts<ProgParser::InstructionContext>();
 }
 
-ExprParser::InstructionContext* ExprParser::BlockFunctionContext::instruction(size_t i) {
-  return getRuleContext<ExprParser::InstructionContext>(i);
+ProgParser::InstructionContext* ProgParser::BlockFunctionContext::instruction(size_t i) {
+  return getRuleContext<ProgParser::InstructionContext>(i);
 }
 
 
-size_t ExprParser::BlockFunctionContext::getRuleIndex() const {
-  return ExprParser::RuleBlockFunction;
+size_t ProgParser::BlockFunctionContext::getRuleIndex() const {
+  return ProgParser::RuleBlockFunction;
 }
 
-antlrcpp::Any ExprParser::BlockFunctionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::BlockFunctionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitBlockFunction(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::BlockFunctionContext* ExprParser::blockFunction() {
+ProgParser::BlockFunctionContext* ProgParser::blockFunction() {
   BlockFunctionContext *_localctx = _tracker.createInstance<BlockFunctionContext>(_ctx, getState());
-  enterRule(_localctx, 8, ExprParser::RuleBlockFunction);
+  enterRule(_localctx, 8, ProgParser::RuleBlockFunction);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -1052,18 +1052,18 @@ ExprParser::BlockFunctionContext* ExprParser::blockFunction() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(140);
-    match(ExprParser::T__19);
+    match(ProgParser::T__19);
     setState(146);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << ExprParser::CHAR)
-      | (1ULL << ExprParser::INT32_T)
-      | (1ULL << ExprParser::INT64_T))) != 0)) {
+      ((1ULL << _la) & ((1ULL << ProgParser::CHAR)
+      | (1ULL << ProgParser::INT32_T)
+      | (1ULL << ProgParser::INT64_T))) != 0)) {
       setState(141);
       declare();
       setState(142);
-      match(ExprParser::T__20);
+      match(ProgParser::T__20);
       setState(148);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -1072,18 +1072,18 @@ ExprParser::BlockFunctionContext* ExprParser::blockFunction() {
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << ExprParser::T__3)
-      | (1ULL << ExprParser::T__4)
-      | (1ULL << ExprParser::T__5)
-      | (1ULL << ExprParser::T__16)
-      | (1ULL << ExprParser::T__18)
-      | (1ULL << ExprParser::FUNCTION_NAME)
-      | (1ULL << ExprParser::NAME)
-      | (1ULL << ExprParser::CHARACTER)
-      | (1ULL << ExprParser::NUMBER)
-      | (1ULL << ExprParser::IF)
-      | (1ULL << ExprParser::RETURN)
-      | (1ULL << ExprParser::WHILE))) != 0)) {
+      ((1ULL << _la) & ((1ULL << ProgParser::T__3)
+      | (1ULL << ProgParser::T__4)
+      | (1ULL << ProgParser::T__5)
+      | (1ULL << ProgParser::T__16)
+      | (1ULL << ProgParser::T__18)
+      | (1ULL << ProgParser::FUNCTION_NAME)
+      | (1ULL << ProgParser::NAME)
+      | (1ULL << ProgParser::CHARACTER)
+      | (1ULL << ProgParser::NUMBER)
+      | (1ULL << ProgParser::IF)
+      | (1ULL << ProgParser::RETURN)
+      | (1ULL << ProgParser::WHILE))) != 0)) {
       setState(149);
       instruction();
       setState(154);
@@ -1091,7 +1091,7 @@ ExprParser::BlockFunctionContext* ExprParser::blockFunction() {
       _la = _input->LA(1);
     }
     setState(155);
-    match(ExprParser::T__21);
+    match(ProgParser::T__21);
    
   }
   catch (RecognitionException &e) {
@@ -1105,41 +1105,41 @@ ExprParser::BlockFunctionContext* ExprParser::blockFunction() {
 
 //----------------- InstructionContext ------------------------------------------------------------------
 
-ExprParser::InstructionContext::InstructionContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::InstructionContext::InstructionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-ExprParser::ExprContext* ExprParser::InstructionContext::expr() {
-  return getRuleContext<ExprParser::ExprContext>(0);
+ProgParser::ExprContext* ProgParser::InstructionContext::expr() {
+  return getRuleContext<ProgParser::ExprContext>(0);
 }
 
-ExprParser::IfStatementContext* ExprParser::InstructionContext::ifStatement() {
-  return getRuleContext<ExprParser::IfStatementContext>(0);
+ProgParser::IfStatementContext* ProgParser::InstructionContext::ifStatement() {
+  return getRuleContext<ProgParser::IfStatementContext>(0);
 }
 
-ExprParser::WhileStatementContext* ExprParser::InstructionContext::whileStatement() {
-  return getRuleContext<ExprParser::WhileStatementContext>(0);
+ProgParser::WhileStatementContext* ProgParser::InstructionContext::whileStatement() {
+  return getRuleContext<ProgParser::WhileStatementContext>(0);
 }
 
-ExprParser::ReturnStatementContext* ExprParser::InstructionContext::returnStatement() {
-  return getRuleContext<ExprParser::ReturnStatementContext>(0);
+ProgParser::ReturnStatementContext* ProgParser::InstructionContext::returnStatement() {
+  return getRuleContext<ProgParser::ReturnStatementContext>(0);
 }
 
 
-size_t ExprParser::InstructionContext::getRuleIndex() const {
-  return ExprParser::RuleInstruction;
+size_t ProgParser::InstructionContext::getRuleIndex() const {
+  return ProgParser::RuleInstruction;
 }
 
-antlrcpp::Any ExprParser::InstructionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::InstructionContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitInstruction(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::InstructionContext* ExprParser::instruction() {
+ProgParser::InstructionContext* ProgParser::instruction() {
   InstructionContext *_localctx = _tracker.createInstance<InstructionContext>(_ctx, getState());
-  enterRule(_localctx, 10, ExprParser::RuleInstruction);
+  enterRule(_localctx, 10, ProgParser::RuleInstruction);
 
   auto onExit = finally([=] {
     exitRule();
@@ -1148,38 +1148,38 @@ ExprParser::InstructionContext* ExprParser::instruction() {
     setState(163);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
-      case ExprParser::T__3:
-      case ExprParser::T__4:
-      case ExprParser::T__5:
-      case ExprParser::T__16:
-      case ExprParser::T__18:
-      case ExprParser::FUNCTION_NAME:
-      case ExprParser::NAME:
-      case ExprParser::CHARACTER:
-      case ExprParser::NUMBER: {
+      case ProgParser::T__3:
+      case ProgParser::T__4:
+      case ProgParser::T__5:
+      case ProgParser::T__16:
+      case ProgParser::T__18:
+      case ProgParser::FUNCTION_NAME:
+      case ProgParser::NAME:
+      case ProgParser::CHARACTER:
+      case ProgParser::NUMBER: {
         enterOuterAlt(_localctx, 1);
         setState(157);
         expr(0);
         setState(158);
-        match(ExprParser::T__20);
+        match(ProgParser::T__20);
         break;
       }
 
-      case ExprParser::IF: {
+      case ProgParser::IF: {
         enterOuterAlt(_localctx, 2);
         setState(160);
         ifStatement();
         break;
       }
 
-      case ExprParser::WHILE: {
+      case ProgParser::WHILE: {
         enterOuterAlt(_localctx, 3);
         setState(161);
         whileStatement();
         break;
       }
 
-      case ExprParser::RETURN: {
+      case ProgParser::RETURN: {
         enterOuterAlt(_localctx, 4);
         setState(162);
         returnStatement();
@@ -1202,33 +1202,33 @@ ExprParser::InstructionContext* ExprParser::instruction() {
 
 //----------------- ReturnStatementContext ------------------------------------------------------------------
 
-ExprParser::ReturnStatementContext::ReturnStatementContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::ReturnStatementContext::ReturnStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* ExprParser::ReturnStatementContext::RETURN() {
-  return getToken(ExprParser::RETURN, 0);
+tree::TerminalNode* ProgParser::ReturnStatementContext::RETURN() {
+  return getToken(ProgParser::RETURN, 0);
 }
 
-ExprParser::ValContext* ExprParser::ReturnStatementContext::val() {
-  return getRuleContext<ExprParser::ValContext>(0);
+ProgParser::ValContext* ProgParser::ReturnStatementContext::val() {
+  return getRuleContext<ProgParser::ValContext>(0);
 }
 
 
-size_t ExprParser::ReturnStatementContext::getRuleIndex() const {
-  return ExprParser::RuleReturnStatement;
+size_t ProgParser::ReturnStatementContext::getRuleIndex() const {
+  return ProgParser::RuleReturnStatement;
 }
 
-antlrcpp::Any ExprParser::ReturnStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::ReturnStatementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitReturnStatement(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::ReturnStatementContext* ExprParser::returnStatement() {
+ProgParser::ReturnStatementContext* ProgParser::returnStatement() {
   ReturnStatementContext *_localctx = _tracker.createInstance<ReturnStatementContext>(_ctx, getState());
-  enterRule(_localctx, 12, ExprParser::RuleReturnStatement);
+  enterRule(_localctx, 12, ProgParser::RuleReturnStatement);
 
   auto onExit = finally([=] {
     exitRule();
@@ -1236,7 +1236,7 @@ ExprParser::ReturnStatementContext* ExprParser::returnStatement() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(165);
-    match(ExprParser::RETURN);
+    match(ProgParser::RETURN);
     setState(167);
     _errHandler->sync(this);
 
@@ -1261,41 +1261,41 @@ ExprParser::ReturnStatementContext* ExprParser::returnStatement() {
 
 //----------------- IfStatementContext ------------------------------------------------------------------
 
-ExprParser::IfStatementContext::IfStatementContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::IfStatementContext::IfStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* ExprParser::IfStatementContext::IF() {
-  return getToken(ExprParser::IF, 0);
+tree::TerminalNode* ProgParser::IfStatementContext::IF() {
+  return getToken(ProgParser::IF, 0);
 }
 
-ExprParser::BlockContext* ExprParser::IfStatementContext::block() {
-  return getRuleContext<ExprParser::BlockContext>(0);
+ProgParser::BlockContext* ProgParser::IfStatementContext::block() {
+  return getRuleContext<ProgParser::BlockContext>(0);
 }
 
-ExprParser::ExprContext* ExprParser::IfStatementContext::expr() {
-  return getRuleContext<ExprParser::ExprContext>(0);
+ProgParser::ExprContext* ProgParser::IfStatementContext::expr() {
+  return getRuleContext<ProgParser::ExprContext>(0);
 }
 
-ExprParser::ElseStatementContext* ExprParser::IfStatementContext::elseStatement() {
-  return getRuleContext<ExprParser::ElseStatementContext>(0);
+ProgParser::ElseStatementContext* ProgParser::IfStatementContext::elseStatement() {
+  return getRuleContext<ProgParser::ElseStatementContext>(0);
 }
 
 
-size_t ExprParser::IfStatementContext::getRuleIndex() const {
-  return ExprParser::RuleIfStatement;
+size_t ProgParser::IfStatementContext::getRuleIndex() const {
+  return ProgParser::RuleIfStatement;
 }
 
-antlrcpp::Any ExprParser::IfStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::IfStatementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitIfStatement(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::IfStatementContext* ExprParser::ifStatement() {
+ProgParser::IfStatementContext* ProgParser::ifStatement() {
   IfStatementContext *_localctx = _tracker.createInstance<IfStatementContext>(_ctx, getState());
-  enterRule(_localctx, 14, ExprParser::RuleIfStatement);
+  enterRule(_localctx, 14, ProgParser::RuleIfStatement);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -1304,7 +1304,7 @@ ExprParser::IfStatementContext* ExprParser::ifStatement() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(169);
-    match(ExprParser::IF);
+    match(ProgParser::IF);
 
     setState(170);
     expr(0);
@@ -1314,7 +1314,7 @@ ExprParser::IfStatementContext* ExprParser::ifStatement() {
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == ExprParser::ELSE) {
+    if (_la == ProgParser::ELSE) {
       setState(172);
       elseStatement();
     }
@@ -1331,37 +1331,37 @@ ExprParser::IfStatementContext* ExprParser::ifStatement() {
 
 //----------------- ElseStatementContext ------------------------------------------------------------------
 
-ExprParser::ElseStatementContext::ElseStatementContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::ElseStatementContext::ElseStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* ExprParser::ElseStatementContext::ELSE() {
-  return getToken(ExprParser::ELSE, 0);
+tree::TerminalNode* ProgParser::ElseStatementContext::ELSE() {
+  return getToken(ProgParser::ELSE, 0);
 }
 
-ExprParser::BlockContext* ExprParser::ElseStatementContext::block() {
-  return getRuleContext<ExprParser::BlockContext>(0);
+ProgParser::BlockContext* ProgParser::ElseStatementContext::block() {
+  return getRuleContext<ProgParser::BlockContext>(0);
 }
 
-ExprParser::IfStatementContext* ExprParser::ElseStatementContext::ifStatement() {
-  return getRuleContext<ExprParser::IfStatementContext>(0);
+ProgParser::IfStatementContext* ProgParser::ElseStatementContext::ifStatement() {
+  return getRuleContext<ProgParser::IfStatementContext>(0);
 }
 
 
-size_t ExprParser::ElseStatementContext::getRuleIndex() const {
-  return ExprParser::RuleElseStatement;
+size_t ProgParser::ElseStatementContext::getRuleIndex() const {
+  return ProgParser::RuleElseStatement;
 }
 
-antlrcpp::Any ExprParser::ElseStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::ElseStatementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitElseStatement(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::ElseStatementContext* ExprParser::elseStatement() {
+ProgParser::ElseStatementContext* ProgParser::elseStatement() {
   ElseStatementContext *_localctx = _tracker.createInstance<ElseStatementContext>(_ctx, getState());
-  enterRule(_localctx, 16, ExprParser::RuleElseStatement);
+  enterRule(_localctx, 16, ProgParser::RuleElseStatement);
 
   auto onExit = finally([=] {
     exitRule();
@@ -1373,7 +1373,7 @@ ExprParser::ElseStatementContext* ExprParser::elseStatement() {
     case 1: {
       enterOuterAlt(_localctx, 1);
       setState(175);
-      match(ExprParser::ELSE);
+      match(ProgParser::ELSE);
       setState(176);
       block();
       break;
@@ -1382,7 +1382,7 @@ ExprParser::ElseStatementContext* ExprParser::elseStatement() {
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(177);
-      match(ExprParser::ELSE);
+      match(ProgParser::ELSE);
       setState(178);
       ifStatement();
       break;
@@ -1402,37 +1402,37 @@ ExprParser::ElseStatementContext* ExprParser::elseStatement() {
 
 //----------------- WhileStatementContext ------------------------------------------------------------------
 
-ExprParser::WhileStatementContext::WhileStatementContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::WhileStatementContext::WhileStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* ExprParser::WhileStatementContext::WHILE() {
-  return getToken(ExprParser::WHILE, 0);
+tree::TerminalNode* ProgParser::WhileStatementContext::WHILE() {
+  return getToken(ProgParser::WHILE, 0);
 }
 
-ExprParser::BlockContext* ExprParser::WhileStatementContext::block() {
-  return getRuleContext<ExprParser::BlockContext>(0);
+ProgParser::BlockContext* ProgParser::WhileStatementContext::block() {
+  return getRuleContext<ProgParser::BlockContext>(0);
 }
 
-ExprParser::ExprContext* ExprParser::WhileStatementContext::expr() {
-  return getRuleContext<ExprParser::ExprContext>(0);
+ProgParser::ExprContext* ProgParser::WhileStatementContext::expr() {
+  return getRuleContext<ProgParser::ExprContext>(0);
 }
 
 
-size_t ExprParser::WhileStatementContext::getRuleIndex() const {
-  return ExprParser::RuleWhileStatement;
+size_t ProgParser::WhileStatementContext::getRuleIndex() const {
+  return ProgParser::RuleWhileStatement;
 }
 
-antlrcpp::Any ExprParser::WhileStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::WhileStatementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitWhileStatement(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::WhileStatementContext* ExprParser::whileStatement() {
+ProgParser::WhileStatementContext* ProgParser::whileStatement() {
   WhileStatementContext *_localctx = _tracker.createInstance<WhileStatementContext>(_ctx, getState());
-  enterRule(_localctx, 18, ExprParser::RuleWhileStatement);
+  enterRule(_localctx, 18, ProgParser::RuleWhileStatement);
 
   auto onExit = finally([=] {
     exitRule();
@@ -1440,7 +1440,7 @@ ExprParser::WhileStatementContext* ExprParser::whileStatement() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(181);
-    match(ExprParser::WHILE);
+    match(ProgParser::WHILE);
 
     setState(182);
     expr(0);
@@ -1459,33 +1459,33 @@ ExprParser::WhileStatementContext* ExprParser::whileStatement() {
 
 //----------------- BlockContext ------------------------------------------------------------------
 
-ExprParser::BlockContext::BlockContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::BlockContext::BlockContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<ExprParser::InstructionContext *> ExprParser::BlockContext::instruction() {
-  return getRuleContexts<ExprParser::InstructionContext>();
+std::vector<ProgParser::InstructionContext *> ProgParser::BlockContext::instruction() {
+  return getRuleContexts<ProgParser::InstructionContext>();
 }
 
-ExprParser::InstructionContext* ExprParser::BlockContext::instruction(size_t i) {
-  return getRuleContext<ExprParser::InstructionContext>(i);
+ProgParser::InstructionContext* ProgParser::BlockContext::instruction(size_t i) {
+  return getRuleContext<ProgParser::InstructionContext>(i);
 }
 
 
-size_t ExprParser::BlockContext::getRuleIndex() const {
-  return ExprParser::RuleBlock;
+size_t ProgParser::BlockContext::getRuleIndex() const {
+  return ProgParser::RuleBlock;
 }
 
-antlrcpp::Any ExprParser::BlockContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::BlockContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitBlock(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::BlockContext* ExprParser::block() {
+ProgParser::BlockContext* ProgParser::block() {
   BlockContext *_localctx = _tracker.createInstance<BlockContext>(_ctx, getState());
-  enterRule(_localctx, 20, ExprParser::RuleBlock);
+  enterRule(_localctx, 20, ProgParser::RuleBlock);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -1494,23 +1494,23 @@ ExprParser::BlockContext* ExprParser::block() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(185);
-    match(ExprParser::T__19);
+    match(ProgParser::T__19);
     setState(189);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << ExprParser::T__3)
-      | (1ULL << ExprParser::T__4)
-      | (1ULL << ExprParser::T__5)
-      | (1ULL << ExprParser::T__16)
-      | (1ULL << ExprParser::T__18)
-      | (1ULL << ExprParser::FUNCTION_NAME)
-      | (1ULL << ExprParser::NAME)
-      | (1ULL << ExprParser::CHARACTER)
-      | (1ULL << ExprParser::NUMBER)
-      | (1ULL << ExprParser::IF)
-      | (1ULL << ExprParser::RETURN)
-      | (1ULL << ExprParser::WHILE))) != 0)) {
+      ((1ULL << _la) & ((1ULL << ProgParser::T__3)
+      | (1ULL << ProgParser::T__4)
+      | (1ULL << ProgParser::T__5)
+      | (1ULL << ProgParser::T__16)
+      | (1ULL << ProgParser::T__18)
+      | (1ULL << ProgParser::FUNCTION_NAME)
+      | (1ULL << ProgParser::NAME)
+      | (1ULL << ProgParser::CHARACTER)
+      | (1ULL << ProgParser::NUMBER)
+      | (1ULL << ProgParser::IF)
+      | (1ULL << ProgParser::RETURN)
+      | (1ULL << ProgParser::WHILE))) != 0)) {
       setState(186);
       instruction();
       setState(191);
@@ -1518,7 +1518,7 @@ ExprParser::BlockContext* ExprParser::block() {
       _la = _input->LA(1);
     }
     setState(192);
-    match(ExprParser::T__21);
+    match(ProgParser::T__21);
    
   }
   catch (RecognitionException &e) {
@@ -1532,33 +1532,33 @@ ExprParser::BlockContext* ExprParser::block() {
 
 //----------------- DeclareContext ------------------------------------------------------------------
 
-ExprParser::DeclareContext::DeclareContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::DeclareContext::DeclareContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-ExprParser::TypeContext* ExprParser::DeclareContext::type() {
-  return getRuleContext<ExprParser::TypeContext>(0);
+ProgParser::TypeContext* ProgParser::DeclareContext::type() {
+  return getRuleContext<ProgParser::TypeContext>(0);
 }
 
-ExprParser::NameContext* ExprParser::DeclareContext::name() {
-  return getRuleContext<ExprParser::NameContext>(0);
+ProgParser::NameContext* ProgParser::DeclareContext::name() {
+  return getRuleContext<ProgParser::NameContext>(0);
 }
 
 
-size_t ExprParser::DeclareContext::getRuleIndex() const {
-  return ExprParser::RuleDeclare;
+size_t ProgParser::DeclareContext::getRuleIndex() const {
+  return ProgParser::RuleDeclare;
 }
 
-antlrcpp::Any ExprParser::DeclareContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::DeclareContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitDeclare(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::DeclareContext* ExprParser::declare() {
+ProgParser::DeclareContext* ProgParser::declare() {
   DeclareContext *_localctx = _tracker.createInstance<DeclareContext>(_ctx, getState());
-  enterRule(_localctx, 22, ExprParser::RuleDeclare);
+  enterRule(_localctx, 22, ProgParser::RuleDeclare);
 
   auto onExit = finally([=] {
     exitRule();
@@ -1582,37 +1582,37 @@ ExprParser::DeclareContext* ExprParser::declare() {
 
 //----------------- TypeContext ------------------------------------------------------------------
 
-ExprParser::TypeContext::TypeContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::TypeContext::TypeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* ExprParser::TypeContext::CHAR() {
-  return getToken(ExprParser::CHAR, 0);
+tree::TerminalNode* ProgParser::TypeContext::CHAR() {
+  return getToken(ProgParser::CHAR, 0);
 }
 
-tree::TerminalNode* ExprParser::TypeContext::INT32_T() {
-  return getToken(ExprParser::INT32_T, 0);
+tree::TerminalNode* ProgParser::TypeContext::INT32_T() {
+  return getToken(ProgParser::INT32_T, 0);
 }
 
-tree::TerminalNode* ExprParser::TypeContext::INT64_T() {
-  return getToken(ExprParser::INT64_T, 0);
+tree::TerminalNode* ProgParser::TypeContext::INT64_T() {
+  return getToken(ProgParser::INT64_T, 0);
 }
 
 
-size_t ExprParser::TypeContext::getRuleIndex() const {
-  return ExprParser::RuleType;
+size_t ProgParser::TypeContext::getRuleIndex() const {
+  return ProgParser::RuleType;
 }
 
-antlrcpp::Any ExprParser::TypeContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::TypeContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitType(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::TypeContext* ExprParser::type() {
+ProgParser::TypeContext* ProgParser::type() {
   TypeContext *_localctx = _tracker.createInstance<TypeContext>(_ctx, getState());
-  enterRule(_localctx, 24, ExprParser::RuleType);
+  enterRule(_localctx, 24, ProgParser::RuleType);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -1623,9 +1623,9 @@ ExprParser::TypeContext* ExprParser::type() {
     setState(197);
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << ExprParser::CHAR)
-      | (1ULL << ExprParser::INT32_T)
-      | (1ULL << ExprParser::INT64_T))) != 0))) {
+      ((1ULL << _la) & ((1ULL << ProgParser::CHAR)
+      | (1ULL << ProgParser::INT32_T)
+      | (1ULL << ProgParser::INT64_T))) != 0))) {
     _errHandler->recoverInline(this);
     }
     else {
@@ -1645,41 +1645,41 @@ ExprParser::TypeContext* ExprParser::type() {
 
 //----------------- SigTypeContext ------------------------------------------------------------------
 
-ExprParser::SigTypeContext::SigTypeContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::SigTypeContext::SigTypeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* ExprParser::SigTypeContext::CHAR() {
-  return getToken(ExprParser::CHAR, 0);
+tree::TerminalNode* ProgParser::SigTypeContext::CHAR() {
+  return getToken(ProgParser::CHAR, 0);
 }
 
-tree::TerminalNode* ExprParser::SigTypeContext::INT32_T() {
-  return getToken(ExprParser::INT32_T, 0);
+tree::TerminalNode* ProgParser::SigTypeContext::INT32_T() {
+  return getToken(ProgParser::INT32_T, 0);
 }
 
-tree::TerminalNode* ExprParser::SigTypeContext::INT64_T() {
-  return getToken(ExprParser::INT64_T, 0);
+tree::TerminalNode* ProgParser::SigTypeContext::INT64_T() {
+  return getToken(ProgParser::INT64_T, 0);
 }
 
-ExprParser::TypeContext* ExprParser::SigTypeContext::type() {
-  return getRuleContext<ExprParser::TypeContext>(0);
+ProgParser::TypeContext* ProgParser::SigTypeContext::type() {
+  return getRuleContext<ProgParser::TypeContext>(0);
 }
 
 
-size_t ExprParser::SigTypeContext::getRuleIndex() const {
-  return ExprParser::RuleSigType;
+size_t ProgParser::SigTypeContext::getRuleIndex() const {
+  return ProgParser::RuleSigType;
 }
 
-antlrcpp::Any ExprParser::SigTypeContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::SigTypeContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitSigType(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::SigTypeContext* ExprParser::sigType() {
+ProgParser::SigTypeContext* ProgParser::sigType() {
   SigTypeContext *_localctx = _tracker.createInstance<SigTypeContext>(_ctx, getState());
-  enterRule(_localctx, 26, ExprParser::RuleSigType);
+  enterRule(_localctx, 26, ProgParser::RuleSigType);
 
   auto onExit = finally([=] {
     exitRule();
@@ -1691,33 +1691,33 @@ ExprParser::SigTypeContext* ExprParser::sigType() {
     case 1: {
       enterOuterAlt(_localctx, 1);
       setState(199);
-      match(ExprParser::CHAR);
+      match(ProgParser::CHAR);
       setState(200);
-      match(ExprParser::T__22);
+      match(ProgParser::T__22);
       setState(201);
-      match(ExprParser::T__23);
+      match(ProgParser::T__23);
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(202);
-      match(ExprParser::INT32_T);
+      match(ProgParser::INT32_T);
       setState(203);
-      match(ExprParser::T__22);
+      match(ProgParser::T__22);
       setState(204);
-      match(ExprParser::T__23);
+      match(ProgParser::T__23);
       break;
     }
 
     case 3: {
       enterOuterAlt(_localctx, 3);
       setState(205);
-      match(ExprParser::INT64_T);
+      match(ProgParser::INT64_T);
       setState(206);
-      match(ExprParser::T__22);
+      match(ProgParser::T__22);
       setState(207);
-      match(ExprParser::T__23);
+      match(ProgParser::T__23);
       break;
     }
 
@@ -1742,33 +1742,33 @@ ExprParser::SigTypeContext* ExprParser::sigType() {
 
 //----------------- RetTypeContext ------------------------------------------------------------------
 
-ExprParser::RetTypeContext::RetTypeContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::RetTypeContext::RetTypeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-ExprParser::TypeContext* ExprParser::RetTypeContext::type() {
-  return getRuleContext<ExprParser::TypeContext>(0);
+ProgParser::TypeContext* ProgParser::RetTypeContext::type() {
+  return getRuleContext<ProgParser::TypeContext>(0);
 }
 
-tree::TerminalNode* ExprParser::RetTypeContext::VOID() {
-  return getToken(ExprParser::VOID, 0);
+tree::TerminalNode* ProgParser::RetTypeContext::VOID() {
+  return getToken(ProgParser::VOID, 0);
 }
 
 
-size_t ExprParser::RetTypeContext::getRuleIndex() const {
-  return ExprParser::RuleRetType;
+size_t ProgParser::RetTypeContext::getRuleIndex() const {
+  return ProgParser::RuleRetType;
 }
 
-antlrcpp::Any ExprParser::RetTypeContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::RetTypeContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitRetType(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::RetTypeContext* ExprParser::retType() {
+ProgParser::RetTypeContext* ProgParser::retType() {
   RetTypeContext *_localctx = _tracker.createInstance<RetTypeContext>(_ctx, getState());
-  enterRule(_localctx, 28, ExprParser::RuleRetType);
+  enterRule(_localctx, 28, ProgParser::RuleRetType);
 
   auto onExit = finally([=] {
     exitRule();
@@ -1777,19 +1777,19 @@ ExprParser::RetTypeContext* ExprParser::retType() {
     setState(213);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
-      case ExprParser::CHAR:
-      case ExprParser::INT32_T:
-      case ExprParser::INT64_T: {
+      case ProgParser::CHAR:
+      case ProgParser::INT32_T:
+      case ProgParser::INT64_T: {
         enterOuterAlt(_localctx, 1);
         setState(211);
         type();
         break;
       }
 
-      case ExprParser::VOID: {
+      case ProgParser::VOID: {
         enterOuterAlt(_localctx, 2);
         setState(212);
-        match(ExprParser::VOID);
+        match(ProgParser::VOID);
         break;
       }
 
@@ -1809,33 +1809,33 @@ ExprParser::RetTypeContext* ExprParser::retType() {
 
 //----------------- SigParamsContext ------------------------------------------------------------------
 
-ExprParser::SigParamsContext::SigParamsContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::SigParamsContext::SigParamsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<ExprParser::SigDeclareContext *> ExprParser::SigParamsContext::sigDeclare() {
-  return getRuleContexts<ExprParser::SigDeclareContext>();
+std::vector<ProgParser::SigDeclareContext *> ProgParser::SigParamsContext::sigDeclare() {
+  return getRuleContexts<ProgParser::SigDeclareContext>();
 }
 
-ExprParser::SigDeclareContext* ExprParser::SigParamsContext::sigDeclare(size_t i) {
-  return getRuleContext<ExprParser::SigDeclareContext>(i);
+ProgParser::SigDeclareContext* ProgParser::SigParamsContext::sigDeclare(size_t i) {
+  return getRuleContext<ProgParser::SigDeclareContext>(i);
 }
 
 
-size_t ExprParser::SigParamsContext::getRuleIndex() const {
-  return ExprParser::RuleSigParams;
+size_t ProgParser::SigParamsContext::getRuleIndex() const {
+  return ProgParser::RuleSigParams;
 }
 
-antlrcpp::Any ExprParser::SigParamsContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::SigParamsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitSigParams(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::SigParamsContext* ExprParser::sigParams() {
+ProgParser::SigParamsContext* ProgParser::sigParams() {
   SigParamsContext *_localctx = _tracker.createInstance<SigParamsContext>(_ctx, getState());
-  enterRule(_localctx, 30, ExprParser::RuleSigParams);
+  enterRule(_localctx, 30, ProgParser::RuleSigParams);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -1848,9 +1848,9 @@ ExprParser::SigParamsContext* ExprParser::sigParams() {
     setState(220);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == ExprParser::T__24) {
+    while (_la == ProgParser::T__24) {
       setState(216);
-      match(ExprParser::T__24);
+      match(ProgParser::T__24);
       setState(217);
       sigDeclare();
       setState(222);
@@ -1870,33 +1870,33 @@ ExprParser::SigParamsContext* ExprParser::sigParams() {
 
 //----------------- SigDeclareContext ------------------------------------------------------------------
 
-ExprParser::SigDeclareContext::SigDeclareContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::SigDeclareContext::SigDeclareContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-ExprParser::SigTypeContext* ExprParser::SigDeclareContext::sigType() {
-  return getRuleContext<ExprParser::SigTypeContext>(0);
+ProgParser::SigTypeContext* ProgParser::SigDeclareContext::sigType() {
+  return getRuleContext<ProgParser::SigTypeContext>(0);
 }
 
-ExprParser::NameContext* ExprParser::SigDeclareContext::name() {
-  return getRuleContext<ExprParser::NameContext>(0);
+ProgParser::NameContext* ProgParser::SigDeclareContext::name() {
+  return getRuleContext<ProgParser::NameContext>(0);
 }
 
 
-size_t ExprParser::SigDeclareContext::getRuleIndex() const {
-  return ExprParser::RuleSigDeclare;
+size_t ProgParser::SigDeclareContext::getRuleIndex() const {
+  return ProgParser::RuleSigDeclare;
 }
 
-antlrcpp::Any ExprParser::SigDeclareContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::SigDeclareContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitSigDeclare(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::SigDeclareContext* ExprParser::sigDeclare() {
+ProgParser::SigDeclareContext* ProgParser::sigDeclare() {
   SigDeclareContext *_localctx = _tracker.createInstance<SigDeclareContext>(_ctx, getState());
-  enterRule(_localctx, 32, ExprParser::RuleSigDeclare);
+  enterRule(_localctx, 32, ProgParser::RuleSigDeclare);
 
   auto onExit = finally([=] {
     exitRule();
@@ -1920,33 +1920,33 @@ ExprParser::SigDeclareContext* ExprParser::sigDeclare() {
 
 //----------------- ParamsContext ------------------------------------------------------------------
 
-ExprParser::ParamsContext::ParamsContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::ParamsContext::ParamsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<ExprParser::ExprContext *> ExprParser::ParamsContext::expr() {
-  return getRuleContexts<ExprParser::ExprContext>();
+std::vector<ProgParser::ExprContext *> ProgParser::ParamsContext::expr() {
+  return getRuleContexts<ProgParser::ExprContext>();
 }
 
-ExprParser::ExprContext* ExprParser::ParamsContext::expr(size_t i) {
-  return getRuleContext<ExprParser::ExprContext>(i);
+ProgParser::ExprContext* ProgParser::ParamsContext::expr(size_t i) {
+  return getRuleContext<ProgParser::ExprContext>(i);
 }
 
 
-size_t ExprParser::ParamsContext::getRuleIndex() const {
-  return ExprParser::RuleParams;
+size_t ProgParser::ParamsContext::getRuleIndex() const {
+  return ProgParser::RuleParams;
 }
 
-antlrcpp::Any ExprParser::ParamsContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::ParamsContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitParams(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::ParamsContext* ExprParser::params() {
+ProgParser::ParamsContext* ProgParser::params() {
   ParamsContext *_localctx = _tracker.createInstance<ParamsContext>(_ctx, getState());
-  enterRule(_localctx, 34, ExprParser::RuleParams);
+  enterRule(_localctx, 34, ProgParser::RuleParams);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -1959,9 +1959,9 @@ ExprParser::ParamsContext* ExprParser::params() {
     setState(231);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == ExprParser::T__24) {
+    while (_la == ProgParser::T__24) {
       setState(227);
-      match(ExprParser::T__24);
+      match(ProgParser::T__24);
       setState(228);
       expr(0);
       setState(233);
@@ -1981,37 +1981,37 @@ ExprParser::ParamsContext* ExprParser::params() {
 
 //----------------- ValContext ------------------------------------------------------------------
 
-ExprParser::ValContext::ValContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::ValContext::ValContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-ExprParser::NameContext* ExprParser::ValContext::name() {
-  return getRuleContext<ExprParser::NameContext>(0);
+ProgParser::NameContext* ProgParser::ValContext::name() {
+  return getRuleContext<ProgParser::NameContext>(0);
 }
 
-tree::TerminalNode* ExprParser::ValContext::NUMBER() {
-  return getToken(ExprParser::NUMBER, 0);
+tree::TerminalNode* ProgParser::ValContext::NUMBER() {
+  return getToken(ProgParser::NUMBER, 0);
 }
 
-tree::TerminalNode* ExprParser::ValContext::CHARACTER() {
-  return getToken(ExprParser::CHARACTER, 0);
+tree::TerminalNode* ProgParser::ValContext::CHARACTER() {
+  return getToken(ProgParser::CHARACTER, 0);
 }
 
 
-size_t ExprParser::ValContext::getRuleIndex() const {
-  return ExprParser::RuleVal;
+size_t ProgParser::ValContext::getRuleIndex() const {
+  return ProgParser::RuleVal;
 }
 
-antlrcpp::Any ExprParser::ValContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::ValContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitVal(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::ValContext* ExprParser::val() {
+ProgParser::ValContext* ProgParser::val() {
   ValContext *_localctx = _tracker.createInstance<ValContext>(_ctx, getState());
-  enterRule(_localctx, 36, ExprParser::RuleVal);
+  enterRule(_localctx, 36, ProgParser::RuleVal);
 
   auto onExit = finally([=] {
     exitRule();
@@ -2020,24 +2020,24 @@ ExprParser::ValContext* ExprParser::val() {
     setState(237);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
-      case ExprParser::NAME: {
+      case ProgParser::NAME: {
         enterOuterAlt(_localctx, 1);
         setState(234);
         name();
         break;
       }
 
-      case ExprParser::NUMBER: {
+      case ProgParser::NUMBER: {
         enterOuterAlt(_localctx, 2);
         setState(235);
-        match(ExprParser::NUMBER);
+        match(ProgParser::NUMBER);
         break;
       }
 
-      case ExprParser::CHARACTER: {
+      case ProgParser::CHARACTER: {
         enterOuterAlt(_localctx, 3);
         setState(236);
-        match(ExprParser::CHARACTER);
+        match(ProgParser::CHARACTER);
         break;
       }
 
@@ -2057,33 +2057,33 @@ ExprParser::ValContext* ExprParser::val() {
 
 //----------------- NameContext ------------------------------------------------------------------
 
-ExprParser::NameContext::NameContext(ParserRuleContext *parent, size_t invokingState)
+ProgParser::NameContext::NameContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* ExprParser::NameContext::NAME() {
-  return getToken(ExprParser::NAME, 0);
+tree::TerminalNode* ProgParser::NameContext::NAME() {
+  return getToken(ProgParser::NAME, 0);
 }
 
-ExprParser::ExprContext* ExprParser::NameContext::expr() {
-  return getRuleContext<ExprParser::ExprContext>(0);
+ProgParser::ExprContext* ProgParser::NameContext::expr() {
+  return getRuleContext<ProgParser::ExprContext>(0);
 }
 
 
-size_t ExprParser::NameContext::getRuleIndex() const {
-  return ExprParser::RuleName;
+size_t ProgParser::NameContext::getRuleIndex() const {
+  return ProgParser::RuleName;
 }
 
-antlrcpp::Any ExprParser::NameContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<ExprVisitor*>(visitor))
+antlrcpp::Any ProgParser::NameContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<ProgVisitor*>(visitor))
     return parserVisitor->visitName(this);
   else
     return visitor->visitChildren(this);
 }
 
-ExprParser::NameContext* ExprParser::name() {
+ProgParser::NameContext* ProgParser::name() {
   NameContext *_localctx = _tracker.createInstance<NameContext>(_ctx, getState());
-  enterRule(_localctx, 38, ExprParser::RuleName);
+  enterRule(_localctx, 38, ProgParser::RuleName);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -2092,33 +2092,33 @@ ExprParser::NameContext* ExprParser::name() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(239);
-    match(ExprParser::NAME);
+    match(ProgParser::NAME);
     setState(245);
     _errHandler->sync(this);
 
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 20, _ctx)) {
     case 1: {
       setState(240);
-      match(ExprParser::T__22);
+      match(ProgParser::T__22);
       setState(242);
       _errHandler->sync(this);
 
       _la = _input->LA(1);
       if ((((_la & ~ 0x3fULL) == 0) &&
-        ((1ULL << _la) & ((1ULL << ExprParser::T__3)
-        | (1ULL << ExprParser::T__4)
-        | (1ULL << ExprParser::T__5)
-        | (1ULL << ExprParser::T__16)
-        | (1ULL << ExprParser::T__18)
-        | (1ULL << ExprParser::FUNCTION_NAME)
-        | (1ULL << ExprParser::NAME)
-        | (1ULL << ExprParser::CHARACTER)
-        | (1ULL << ExprParser::NUMBER))) != 0)) {
+        ((1ULL << _la) & ((1ULL << ProgParser::T__3)
+        | (1ULL << ProgParser::T__4)
+        | (1ULL << ProgParser::T__5)
+        | (1ULL << ProgParser::T__16)
+        | (1ULL << ProgParser::T__18)
+        | (1ULL << ProgParser::FUNCTION_NAME)
+        | (1ULL << ProgParser::NAME)
+        | (1ULL << ProgParser::CHARACTER)
+        | (1ULL << ProgParser::NUMBER))) != 0)) {
         setState(241);
         expr(0);
       }
       setState(244);
-      match(ExprParser::T__23);
+      match(ProgParser::T__23);
       break;
     }
 
@@ -2134,7 +2134,7 @@ ExprParser::NameContext* ExprParser::name() {
   return _localctx;
 }
 
-bool ExprParser::sempred(RuleContext *context, size_t ruleIndex, size_t predicateIndex) {
+bool ProgParser::sempred(RuleContext *context, size_t ruleIndex, size_t predicateIndex) {
   switch (ruleIndex) {
     case 0: return exprSempred(dynamic_cast<ExprContext *>(context), predicateIndex);
 
@@ -2144,7 +2144,7 @@ bool ExprParser::sempred(RuleContext *context, size_t ruleIndex, size_t predicat
   return true;
 }
 
-bool ExprParser::exprSempred(ExprContext *_localctx, size_t predicateIndex) {
+bool ProgParser::exprSempred(ExprContext *_localctx, size_t predicateIndex) {
   switch (predicateIndex) {
     case 0: return precpred(_ctx, 23);
     case 1: return precpred(_ctx, 22);
@@ -2167,39 +2167,39 @@ bool ExprParser::exprSempred(ExprContext *_localctx, size_t predicateIndex) {
 }
 
 // Static vars and initialization.
-std::vector<dfa::DFA> ExprParser::_decisionToDFA;
-atn::PredictionContextCache ExprParser::_sharedContextCache;
+std::vector<dfa::DFA> ProgParser::_decisionToDFA;
+atn::PredictionContextCache ProgParser::_sharedContextCache;
 
 // We own the ATN which in turn owns the ATN states.
-atn::ATN ExprParser::_atn;
-std::vector<uint16_t> ExprParser::_serializedATN;
+atn::ATN ProgParser::_atn;
+std::vector<uint16_t> ProgParser::_serializedATN;
 
-std::vector<std::string> ExprParser::_ruleNames = {
+std::vector<std::string> ProgParser::_ruleNames = {
   "expr", "program", "globalVar", "function", "blockFunction", "instruction", 
   "returnStatement", "ifStatement", "elseStatement", "whileStatement", "block", 
   "declare", "type", "sigType", "retType", "sigParams", "sigDeclare", "params", 
   "val", "name"
 };
 
-std::vector<std::string> ExprParser::_literalNames = {
+std::vector<std::string> ProgParser::_literalNames = {
   "", "'*'", "'/'", "'+'", "'++'", "'-'", "'--'", "'%'", "'='", "'=='", 
   "'!='", "'>'", "'>='", "'<'", "'<='", "'||'", "'&&'", "'('", "')'", "'!'", 
   "'{'", "';'", "'}'", "'['", "']'", "','", "", "", "", "", "", "'char'", 
   "'int32_t'", "'int64_t'", "'if'", "'else'", "'return'", "'while'", "'void'"
 };
 
-std::vector<std::string> ExprParser::_symbolicNames = {
+std::vector<std::string> ProgParser::_symbolicNames = {
   "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
   "", "", "", "", "", "", "", "", "FUNCTION_NAME", "NAME", "STRING", "CHARACTER", 
   "NUMBER", "CHAR", "INT32_T", "INT64_T", "IF", "ELSE", "RETURN", "WHILE", 
   "VOID"
 };
 
-dfa::Vocabulary ExprParser::_vocabulary(_literalNames, _symbolicNames);
+dfa::Vocabulary ProgParser::_vocabulary(_literalNames, _symbolicNames);
 
-std::vector<std::string> ExprParser::_tokenNames;
+std::vector<std::string> ProgParser::_tokenNames;
 
-ExprParser::Initializer::Initializer() {
+ProgParser::Initializer::Initializer() {
 	for (size_t i = 0; i < _symbolicNames.size(); ++i) {
 		std::string name = _vocabulary.getLiteralName(i);
 		if (name.empty()) {
@@ -2395,4 +2395,4 @@ ExprParser::Initializer::Initializer() {
   }
 }
 
-ExprParser::Initializer ExprParser::_init;
+ProgParser::Initializer ProgParser::_init;

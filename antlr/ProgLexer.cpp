@@ -1,50 +1,50 @@
 
-// Generated from Expr.g4 by ANTLR 4.7.1
+// Generated from Prog.g4 by ANTLR 4.7.1
 
 
-#include "ExprLexer.h"
+#include "ProgLexer.h"
 
 
 using namespace antlr4;
 
 
-ExprLexer::ExprLexer(CharStream *input) : Lexer(input) {
+ProgLexer::ProgLexer(CharStream *input) : Lexer(input) {
   _interpreter = new atn::LexerATNSimulator(this, _atn, _decisionToDFA, _sharedContextCache);
 }
 
-ExprLexer::~ExprLexer() {
+ProgLexer::~ProgLexer() {
   delete _interpreter;
 }
 
-std::string ExprLexer::getGrammarFileName() const {
-  return "Expr.g4";
+std::string ProgLexer::getGrammarFileName() const {
+  return "Prog.g4";
 }
 
-const std::vector<std::string>& ExprLexer::getRuleNames() const {
+const std::vector<std::string>& ProgLexer::getRuleNames() const {
   return _ruleNames;
 }
 
-const std::vector<std::string>& ExprLexer::getChannelNames() const {
+const std::vector<std::string>& ProgLexer::getChannelNames() const {
   return _channelNames;
 }
 
-const std::vector<std::string>& ExprLexer::getModeNames() const {
+const std::vector<std::string>& ProgLexer::getModeNames() const {
   return _modeNames;
 }
 
-const std::vector<std::string>& ExprLexer::getTokenNames() const {
+const std::vector<std::string>& ProgLexer::getTokenNames() const {
   return _tokenNames;
 }
 
-dfa::Vocabulary& ExprLexer::getVocabulary() const {
+dfa::Vocabulary& ProgLexer::getVocabulary() const {
   return _vocabulary;
 }
 
-const std::vector<uint16_t> ExprLexer::getSerializedATN() const {
+const std::vector<uint16_t> ProgLexer::getSerializedATN() const {
   return _serializedATN;
 }
 
-const atn::ATN& ExprLexer::getATN() const {
+const atn::ATN& ProgLexer::getATN() const {
   return _atn;
 }
 
@@ -52,14 +52,14 @@ const atn::ATN& ExprLexer::getATN() const {
 
 
 // Static vars and initialization.
-std::vector<dfa::DFA> ExprLexer::_decisionToDFA;
-atn::PredictionContextCache ExprLexer::_sharedContextCache;
+std::vector<dfa::DFA> ProgLexer::_decisionToDFA;
+atn::PredictionContextCache ProgLexer::_sharedContextCache;
 
 // We own the ATN which in turn owns the ATN states.
-atn::ATN ExprLexer::_atn;
-std::vector<uint16_t> ExprLexer::_serializedATN;
+atn::ATN ProgLexer::_atn;
+std::vector<uint16_t> ProgLexer::_serializedATN;
 
-std::vector<std::string> ExprLexer::_ruleNames = {
+std::vector<std::string> ProgLexer::_ruleNames = {
   u8"T__0", u8"T__1", u8"T__2", u8"T__3", u8"T__4", u8"T__5", u8"T__6", 
   u8"T__7", u8"T__8", u8"T__9", u8"T__10", u8"T__11", u8"T__12", u8"T__13", 
   u8"T__14", u8"T__15", u8"T__16", u8"T__17", u8"T__18", u8"T__19", u8"T__20", 
@@ -68,15 +68,15 @@ std::vector<std::string> ExprLexer::_ruleNames = {
   u8"IF", u8"ELSE", u8"RETURN", u8"WHILE", u8"VOID"
 };
 
-std::vector<std::string> ExprLexer::_channelNames = {
+std::vector<std::string> ProgLexer::_channelNames = {
   "DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 };
 
-std::vector<std::string> ExprLexer::_modeNames = {
+std::vector<std::string> ProgLexer::_modeNames = {
   u8"DEFAULT_MODE"
 };
 
-std::vector<std::string> ExprLexer::_literalNames = {
+std::vector<std::string> ProgLexer::_literalNames = {
   "", u8"'*'", u8"'/'", u8"'+'", u8"'++'", u8"'-'", u8"'--'", u8"'%'", u8"'='", 
   u8"'=='", u8"'!='", u8"'>'", u8"'>='", u8"'<'", u8"'<='", u8"'||'", u8"'&&'", 
   u8"'('", u8"')'", u8"'!'", u8"'{'", u8"';'", u8"'}'", u8"'['", u8"']'", 
@@ -84,18 +84,18 @@ std::vector<std::string> ExprLexer::_literalNames = {
   u8"'if'", u8"'else'", u8"'return'", u8"'while'", u8"'void'"
 };
 
-std::vector<std::string> ExprLexer::_symbolicNames = {
+std::vector<std::string> ProgLexer::_symbolicNames = {
   "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
   "", "", "", "", "", "", "", "", u8"FUNCTION_NAME", u8"NAME", u8"STRING", 
   u8"CHARACTER", u8"NUMBER", u8"CHAR", u8"INT32_T", u8"INT64_T", u8"IF", 
   u8"ELSE", u8"RETURN", u8"WHILE", u8"VOID"
 };
 
-dfa::Vocabulary ExprLexer::_vocabulary(_literalNames, _symbolicNames);
+dfa::Vocabulary ProgLexer::_vocabulary(_literalNames, _symbolicNames);
 
-std::vector<std::string> ExprLexer::_tokenNames;
+std::vector<std::string> ProgLexer::_tokenNames;
 
-ExprLexer::Initializer::Initializer() {
+ProgLexer::Initializer::Initializer() {
   // This code could be in a static initializer lambda, but VS doesn't allow access to private class members from there.
 	for (size_t i = 0; i < _symbolicNames.size(); ++i) {
 		std::string name = _vocabulary.getLiteralName(i);
@@ -263,4 +263,4 @@ ExprLexer::Initializer::Initializer() {
   }
 }
 
-ExprLexer::Initializer ExprLexer::_init;
+ProgLexer::Initializer ProgLexer::_init;
