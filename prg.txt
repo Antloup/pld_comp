@@ -1,0 +1,7 @@
+int32_t a=5;
+int32_t b=4;
+
+int32_t main(){
+    int64_t c;
+    c = 4 + a;
+ }

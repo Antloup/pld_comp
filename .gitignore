@@ -4,3 +4,4 @@ antlr4-cpp-runtime
 build
 CMakeLists.txt
 .idea
+cmake-build-debug

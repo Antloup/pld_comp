@@ -9,9 +9,24 @@ using namespace std;
 using namespace antlr4;
 
 int main(void){
-	string userInput = "int32_t a=5;\nint32_t b=4; int32_t main(){int64_t c; c = 4 + a;}";
-//	cin>>userInput;
-	ANTLRInputStream input(userInput);
+    ifstream prgFile;
+    prgFile.open("../prg.cpto");
+    string prg;
+    string line;
+    if(!prgFile.is_open()){
+        cerr << "Can't open file" << endl;
+        return 1;
+    }
+
+    cout << "Program :" << endl;
+    while (!prgFile.eof())
+    {
+        getline(prgFile, line);
+        prg += line;
+        cout << line << endl;
+    }
+	//string userInput = "int32_t a=5;\nint32_t b=4; int32_t main(){int64_t c; c = 4 + a;}";
+	ANTLRInputStream input(prg);
 	ProgLexer lexer(&input);
 	CommonTokenStream tokens(&lexer);
     tokens.fill();
