@@ -19,6 +19,8 @@ public:
 
 	int64_t getValue() const;
 
+	virtual void print();
+
 protected:
 	/* ------------ Attributs ------------ */
 	Type type;

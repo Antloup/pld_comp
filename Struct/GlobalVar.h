@@ -11,7 +11,6 @@ public:
 	~GlobalVar();
 
 	/* ------------- Methods ------------- */
-	void print();
 
 private:
 
