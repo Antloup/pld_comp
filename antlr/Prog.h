@@ -18,8 +18,9 @@ public:
     }
 
     virtual antlrcpp::Any visitGlobalVar(ProgParser::GlobalVarContext *ctx) override {
-        std::cout<<"Visited GlobalVar"<<std::endl;
-        return visitChildren(ctx);
+        GlobalVar* gv = new GlobalVar(visit(ctx->type()),visit(ctx->name()),visit(ctx->val()));
+        gv->print();
+        return gv;
     }
 
     virtual antlrcpp::Any visitFunction(ProgParser::FunctionContext *ctx) override {
@@ -69,7 +70,11 @@ public:
 
     virtual antlrcpp::Any visitType(ProgParser::TypeContext *ctx) override {
         std::cout<<"Visited Type"<<std::endl;
-        return visitChildren(ctx);
+        std::string type = ctx->getText();
+        if(type == "int32_t")      return Type::INT32_T;
+        else if(type == "int64_t") return Type::INT64_T;
+        else if(type == "char")    return Type::CHAR;
+        else                       return Type::INT64_T; // By default
     }
 
     virtual antlrcpp::Any visitSigType(ProgParser::SigTypeContext *ctx) override {
@@ -99,12 +104,22 @@ public:
 
     virtual antlrcpp::Any visitVal(ProgParser::ValContext *ctx) override {
         std::cout<<"Visited Val"<<std::endl;
-        return visitChildren(ctx);
+        std::string value = ctx->getText();
+        if(value.find_first_not_of("0123456789") == std::string::npos){
+            // Val is an int
+            int64_t intValue = std::stoi(ctx->getText());
+            return intValue;
+        }
+        else{
+            // Val is a variable name
+            return value;
+        }
+
     }
 
     virtual antlrcpp::Any visitName(ProgParser::NameContext *ctx) override {
         std::cout<<"Visited Name"<<std::endl;
-        return visitChildren(ctx);
+        return ctx->getText();
     }
 
     virtual antlrcpp::Any visitPar(ProgParser::ParContext *ctx) override {

@@ -5,7 +5,7 @@ class Param :
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	Param();
+	Param(Type type,std::string name,int64_t value);
 	~Param();
 
 	/* ------------- Methods ------------- */

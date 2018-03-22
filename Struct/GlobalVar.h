@@ -6,9 +6,12 @@ class GlobalVar :
 public:
 	/* ---- Constructors / Destructor ---- */
 	GlobalVar();
+	GlobalVar(Type type, std::string name, int64_t value);
+
 	~GlobalVar();
 
 	/* ------------- Methods ------------- */
+	void print();
 
 private:
 

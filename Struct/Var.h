@@ -6,16 +6,24 @@ class Var
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	Var();
+	Var(Type type, std::string name, int64_t value);
 	virtual ~Var();
 
 	/* ------------- Methods ------------- */
 
-private:
+	Type getType() const;
 
+	const std::string &getName() const;
+
+	int getSize() const;
+
+	int64_t getValue() const;
+
+protected:
 	/* ------------ Attributs ------------ */
 	Type type;
 	std::string name;
-	int size;
+	int size = 0;
+	int64_t value = 0;
 };
 

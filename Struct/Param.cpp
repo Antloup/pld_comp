@@ -2,7 +2,7 @@
 
 
 
-Param::Param()
+Param::Param(Type type,std::string name,int64_t value) : Var(type,name,value)
 {
 }
 

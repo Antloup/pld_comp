@@ -20,6 +20,6 @@ int32_t main(){
 
  }
 
- int32_t plus(int32_t a,int_32_t b){
+ int32_t plus(int32_t a,int32_t b){
     return a+b;
 }
