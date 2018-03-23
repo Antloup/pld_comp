@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-Param::Param(SigType::SigType type,std::string name)
+Param::Param(SigType::SigType type,std::string name) : type(type), name(name)
 {
 }
 

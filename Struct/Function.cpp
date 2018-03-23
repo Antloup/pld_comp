@@ -20,11 +20,10 @@ void Function::print() {
     std::cout << "Function :    Name : " << name << std::endl;
     std::cout << "              RetType : " << retType << std::endl;
     std::cout << "              Params : "<< std::endl;
-
-    for (auto i = params.begin(); i != params.end(); ++i){
-
+    for(auto i : params){
+        // Print each params
+        (*i).print();
     }
-
     std::cout << "              Block : TODO "<< std::endl;
 }
 

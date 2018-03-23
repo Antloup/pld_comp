@@ -40,16 +40,8 @@ public:
         else{
             // No params
         }
-
-        /*
-        //TODO visit each sigparams and add them to the vector
-        std::vector<antlr4::tree::ParseTree*> sigParamsChild = ctx->children;
-        for (auto i : sigParamsChild){
-
-        }
-        */
-        visitChildren(ctx);
         f->print();
+        visitChildren(ctx);
         return f;
     }
 
@@ -126,15 +118,11 @@ public:
 
     virtual antlrcpp::Any visitSigParams(ProgParser::SigParamsContext *ctx) override {
         std::cout<<"Visited SigParams"<<std::endl;
-        Param* param = new Param(SigType::INT64_T,"TODO"); //TODO Visit sigDeclare
-        //antlr4::tree::ParseTree* parent = ctx->parent;
-        //std::cout << "PARENT : " <<parent->getText() << std::endl;
-        return param;
+        return visitChildren(ctx);
     }
 
     virtual antlrcpp::Any visitSigDeclare(ProgParser::SigDeclareContext *ctx) override {
         std::cout<<"Visited SigDeclare"<<std::endl;
-        //Visit sigType
         return visitChildren(ctx);
     }
 

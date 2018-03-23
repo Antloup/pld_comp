@@ -1,8 +1,8 @@
 #pragma once
 
 #include <vector>
-class Param;
 #include "Block.h"
+#include "Param.h"
 namespace RetType{
 	enum RetType { CHAR , INT32_T , INT64_T, VOID };
 }
