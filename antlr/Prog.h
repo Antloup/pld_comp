@@ -3,7 +3,9 @@
 
 #include "antlr4-runtime.h"
 #include "ProgBaseVisitor.h"
+#include "../Struct/Param.h"
 #include "../Struct/Program.h"
+#include "../Struct/Var.h"
 
 /**
  * This class provides an empty implementation of ProgVisitor, which can be
@@ -25,7 +27,30 @@ public:
 
     virtual antlrcpp::Any visitFunction(ProgParser::FunctionContext *ctx) override {
         std::cout<<"Visited Function"<<std::endl;
-        return visitChildren(ctx);
+        Function* f = new Function(ctx->NAME()->getText(),visit(ctx->retType()));
+
+        ProgParser::SigParamsContext* sigParamsChild = ctx->sigParams();
+        if(sigParamsChild){
+            // Function has params
+            for(auto i : sigParamsChild->sigDeclare()){
+                Param* param = new Param(visit(i->sigType()),visit(i->name()));
+                f->add(param);
+            }
+        }
+        else{
+            // No params
+        }
+
+        /*
+        //TODO visit each sigparams and add them to the vector
+        std::vector<antlr4::tree::ParseTree*> sigParamsChild = ctx->children;
+        for (auto i : sigParamsChild){
+
+        }
+        */
+        visitChildren(ctx);
+        f->print();
+        return f;
     }
 
     virtual antlrcpp::Any visitBlockFunction(ProgParser::BlockFunctionContext *ctx) override {
@@ -79,21 +104,37 @@ public:
 
     virtual antlrcpp::Any visitSigType(ProgParser::SigTypeContext *ctx) override {
         std::cout<<"Visited SigType"<<std::endl;
-        return visitChildren(ctx);
+        std::string type = ctx->getText();
+        if(type == "int32_t")           return SigType::INT32_T;
+        else if(type == "int32_t[]")    return SigType::INT32_T_ARRAY;
+        else if(type == "int64_t")      return SigType::INT64_T;
+        else if(type == "int64_t[]")    return SigType::INT64_T_ARRAY;
+        else if(type == "char")         return SigType::CHAR;
+        else if(type == "char[]")       return SigType::CHAR_ARRAY;
+        else                            return SigType::INT64_T; // By default
     }
 
     virtual antlrcpp::Any visitRetType(ProgParser::RetTypeContext *ctx) override {
         std::cout<<"Visited RetType"<<std::endl;
-        return visitChildren(ctx);
+        std::string type = ctx->getText();
+        if(type == "int32_t")      return RetType::INT32_T;
+        else if(type == "int64_t") return RetType::INT64_T;
+        else if(type == "char")    return RetType::CHAR;
+        else if(type == "void")    return RetType::VOID;
+        else                       return RetType::VOID; // By default
     }
 
     virtual antlrcpp::Any visitSigParams(ProgParser::SigParamsContext *ctx) override {
         std::cout<<"Visited SigParams"<<std::endl;
-        return visitChildren(ctx);
+        Param* param = new Param(SigType::INT64_T,"TODO"); //TODO Visit sigDeclare
+        //antlr4::tree::ParseTree* parent = ctx->parent;
+        //std::cout << "PARENT : " <<parent->getText() << std::endl;
+        return param;
     }
 
     virtual antlrcpp::Any visitSigDeclare(ProgParser::SigDeclareContext *ctx) override {
         std::cout<<"Visited SigDeclare"<<std::endl;
+        //Visit sigType
         return visitChildren(ctx);
     }
 

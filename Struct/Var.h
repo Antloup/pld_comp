@@ -1,17 +1,20 @@
 #pragma once
 #include <string>
-enum Type { CHAR , INT32_T , INT64_T };
+namespace Type{
+	enum Type { CHAR , INT32_T , INT64_T };
+}
+
 
 class Var
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	Var(Type type, std::string name, int64_t value);
+	Var(Type::Type type, std::string name, int64_t value);
 	virtual ~Var();
 
 	/* ------------- Methods ------------- */
 
-	Type getType() const;
+	Type::Type getType() const;
 
 	const std::string &getName() const;
 
@@ -23,7 +26,7 @@ public:
 
 protected:
 	/* ------------ Attributs ------------ */
-	Type type;
+	Type::Type type;
 	std::string name;
 	int size = 0;
 	int64_t value = 0;

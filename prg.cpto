@@ -4,7 +4,7 @@
 int32_t a=5;
 int32_t b=4;
 
-int32_t main(){
+void main(){
     int64_t c;
     int64_t d;
     c = 4 + a;

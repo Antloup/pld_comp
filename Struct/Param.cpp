@@ -1,12 +1,17 @@
 #include "Param.h"
+#include <iostream>
 
 
-
-Param::Param(Type type,std::string name,int64_t value) : Var(type,name,value)
+Param::Param(SigType::SigType type,std::string name)
 {
 }
 
 
 Param::~Param()
 {
+}
+
+void Param::print() {
+    std::cout << "Name : " << name << std::endl;
+    std::cout << "Type : " << type << std::endl;
 }

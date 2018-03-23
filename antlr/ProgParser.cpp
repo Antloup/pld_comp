@@ -2190,7 +2190,7 @@ std::vector<std::string> ProgParser::_literalNames = {
 
 std::vector<std::string> ProgParser::_symbolicNames = {
   "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
-  "", "", "", "", "", "", "", "", "WS", "INCLUDE", "CHAR", "INT32_T", "INT64_T", 
+  "", "", "", "", "", "", "", "", "INCLUDE", "WS", "CHAR", "INT32_T", "INT64_T", 
   "IF", "ELSE", "RETURN", "WHILE", "VOID", "NAME", "CHARACTER", "NUMBER"
 };
 

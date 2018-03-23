@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-Var::Var(Type type, std::string name, int64_t value) : type(type),name(name),value(value)
+Var::Var(Type::Type type, std::string name, int64_t value) : type(type),name(name),value(value)
 {
 }
 
@@ -11,7 +11,7 @@ Var::~Var()
 {
 }
 
-Type Var::getType() const {
+Type::Type Var::getType() const {
     return type;
 }
 

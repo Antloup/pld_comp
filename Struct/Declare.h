@@ -5,7 +5,7 @@ class Declare :
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	Declare(Type type,std::string name,int64_t value);
+	Declare(Type::Type type,std::string name,int64_t value);
 	~Declare();
 
 	/* ------------- Methods ------------- */
