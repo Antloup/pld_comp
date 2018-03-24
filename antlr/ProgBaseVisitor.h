@@ -27,10 +27,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitBlockFunction(ProgParser::BlockFunctionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual antlrcpp::Any visitInstruction(ProgParser::InstructionContext *ctx) override {
     return visitChildren(ctx);
   }

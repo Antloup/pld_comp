@@ -25,8 +25,6 @@ public:
 
     virtual antlrcpp::Any visitFunction(ProgParser::FunctionContext *context) = 0;
 
-    virtual antlrcpp::Any visitBlockFunction(ProgParser::BlockFunctionContext *context) = 0;
-
     virtual antlrcpp::Any visitInstruction(ProgParser::InstructionContext *context) = 0;
 
     virtual antlrcpp::Any visitReturnStatement(ProgParser::ReturnStatementContext *context) = 0;

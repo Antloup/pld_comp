@@ -5,7 +5,7 @@ class While :
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	While();
+	While(Expr* e,Block* b);
 	~While();
 
 	/* ------------- Methods ------------- */
