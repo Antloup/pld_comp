@@ -18,7 +18,8 @@ public:
 	/* ------------- Methods ------------- */
 
 	void print();
-	void add(Param* param);
+	void addParam(Param* param);
+	void addBlock(Block* b);
 
 private:
 

@@ -24,9 +24,13 @@ void Function::print() {
         // Print each params
         (*i).print();
     }
-    std::cout << "              Block : TODO "<< std::endl;
+    std::cout << "              Block : "<< block << std::endl;
 }
 
-void Function::add(Param* param) {
+void Function::addParam(Param* param) {
     params.push_back(param);
+}
+
+void Function::addBlock(Block *b) {
+    block = b;
 }

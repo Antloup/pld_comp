@@ -15,8 +15,21 @@ class  Prog : public ProgBaseVisitor {
 public:
 
     virtual antlrcpp::Any visitProgram(ProgParser::ProgramContext *ctx) override {
-        std::cout<<"Visited Program"<<std::endl;
-        return visitChildren(ctx);
+        Program* prog = new Program();
+        std::vector<ProgParser::GlobalVarContext*> globalVarChild = ctx->globalVar();
+        for(auto i : globalVarChild){
+            //Adding global var
+            prog->addGlobalVar(visit(i));
+        }
+
+        std::vector<ProgParser::FunctionContext*> functionChild = ctx->function();
+        for(auto i : functionChild){
+            //Adding functions
+            prog->addFunction(visit(i));
+        }
+
+        prog->print();
+        return prog;
     }
 
     virtual antlrcpp::Any visitGlobalVar(ProgParser::GlobalVarContext *ctx) override {
@@ -26,7 +39,6 @@ public:
     }
 
     virtual antlrcpp::Any visitFunction(ProgParser::FunctionContext *ctx) override {
-        std::cout<<"Visited Function"<<std::endl;
         Function* f = new Function(ctx->NAME()->getText(),visit(ctx->retType()));
 
         ProgParser::SigParamsContext* sigParamsChild = ctx->sigParams();
@@ -34,20 +46,21 @@ public:
             // Function has params
             for(auto i : sigParamsChild->sigDeclare()){
                 Param* param = new Param(visit(i->sigType()),visit(i->name()));
-                f->add(param);
+                f->addParam(param);
             }
         }
-        else{
-            // No params
-        }
+
+        ProgParser::BlockFunctionContext* blockChild= ctx->blockFunction();
+        f->addBlock(visit(blockChild));
         f->print();
-        visitChildren(ctx);
+
         return f;
     }
 
     virtual antlrcpp::Any visitBlockFunction(ProgParser::BlockFunctionContext *ctx) override {
         std::cout<<"Visited Block Function"<<std::endl;
-        return visitChildren(ctx);
+        visitChildren(ctx);
+        return new Block();
     }
 
     virtual antlrcpp::Any visitInstruction(ProgParser::InstructionContext *ctx) override {
