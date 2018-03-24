@@ -8,7 +8,7 @@ class Return :
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	Return();
+	Return(Expr* e);
 	~Return();
 
 	/* ------------- Methods ------------- */

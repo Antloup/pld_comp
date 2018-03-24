@@ -2,12 +2,15 @@
 
 
 
-Instr::Instr(Block* pb)
+Instr::Instr(Expr* e) : expr(e)
 {
-    parentBlock = pb;
 }
 
 
 Instr::~Instr()
 {
+}
+
+void Instr::addBlock(Block *b) {
+    parentBlock = b;
 }

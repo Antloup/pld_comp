@@ -17,4 +17,5 @@ void Block::addDeclare(Declare *d) {
 
 void Block::addInstruction(Instr *i) {
     instrs.push_back(i);
+    instrs.back()->addBlock(this);
 }

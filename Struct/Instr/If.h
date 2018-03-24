@@ -1,11 +1,12 @@
 #pragma once
 #include "Instr.h"
+
 class If :
 	public Instr
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	If();
+	If(Expr* e, Block* ifBlock,Block* elseBlock = nullptr);
 	~If();
 
 	/* ------------- Methods ------------- */

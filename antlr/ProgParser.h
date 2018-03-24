@@ -15,17 +15,17 @@ public:
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
     T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, T__11 = 12, T__12 = 13, T__13 = 14, 
     T__14 = 15, T__15 = 16, T__16 = 17, T__17 = 18, T__18 = 19, T__19 = 20, 
-    T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, INCLUDE = 26, 
-    WS = 27, CHAR = 28, INT32_T = 29, INT64_T = 30, IF = 31, ELSE = 32, 
+    T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, WS = 26, 
+    INCLUDE = 27, CHAR = 28, INT32_T = 29, INT64_T = 30, IF = 31, ELSE = 32, 
     RETURN = 33, WHILE = 34, VOID = 35, NAME = 36, CHARACTER = 37, NUMBER = 38
   };
 
   enum {
-    RuleProgram = 0, RuleGlobalVar = 1, RuleFunction = 2, RuleBlockFunction = 3, 
-    RuleInstruction = 4, RuleReturnStatement = 5, RuleIfStatement = 6, RuleElseStatement = 7, 
-    RuleWhileStatement = 8, RuleBlock = 9, RuleDeclare = 10, RuleType = 11, 
-    RuleSigType = 12, RuleRetType = 13, RuleSigParams = 14, RuleSigDeclare = 15, 
-    RuleParams = 16, RuleVal = 17, RuleName = 18, RuleExpr = 19
+    RuleProgram = 0, RuleGlobalVar = 1, RuleFunction = 2, RuleInstruction = 3, 
+    RuleReturnStatement = 4, RuleIfStatement = 5, RuleElseStatement = 6, 
+    RuleWhileStatement = 7, RuleBlock = 8, RuleDeclare = 9, RuleType = 10, 
+    RuleSigType = 11, RuleRetType = 12, RuleSigParams = 13, RuleSigDeclare = 14, 
+    RuleParams = 15, RuleVal = 16, RuleName = 17, RuleExpr = 18
   };
 
   ProgParser(antlr4::TokenStream *input);
@@ -41,7 +41,6 @@ public:
   class ProgramContext;
   class GlobalVarContext;
   class FunctionContext;
-  class BlockFunctionContext;
   class InstructionContext;
   class ReturnStatementContext;
   class IfStatementContext;
@@ -94,7 +93,7 @@ public:
     virtual size_t getRuleIndex() const override;
     RetTypeContext *retType();
     antlr4::tree::TerminalNode *NAME();
-    BlockFunctionContext *blockFunction();
+    BlockContext *block();
     SigParamsContext *sigParams();
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
@@ -102,21 +101,6 @@ public:
   };
 
   FunctionContext* function();
-
-  class  BlockFunctionContext : public antlr4::ParserRuleContext {
-  public:
-    BlockFunctionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    std::vector<DeclareContext *> declare();
-    DeclareContext* declare(size_t i);
-    std::vector<InstructionContext *> instruction();
-    InstructionContext* instruction(size_t i);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-   
-  };
-
-  BlockFunctionContext* blockFunction();
 
   class  InstructionContext : public antlr4::ParserRuleContext {
   public:
@@ -138,7 +122,7 @@ public:
     ReturnStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *RETURN();
-    ValContext *val();
+    ExprContext *expr();
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
@@ -193,6 +177,8 @@ public:
   public:
     BlockContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    std::vector<DeclareContext *> declare();
+    DeclareContext* declare(size_t i);
     std::vector<InstructionContext *> instruction();
     InstructionContext* instruction(size_t i);
 
