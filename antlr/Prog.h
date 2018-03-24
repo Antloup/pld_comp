@@ -6,6 +6,7 @@
 #include "../Struct/Param.h"
 #include "../Struct/Program.h"
 #include "../Struct/Var.h"
+#include "../Struct/Instr/Instr.cpp"
 
 /**
  * This class provides an empty implementation of ProgVisitor, which can be
@@ -58,14 +59,28 @@ public:
     }
 
     virtual antlrcpp::Any visitBlockFunction(ProgParser::BlockFunctionContext *ctx) override {
-        std::cout<<"Visited Block Function"<<std::endl;
-        visitChildren(ctx);
-        return new Block();
+        Block* block = new Block();
+
+        std::vector<ProgParser::DeclareContext*> declareChild = ctx->declare();
+        for(auto i : declareChild){
+            //Adding declares
+            block->addDeclare(visit(i));
+        }
+
+        std::vector<ProgParser::InstructionContext*> instructionChild = ctx->instruction();
+        for(auto i : instructionChild){
+            //Adding instructions
+            block->addInstruction(visit(i));
+        }
+
+        return block;
     }
 
-    virtual antlrcpp::Any visitInstruction(ProgParser::InstructionContext *ctx) override {
+    virtual antlrcpp:: Any visitInstruction(ProgParser::InstructionContext *ctx) override {
         std::cout<<"Visited Instruction"<<std::endl;
-        return visitChildren(ctx);
+        Instr* instr = new Instr(nullptr);// TODO Adding parent block
+        visitChildren(ctx);
+        return instr;
     }
 
     virtual antlrcpp::Any visitReturnStatement(ProgParser::ReturnStatementContext *ctx) override {
@@ -94,8 +109,9 @@ public:
     }
 
     virtual antlrcpp::Any visitDeclare(ProgParser::DeclareContext *ctx) override {
-        std::cout<<"Visited Declare"<<std::endl;
-        return visitChildren(ctx);
+        Declare* declare = new Declare(visit(ctx->type()),visit(ctx->name()),0);
+        declare->print();
+        return declare;
     }
 
     virtual antlrcpp::Any visitType(ProgParser::TypeContext *ctx) override {

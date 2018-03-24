@@ -6,7 +6,7 @@ class Instr
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	Instr();
+	Instr(Block* pb);
 	virtual ~Instr();
 
 	/* ------------- Methods ------------- */

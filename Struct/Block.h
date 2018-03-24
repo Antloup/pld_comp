@@ -12,11 +12,13 @@ public:
 	~Block();
 
 	/* ------------- Methods ------------- */
+	void addDeclare(Declare* d);
+	void addInstruction(Instr *i);
 
 private:
 
 	/* ------------ Attributs ------------ */
-	std::vector<Declare>* declares;
-	std::vector<Instr>* instrs;
+	std::vector<Declare*> declares;
+	std::vector<Instr*> instrs;
 };
 

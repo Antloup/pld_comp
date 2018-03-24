@@ -2,8 +2,9 @@
 
 
 
-Instr::Instr()
+Instr::Instr(Block* pb)
 {
+    parentBlock = pb;
 }
 
 
