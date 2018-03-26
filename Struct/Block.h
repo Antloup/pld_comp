@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Declare.h"
 #include "Instr/Instr.h"
+#include "Var.h"
 #include <vector>
 
 class Block
@@ -16,7 +16,7 @@ public:
 private:
 
 	/* ------------ Attributs ------------ */
-	std::vector<Declare>* declares;
+	std::vector<Var>* declares;
 	std::vector<Instr>* instrs;
 };
 

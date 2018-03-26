@@ -83,7 +83,7 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitVal(ProgParser::ValContext *ctx) override {
+  virtual antlrcpp::Any visitConstant(ProgParser::ConstantContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -116,6 +116,10 @@ public:
   }
 
   virtual antlrcpp::Any visitOr(ProgParser::OrContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitConst(ProgParser::ConstContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -167,11 +171,11 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitPostincr(ProgParser::PostincrContext *ctx) override {
+  virtual antlrcpp::Any visitVariable(ProgParser::VariableContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitValue(ProgParser::ValueContext *ctx) override {
+  virtual antlrcpp::Any visitPostincr(ProgParser::PostincrContext *ctx) override {
     return visitChildren(ctx);
   }
 

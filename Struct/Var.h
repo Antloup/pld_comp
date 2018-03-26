@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include "Expr/Expr.h"
+
 namespace Type{
 	enum Type { CHAR , INT32_T , INT64_T };
 }
@@ -9,7 +11,7 @@ class Var
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	Var(Type::Type type, std::string name, int64_t value);
+	Var(Type::Type type, std::string name, Expr *expr);
 	virtual ~Var();
 
 	/* ------------- Methods ------------- */
@@ -20,7 +22,7 @@ public:
 
 	int getSize() const;
 
-	int64_t getValue() const;
+	Expr* getExpr() const;
 
 	virtual void print();
 
@@ -29,6 +31,6 @@ protected:
 	Type::Type type;
 	std::string name;
 	int size = 0;
-	int64_t value = 0;
+	Expr *expr;
 };
 

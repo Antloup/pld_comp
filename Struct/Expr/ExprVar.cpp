@@ -2,11 +2,19 @@
 
 
 
-ExprVar::ExprVar()
-{
-}
+ExprVar::ExprVar(Var *var) : var(var)
+{}
+
 
 
 ExprVar::~ExprVar()
 {
 }
+
+void ExprVar::print()
+{
+    var->print();
+}
+
+
+

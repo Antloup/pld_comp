@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-Var::Var(Type::Type type, std::string name, int64_t value) : type(type),name(name),value(value)
+Var::Var(Type::Type type, std::string name, Expr *expr) : type(type),name(name),expr(expr)
 {
 }
 
@@ -23,8 +23,8 @@ int Var::getSize() const {
     return size;
 }
 
-int64_t Var::getValue() const {
-    return value;
+Expr* Var::getExpr() const {
+    return expr;
 }
 
 void Var::print() {
@@ -33,8 +33,4 @@ void Var::print() {
     if(size > 1){
         std::cout << "          Array (Size : " << size << std::endl;
     }
-    else{
-        std::cout << "          Value : " << value << std::endl;
-    }
-
 }

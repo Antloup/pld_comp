@@ -7,11 +7,11 @@ class ExprVar :
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	ExprVar();
+	ExprVar(Var* var);
 	~ExprVar();
 
 	/* ------------- Methods ------------- */
-
+	void print();
 private:
 
 	/* ------------ Attributs ------------ */
