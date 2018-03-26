@@ -10,6 +10,7 @@ public:
 	~If();
 
 	/* ------------- Methods ------------- */
+	void setProgram(Program* p);
 
 private:
 

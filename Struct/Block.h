@@ -2,6 +2,7 @@
 
 #include "Declare.h"
 #include "Instr/Instr.h"
+#include "Program.h"
 #include <vector>
 
 class Block
@@ -14,11 +15,14 @@ public:
 	/* ------------- Methods ------------- */
 	void addDeclare(Declare* d);
 	void addInstruction(Instr *i);
+	void setProgram(Program* p);
+	Program* getProgram();
 
 private:
 
 	/* ------------ Attributs ------------ */
 	std::vector<Declare*> declares;
 	std::vector<Instr*> instrs;
+	Program* prog;
 };
 
