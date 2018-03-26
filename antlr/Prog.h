@@ -9,7 +9,7 @@
 #include "../Struct/Expr/ExprBin.h"
 #include "../Struct/Expr/ExprVar.h"
 #include "../Struct/Expr/ExprConst.h"
-#include "../Struct/Instr/Instr.cpp"
+#include "../Struct/Instr/Instr.h"
 
 /**
  * This class provides an empty implementation of ProgVisitor, which can be
@@ -29,7 +29,8 @@ public:
         std::vector<ProgParser::FunctionContext*> functionChild = ctx->function();
         for(auto i : functionChild){
             //Adding functions
-            prog->addFunction(visit(i));
+            Function *f = visit(i);
+            prog->addFunction(f);
         }
 
         prog->print();
@@ -54,7 +55,7 @@ public:
             }
         }
 
-        ProgParser::BlockFunctionContext* blockChild= ctx->blockFunction();
+        ProgParser::BlockFunctionContext* blockChild = ctx->blockFunction();
         f->addBlock(visit(blockChild));
         f->print();
 
@@ -77,6 +78,11 @@ public:
         }
 
         return block;
+    }
+
+    virtual antlrcpp::Any visitDeclare(ProgParser::DeclareContext *ctx) override {
+        Var *var = new Var(visit(ctx->type()),visit(ctx->name()),0);
+        return var;
     }
 
     virtual antlrcpp:: Any visitInstruction(ProgParser::InstructionContext *ctx) override {

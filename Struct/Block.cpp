@@ -11,7 +11,7 @@ Block::~Block()
 {
 }
 
-void Block::addDeclare(Declare *d) {
+void Block::addDeclare(Var *d) {
     declares.push_back(d);
 }
 

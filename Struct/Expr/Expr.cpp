@@ -1,8 +1,8 @@
 #include "Expr.h"
 
 
-
-Expr::Expr() : Instr()
+//TODO : put parent block
+Expr::Expr() : Instr(nullptr)
 {
 }
 

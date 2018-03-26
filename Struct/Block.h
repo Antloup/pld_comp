@@ -18,7 +18,7 @@ public:
 private:
 
 	/* ------------ Attributs ------------ */
-	std::vector<Var>* declares;
-	std::vector<Instr>* instrs;
+	std::vector<Var*> declares;
+	std::vector<Instr*> instrs;
 };
 
