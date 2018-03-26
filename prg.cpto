@@ -2,12 +2,12 @@
 #include "UnHeader.h"
 
 int32_t a=5;
-int32_t b=4;
+char b='b';
 
 void main(){
     int64_t c;
     int64_t d;
-    c = 4 + a;
+    c = 4 * 5 + 3 % 'o' / 1;
     d = plus(c,3);
     if(d >= c){
         putchar('o');

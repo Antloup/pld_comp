@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Declare.h"
 #include "Instr/Instr.h"
+#include "Var.h"
 #include <vector>
 
 class Block
@@ -12,13 +12,13 @@ public:
 	~Block();
 
 	/* ------------- Methods ------------- */
-	void addDeclare(Declare* d);
+	void addDeclare(Var* d);
 	void addInstruction(Instr *i);
 
 private:
 
 	/* ------------ Attributs ------------ */
-	std::vector<Declare*> declares;
-	std::vector<Instr*> instrs;
+	std::vector<Var>* declares;
+	std::vector<Instr>* instrs;
 };
 

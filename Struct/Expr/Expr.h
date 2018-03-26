@@ -9,7 +9,7 @@ public:
 	virtual ~Expr();
 
 	/* ------------- Methods ------------- */
-
+	virtual void print() = 0;
 private:
 
 	/* ------------ Attributs ------------ */

@@ -53,7 +53,7 @@ public:
 
     virtual antlrcpp::Any visitParams(ProgParser::ParamsContext *context) = 0;
 
-    virtual antlrcpp::Any visitVal(ProgParser::ValContext *context) = 0;
+    virtual antlrcpp::Any visitConstant(ProgParser::ConstantContext *context) = 0;
 
     virtual antlrcpp::Any visitName(ProgParser::NameContext *context) = 0;
 
@@ -70,6 +70,8 @@ public:
     virtual antlrcpp::Any visitMult(ProgParser::MultContext *context) = 0;
 
     virtual antlrcpp::Any visitOr(ProgParser::OrContext *context) = 0;
+
+    virtual antlrcpp::Any visitConst(ProgParser::ConstContext *context) = 0;
 
     virtual antlrcpp::Any visitAffect(ProgParser::AffectContext *context) = 0;
 
@@ -95,9 +97,9 @@ public:
 
     virtual antlrcpp::Any visitAnd(ProgParser::AndContext *context) = 0;
 
-    virtual antlrcpp::Any visitPostincr(ProgParser::PostincrContext *context) = 0;
+    virtual antlrcpp::Any visitVariable(ProgParser::VariableContext *context) = 0;
 
-    virtual antlrcpp::Any visitValue(ProgParser::ValueContext *context) = 0;
+    virtual antlrcpp::Any visitPostincr(ProgParser::PostincrContext *context) = 0;
 
     virtual antlrcpp::Any visitModulo(ProgParser::ModuloContext *context) = 0;
 

@@ -15,8 +15,8 @@ public:
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
     T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, T__11 = 12, T__12 = 13, T__13 = 14, 
     T__14 = 15, T__15 = 16, T__16 = 17, T__17 = 18, T__18 = 19, T__19 = 20, 
-    T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, INCLUDE = 26, 
-    WS = 27, CHAR = 28, INT32_T = 29, INT64_T = 30, IF = 31, ELSE = 32, 
+    T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, WS = 26, 
+    INCLUDE = 27, CHAR = 28, INT32_T = 29, INT64_T = 30, IF = 31, ELSE = 32, 
     RETURN = 33, WHILE = 34, VOID = 35, NAME = 36, CHARACTER = 37, NUMBER = 38
   };
 
@@ -25,7 +25,7 @@ public:
     RuleInstruction = 4, RuleReturnStatement = 5, RuleIfStatement = 6, RuleElseStatement = 7, 
     RuleWhileStatement = 8, RuleBlock = 9, RuleDeclare = 10, RuleType = 11, 
     RuleSigType = 12, RuleRetType = 13, RuleSigParams = 14, RuleSigDeclare = 15, 
-    RuleParams = 16, RuleVal = 17, RuleName = 18, RuleExpr = 19
+    RuleParams = 16, RuleConstant = 17, RuleName = 18, RuleExpr = 19
   };
 
   ProgParser(antlr4::TokenStream *input);
@@ -55,7 +55,7 @@ public:
   class SigParamsContext;
   class SigDeclareContext;
   class ParamsContext;
-  class ValContext;
+  class ConstantContext;
   class NameContext;
   class ExprContext; 
 
@@ -80,7 +80,7 @@ public:
     virtual size_t getRuleIndex() const override;
     TypeContext *type();
     NameContext *name();
-    ValContext *val();
+    ExprContext *expr();
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
@@ -138,7 +138,7 @@ public:
     ReturnStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *RETURN();
-    ValContext *val();
+    ExprContext *expr();
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
@@ -296,11 +296,10 @@ public:
 
   ParamsContext* params();
 
-  class  ValContext : public antlr4::ParserRuleContext {
+  class  ConstantContext : public antlr4::ParserRuleContext {
   public:
-    ValContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    ConstantContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    NameContext *name();
     antlr4::tree::TerminalNode *NUMBER();
     antlr4::tree::TerminalNode *CHARACTER();
 
@@ -308,7 +307,7 @@ public:
    
   };
 
-  ValContext* val();
+  ConstantContext* constant();
 
   class  NameContext : public antlr4::ParserRuleContext {
   public:
@@ -394,6 +393,14 @@ public:
 
     std::vector<ExprContext *> expr();
     ExprContext* expr(size_t i);
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  ConstContext : public ExprContext {
+  public:
+    ConstContext(ExprContext *ctx);
+
+    ConstantContext *constant();
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
@@ -501,19 +508,19 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class  PostincrContext : public ExprContext {
+  class  VariableContext : public ExprContext {
   public:
-    PostincrContext(ExprContext *ctx);
+    VariableContext(ExprContext *ctx);
 
     NameContext *name();
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class  ValueContext : public ExprContext {
+  class  PostincrContext : public ExprContext {
   public:
-    ValueContext(ExprContext *ctx);
+    PostincrContext(ExprContext *ctx);
 
-    ValContext *val();
+    NameContext *name();
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 

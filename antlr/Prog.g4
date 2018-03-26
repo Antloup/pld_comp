@@ -3,11 +3,11 @@ grammar Prog;
 WS              : [ \t\n\r]+ ->skip;
 INCLUDE         : '#'.*?[\r\n] ->skip;
 program         : globalVar* function*;
-globalVar       : type name '=' val';';
+globalVar       : type name '=' expr';';
 function        : retType NAME'('sigParams?')' blockFunction;
 blockFunction   : '{'(declare';')* instruction* '}';
 instruction     : expr';'| ifStatement | whileStatement | returnStatement;
-returnStatement : RETURN val?;
+returnStatement : RETURN expr?;
 ifStatement     : IF(expr) block elseStatement?;
 elseStatement   : ELSE block | ELSE ifStatement;
 whileStatement  : WHILE(expr) block;
@@ -19,7 +19,7 @@ retType         : type | VOID;
 sigParams       : sigDeclare (','sigDeclare )*;
 sigDeclare      : sigType name;
 params          : expr (',' expr)*;
-val             : name | NUMBER | CHARACTER;
+constant        : NUMBER | CHARACTER;
 name            : NAME('['expr?']')?;
 
 
@@ -45,7 +45,8 @@ expr  : expr '*' expr   # mult
       | '(' expr ')'    # par
       | '!'expr         # no
       | NAME'('params?')' # callfunction
-      | val             # value
+      | name             # variable
+      | constant           # const
       ;
 
 CHAR        : 'char';
