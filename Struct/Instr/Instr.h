@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include "../Expr/ExprVar.h"
+
 class Expr;
 class Block;
 class Instr

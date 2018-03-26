@@ -33,8 +33,9 @@ public:
         std::vector<ProgParser::FunctionContext*> functionChild = ctx->function();
         for(auto i : functionChild){
             //Adding functions
-            Function *f = visit(i);
+            Function* f =visit(i);
             prog->addFunction(f);
+            f->setProgram(prog);
         }
 
         prog->print();
@@ -59,8 +60,9 @@ public:
             }
         }
 
-        ProgParser::BlockContext* blockChild= ctx->block();
-        f->addBlock(visit(blockChild));
+        Block* block = visit(ctx->block());
+        f->addBlock(block);
+        block->setProgram(f->getProgram());
         f->print();
 
         return f;
@@ -78,7 +80,16 @@ public:
         std::vector<ProgParser::InstructionContext*> instructionChild = ctx->instruction();
         for(auto i : instructionChild){
             //Adding instructions
-            block->addInstruction(visit(i));
+            Instr* instr = visit(i);
+            block->addInstruction(instr);
+
+            if(If* ifInstr = dynamic_cast<If*>(instr)) {
+                ifInstr->setProgram(block->getProgram());
+            }
+            else if(While* whileInstr = dynamic_cast<While*>(instr)) {
+                whileInstr->setProgram(block->getProgram());
+            }
+
         }
 
         return block;
