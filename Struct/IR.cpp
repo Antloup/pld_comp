@@ -61,7 +61,6 @@ Var CFG::get_var_type(string name) {
 
 void CFG::print() {
     // todo : à remplacer par un parcours intelligent qui passe par les pointeurs (exit_true/false et compagnie)
-    string s = "";
     for (auto &it : bbs) {
         for (auto &jt : it->instrs) {
             jt->print();
