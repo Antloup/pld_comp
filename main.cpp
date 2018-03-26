@@ -41,8 +41,8 @@ int main(void){
 
     Program* prog = visitor.visit(tree);
     cout << "----------------------------------------------------------" << endl;
-    for (auto& it : prog->getGlobalVars()) {
-        it->print();
-    }
+    CFG* cfg = new CFG();
+    prog->buildIR(cfg);
+    cfg->print();
 	return 0;
 }

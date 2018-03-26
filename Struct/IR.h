@@ -34,7 +34,7 @@ public:
         call,
         cmp_eq,
         cmp_lt,
-        cmp_le
+        cmp_le,
     } Operation;
 
 
@@ -43,7 +43,7 @@ public:
 
     /** Actual code generation */
     void gen_asm(std::ostream &o); /**< x86 assembly code generation for this IR instruction */
-
+    void print();
 private:
     BasicBlock* bb; /**< The BB this instruction belongs to, which provides a pointer to the CFG this instruction belong to */
     Operation op;
@@ -124,6 +124,7 @@ public:
     // basic block management
     string new_BB_name();
     BasicBlock* current_bb;
+    void print();
 
 protected:
     map<string, Var> SymbolType; /**< part of the symbol table  */

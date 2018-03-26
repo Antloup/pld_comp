@@ -4,12 +4,22 @@
 
 #include "IR.h"
 
-CFG::CFG() {
+using namespace std;
 
+CFG::CFG() {
+    BasicBlock* prologue = new BasicBlock(this, "prologue");
+    BasicBlock* epilogue = new BasicBlock(this, "epilogue");
+    prologue->exit_true = epilogue;
+    epilogue->exit_false = nullptr;
+    bbs = std::vector<BasicBlock*>(0);
+    add_bb(prologue);
+    add_bb(epilogue);
+    current_bb = prologue;
+    bbs.push_back(epilogue);
 }
 
 void CFG::add_bb(BasicBlock *bb) {
-
+    bbs.push_back(bb);
 }
 
 void CFG::gen_asm(ostream &o) {
@@ -47,4 +57,26 @@ string CFG::new_BB_name() {
 
 Var CFG::get_var_type(string name) {
     return Var(Type::CHAR, __cxx11::basic_string<char, char_traits<char>, allocator<char>>(), 0);
+}
+
+void CFG::print() {
+    // todo : à remplacer par un parcours intelligent qui passe par les pointeurs (exit_true/false et compagnie)
+    string s = "";
+    for (auto &it : bbs) {
+        for (auto &jt : it->instrs) {
+            jt->print();
+        }
+    }
+}
+
+BasicBlock::BasicBlock(CFG *cfg, string entry_label):cfg(cfg),label(entry_label){}
+
+void BasicBlock::add_IRInstr(IRInstr::Operation op, Var t, vector<string> params) {
+    this->instrs.push_back(new IRInstr(this,op,t,params));
+}
+
+IRInstr::IRInstr(BasicBlock *bb_, IRInstr::Operation op, Var t, vector<string> params) :bb(bb),op(op),t(t),params(params){}
+
+void IRInstr::print() {
+    cout << op << " " << params[0] << " " << params[1] << endl;
 }
