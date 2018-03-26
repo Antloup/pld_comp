@@ -1,5 +1,6 @@
 #pragma once
 #include "Instr.h"
+#include "../Program.h"
 
 class If :
 	public Instr
@@ -17,5 +18,6 @@ private:
 	/* ------------ Attributs ------------ */
 	Block* childIf;
 	Block* childElse;
+	Expr *condition;
 };
 

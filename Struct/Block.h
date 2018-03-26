@@ -1,9 +1,10 @@
 #pragma once
 
 #include "Instr/Instr.h"
-#include "Program.h"
 #include "Var.h"
 #include <vector>
+
+class Program;
 
 class Block
 {

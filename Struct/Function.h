@@ -3,7 +3,8 @@
 #include <vector>
 #include "Block.h"
 #include "Param.h"
-#include "Program.h"
+
+class Program;
 
 namespace RetType{
 	enum RetType { CHAR , INT32_T , INT64_T, VOID };

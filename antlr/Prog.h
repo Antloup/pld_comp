@@ -101,7 +101,7 @@ public:
     }
 
     virtual antlrcpp:: Any visitInstruction(ProgParser::InstructionContext *ctx) override {
-        Instr* instr = new Instr((Expr*)visit(ctx->expr()));
+        Instr* instr = new Instr();
         return instr;
     }
 

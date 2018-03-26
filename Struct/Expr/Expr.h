@@ -1,8 +1,7 @@
 #pragma once
 #include "../Instr/Instr.h"
 
-class Expr :
-	public Instr
+class Expr : public Instr
 {
 public:
 	/* ---- Constructors / Destructor ---- */

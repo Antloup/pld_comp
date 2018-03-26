@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-#include "../Expr/ExprVar.h"
 
 class Expr;
 class Block;
@@ -9,7 +8,7 @@ class Instr
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	Instr(Expr* e = nullptr);
+	Instr();
 	virtual ~Instr();
 
 	/* ------------- Methods ------------- */
@@ -19,6 +18,5 @@ private:
 
 	/* ------------ Attributs ------------ */
 	Block* parentBlock;
-    Expr* expr;
 };
 

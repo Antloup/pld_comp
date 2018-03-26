@@ -10,6 +10,7 @@ public:
 	~FunctionCall();
 
 	/* ------------- Methods ------------- */
+	void print();
 
 private:
 

@@ -13,7 +13,7 @@ public:
 private:
 
 	/* ------------ Attributs ------------ */
-	Expr* expr1;
+	Var* var;
 	Expr* expr2;
 };
 
