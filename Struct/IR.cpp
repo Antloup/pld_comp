@@ -31,12 +31,16 @@ string CFG::IR_reg_to_asm(string reg) {
     return std::__cxx11::string();
 }
 
-//parcourt le CFG pour calculer la taille de l'AR (nombre de variables * 8 octets)
+//todo : parcourt le CFG pour calculer la taille de l'AR (nombre de variables * 8 octets + 8)
 void CFG::gen_asm_prologue(ostream &o) {
+    o << "pushq %rbp" << endl;
+    o << "movq %rsp, %rbp" <<endl;
+    o << "sub $" << "TAILLE_AR_CALCULEE" << ", %rsp" <<endl;
 }
 
 void CFG::gen_asm_epilogue(ostream &o) {
-
+    o << "leave" << endl;
+    o << "ret" << endl;
 }
 
 void CFG::add_to_symbol_table(string name, Var t) {
