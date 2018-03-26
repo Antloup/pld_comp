@@ -15,6 +15,9 @@ public:
 	void addGlobalVar(GlobalVar* gv);
 	void addFunction(Function* f);
 	void print();
+	void buildIR();
+	std::vector<Function*> getFunctions();
+	std::vector<GlobalVar*> getGlobalVars();
 
 private:
 

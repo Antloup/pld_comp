@@ -39,6 +39,10 @@ int main(void){
 
 	Prog visitor;
 
-    visitor.visit(tree);
+    Program* prog = visitor.visit(tree);
+    cout << "----------------------------------------------------------" << endl;
+    for (auto& it : prog->getGlobalVars()) {
+        it->print();
+    }
 	return 0;
 }
