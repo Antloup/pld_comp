@@ -1,8 +1,7 @@
 #include "GlobalVar.h"
-#include <vector>
 
-using namespace std;
-GlobalVar::GlobalVar(Type::Type type,std::string name,Expr* expr) : Var(type,name,expr)
+
+GlobalVar::GlobalVar(Type::Type type,std::string name,Expr *expr) : Var(type,name,expr)
 {
 }
 
