@@ -4,6 +4,7 @@
 #include <map>
 #include "Function.h"
 #include "GlobalVar.h"
+#include "IR.h"
 
 class Program
 {
@@ -17,6 +18,7 @@ public:
 	void addFunction(Function* f);
 	void addVarName(Block* b, std::string name);
 	void print();
+	void buildIR(CFG* cfg);
 
 private:
 

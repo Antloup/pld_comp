@@ -39,6 +39,10 @@ int main(void){
 
 	Prog visitor;
 
-    visitor.visit(tree);
+    Program* prog = visitor.visit(tree);
+    cout << "----------------------------------------------------------" << endl;
+    CFG* cfg = new CFG();
+    prog->buildIR(cfg);
+    cfg->print();
 	return 0;
 }

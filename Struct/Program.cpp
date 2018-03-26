@@ -27,3 +27,9 @@ void Program::addVarName(Block *b, std::string name)
 {
 //TODO
 }
+
+void Program::buildIR(CFG *cfg) {
+    for(auto &it : globalVars) {
+        it->buildIR(cfg);
+    }
+}
