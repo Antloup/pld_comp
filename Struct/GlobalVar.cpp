@@ -1,7 +1,7 @@
 #include "GlobalVar.h"
 
-
-GlobalVar::GlobalVar(Type::Type type,std::string name,Expr *expr) : Var(type,name,expr)
+using namespace std;
+GlobalVar::GlobalVar(Type::Type type,std::string name,Expr* expr) : Var(type,name,expr)
 {
 }
 
