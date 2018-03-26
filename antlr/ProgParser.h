@@ -135,8 +135,8 @@ public:
     IfStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *IF();
-    BlockContext *block();
     ExprContext *expr();
+    BlockContext *block();
     ElseStatementContext *elseStatement();
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
@@ -164,8 +164,8 @@ public:
     WhileStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *WHILE();
-    BlockContext *block();
     ExprContext *expr();
+    BlockContext *block();
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    

@@ -11,10 +11,11 @@ public:
 
 	/* ------------- Methods ------------- */
 	void print();
+	void addParam(Expr* expr);
 
 private:
 
 	/* ------------ Attributs ------------ */
-	std::vector<Expr>* exprs;
+	std::vector<Expr*> exprs;
 };
 

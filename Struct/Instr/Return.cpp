@@ -2,7 +2,7 @@
 
 
 
-Return::Return(Expr* e) : expr(e)
+Return::Return(Expr* e) : Instr(e)
 {
 }
 

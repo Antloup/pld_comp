@@ -13,6 +13,8 @@
 #include "../Struct/Instr/If.h"
 #include "../Struct/Instr/Return.h"
 #include "../Struct/Instr/While.h"
+#include "../Struct/Expr/Affect.h"
+#include "../Struct/Expr/FunctionCall.h"
 
 
 /**
@@ -101,24 +103,35 @@ public:
     }
 
     virtual antlrcpp:: Any visitInstruction(ProgParser::InstructionContext *ctx) override {
-        Instr* instr = new Instr();
-        return instr;
+        if(ctx->ifStatement()) {
+            return (Instr*)visit(ctx->ifStatement());
+        } else if (ctx->returnStatement()) {
+            return (Instr*)visit(ctx->returnStatement());
+        } else if (ctx->whileStatement()) {
+            return (Instr*)visit(ctx->whileStatement());
+        } else if (ctx->expr()) {
+            Instr *instr = new Instr((Expr*)visit(ctx->expr()));
+            return instr;
+        }
     }
 
     virtual antlrcpp::Any visitReturnStatement(ProgParser::ReturnStatementContext *ctx) override {
         Return* ret = new Return((Expr*)visit(ctx->expr()));
-        return ret;
+        return (Instr*)ret;
     }
 
     virtual antlrcpp::Any visitIfStatement(ProgParser::IfStatementContext *ctx) override {
         ProgParser::ElseStatementContext* elseChild = ctx->elseStatement();
         if(elseChild){
-            If* ifStat = new If(visit(ctx->expr()),visit(ctx->block()),visit(elseChild->block()));
-            return ifStat;
+            Expr *expr = visit(ctx->expr());
+            Block *blockIf = visit(ctx->block());
+            Block *blockElse = visit(elseChild->block());
+            If* ifStat = new If(expr,blockIf,blockElse);
+            return (Instr*)ifStat;
         }
         else{
             If* ifStat = new If(visit(ctx->expr()),visit(ctx->block()));
-            return ifStat;
+            return (Instr*)ifStat;
         }
 
     }
@@ -130,21 +143,21 @@ public:
             std::cout << "Statement is an else if" << std::endl;
             If* ifStat = new If(visit(ifStatChild->expr()),visit(ctx->block()));
             visitChildren(ctx);
-            return ifStat;
+            return (Instr*)ifStat;
         }
         else{
             //Statement is an "else", no expr
             std::cout << "Statement is an else" << std::endl;
             If* ifStat = new If(nullptr,visit(ctx->block()));
             visitChildren(ctx);
-            return ifStat;
+            return (Instr*)ifStat;
         }
     }
 
     virtual antlrcpp::Any visitWhileStatement(ProgParser::WhileStatementContext *ctx) override {
         While* whileStat = new While(visit(ctx->expr()),visit(ctx->block()));
         visitChildren(ctx);
-        return whileStat;
+        return (Instr*)whileStat;
     }
 
     virtual antlrcpp::Any visitType(ProgParser::TypeContext *ctx) override {
@@ -259,7 +272,8 @@ public:
 
     virtual antlrcpp::Any visitAffect(ProgParser::AffectContext *ctx) override {
         std::cout<<"Visited Affect"<<std::endl;
-        return visitChildren(ctx);
+        Affect *affect = new Affect(new Var(Type::INT64_T, ctx->name()->getText(),0),visit(ctx->expr()));
+        return (Expr*)affect;
     }
 
     virtual antlrcpp::Any visitOr(ProgParser::OrContext *ctx) override {
@@ -340,7 +354,14 @@ public:
 
     virtual antlrcpp::Any visitCallfunction(ProgParser::CallfunctionContext *ctx) override {
         std::cout<<"Visited CallFunction"<<std::endl;
-        return visitChildren(ctx);
+        FunctionCall *fc = new FunctionCall();
+        ProgParser::ParamsContext* paramChild = ctx->params();
+        for(auto i : paramChild->expr()){
+            //Adding global var
+            fc->addParam(visit(i));
+        }
+        std::cout<<"parent : "<<ctx->parent->getText()<<std::endl;
+        return (Expr*)fc;
     }
 
     virtual antlrcpp::Any visitPredecr(ProgParser::PredecrContext *ctx) override {

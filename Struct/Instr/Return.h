@@ -16,6 +16,5 @@ public:
 private:
 
 	/* ------------ Attributs ------------ */
-	Expr* expr;
 };
 

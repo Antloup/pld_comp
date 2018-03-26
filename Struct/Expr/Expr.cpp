@@ -2,7 +2,7 @@
 
 
 //TODO : put parent block
-Expr::Expr() : Instr()
+Expr::Expr()
 {
 }
 

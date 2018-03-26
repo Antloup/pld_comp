@@ -1,7 +1,7 @@
 #include <iostream>
 #include "ExprConst.h"
 
-ExprConst::ExprConst(int constant) : constant(constant)
+ExprConst::ExprConst(int constant) : Expr(), constant(constant)
 {}
 
 int ExprConst::getConstant()

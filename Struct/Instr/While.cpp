@@ -2,7 +2,7 @@
 
 
 
-While::While(Expr* e,Block* b): condition(e), child(b)
+While::While(Expr* e,Block* b): Instr(e), child(b)
 {
 }
 

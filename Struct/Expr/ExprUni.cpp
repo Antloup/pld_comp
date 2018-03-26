@@ -4,7 +4,7 @@
 
 
 ExprUni::ExprUni(Expr* expr, ExprUniType::ExprUniType type)
-        : expr(expr), type(type)
+        : Expr(), expr(expr), type(type)
 {}
 
 

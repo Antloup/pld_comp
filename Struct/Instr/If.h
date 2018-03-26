@@ -18,6 +18,5 @@ private:
 	/* ------------ Attributs ------------ */
 	Block* childIf;
 	Block* childElse;
-	Expr *condition;
 };
 

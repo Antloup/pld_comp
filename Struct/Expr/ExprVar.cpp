@@ -2,7 +2,7 @@
 
 
 
-ExprVar::ExprVar(Var *var) : var(var)
+ExprVar::ExprVar(Var *var) : Expr(), var(var)
 {}
 
 

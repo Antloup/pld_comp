@@ -2,7 +2,7 @@
 
 
 
-Instr::Instr()
+Instr::Instr(Expr *expr) : expr(expr)
 {
 }
 

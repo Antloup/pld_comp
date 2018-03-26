@@ -8,7 +8,7 @@ class Instr
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	Instr();
+	Instr(Expr* expr);
 	virtual ~Instr();
 
 	/* ------------- Methods ------------- */
@@ -18,5 +18,6 @@ private:
 
 	/* ------------ Attributs ------------ */
 	Block* parentBlock;
+	Expr* expr;
 };
 
