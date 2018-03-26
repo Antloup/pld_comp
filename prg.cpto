@@ -7,15 +7,30 @@ char b='b';
 void main(){
     int64_t c;
     int64_t d;
+    int32_t i;
+    int64_t table[a+4];
     c = 4 * 5 + 3 % 'o' / 1;
     d = plus(c,3);
+    table[d+1] = 8;
     if(d >= c){
+        int64_t e;
         putchar('o');
         putchar('k');
     }
     else{
         putchar('n');
         putchar('o');
+    }
+    i = 8;
+    while(i != 0){
+        int64_t z;
+        z = 2 + i;
+        if(i == 2 && !(z==3 || z==2)){
+            putchar('i');
+            ++z;
+            z = -a;
+        }
+        i--;
     }
 
  }

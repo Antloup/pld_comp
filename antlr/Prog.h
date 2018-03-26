@@ -15,6 +15,7 @@
 #include "../Struct/Instr/While.h"
 #include "../Struct/Expr/Affect.h"
 #include "../Struct/Expr/FunctionCall.h"
+#include "../Struct/Expr/ExprUni.h"
 
 
 /**
@@ -234,7 +235,7 @@ public:
 
     virtual antlrcpp::Any visitPar(ProgParser::ParContext *ctx) override {
         std::cout<<"Visited Par"<<std::endl;
-        return visitChildren(ctx);
+        return (Expr*)visit(ctx->expr());
     }
 
     virtual antlrcpp::Any visitInf(ProgParser::InfContext *ctx) override {
@@ -300,7 +301,9 @@ public:
 
     virtual antlrcpp::Any visitNo(ProgParser::NoContext *ctx) override {
         std::cout<<"Visited Non"<<std::endl;
-        return visitChildren(ctx);
+        Expr* e = visit(ctx->expr());
+        ExprUni* expr = new ExprUni(e,ExprUniType::NO);
+        return (Expr*)expr;
     }
 
     virtual antlrcpp::Any visitPlus(ProgParser::PlusContext *ctx) override {
@@ -338,7 +341,8 @@ public:
 
     virtual antlrcpp::Any visitInv(ProgParser::InvContext *ctx) override {
         std::cout<<"Visited Inv"<<std::endl;
-        return visitChildren(ctx);
+        ExprUni* expr = new ExprUni(visit(ctx->expr()),ExprUniType::INV);
+        return (Expr*)expr;
     }
 
     virtual antlrcpp::Any visitDiv(ProgParser::DivContext *ctx) override {
@@ -366,17 +370,16 @@ public:
 
     virtual antlrcpp::Any visitPredecr(ProgParser::PredecrContext *ctx) override {
         std::cout<<"Visited Predecr"<<std::endl;
-        return visitChildren(ctx);
-    }
-
-    virtual antlrcpp::Any visitPreincr(ProgParser::PreincrContext *ctx) override {
-        std::cout<<"Visited Preincr"<<std::endl;
-        return visitChildren(ctx);
+        ExprVar* ev = new ExprVar(new Var(Type::INT64_T, ctx->name()->getText(), 0));
+        ExprUni* expr = new ExprUni(ev,ExprUniType::PREDECR);
+        return (Expr*)expr;
     }
 
     virtual antlrcpp::Any visitPostdecr(ProgParser::PostdecrContext *ctx) override {
         std::cout<<"Visited Postdecr"<<std::endl;
-        return visitChildren(ctx);
+        ExprVar* ev = new ExprVar(new Var(Type::INT64_T, ctx->name()->getText(), 0));
+        ExprUni* expr = new ExprUni(ev,ExprUniType::POSTDECR);
+        return (Expr*)expr;
     }
 
     virtual antlrcpp::Any visitSupegal(ProgParser::SupegalContext *ctx) override {
@@ -404,13 +407,17 @@ public:
     virtual antlrcpp::Any visitPostincr(ProgParser::PostincrContext *ctx) override {
         std::cout<<"Visited Postincr"<<std::endl;
         //TODO: Get variable from ctx->name()
-//        ProgParser::ExprContext* child = ctx->name();
-//
-//        Expr *expr1 = (Expr*)(child.at(0));
-//        Expr *expr2 = (Expr*)(child.at(1));
-//        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::DIV,expr2);
-//        exprBin->print();
-        return visitChildren(ctx);
+        ExprVar* ev = new ExprVar(new Var(Type::INT64_T, ctx->name()->getText(), 0));
+        ExprUni* expr = new ExprUni(ev,ExprUniType::POSTINCR);
+        return (Expr*)expr;
+    }
+
+    virtual antlrcpp::Any visitPreincr(ProgParser::PreincrContext *ctx) override {
+        std::cout<<"Visited Preincr"<<std::endl;
+        //TODO: Get variable from ctx->name()
+        ExprVar* ev = new ExprVar(new Var(Type::INT64_T, ctx->name()->getText(), 0));
+        ExprUni* expr = new ExprUni(ev,ExprUniType::PREINCR);
+        return (Expr*)expr;
     }
 
     virtual antlrcpp::Any visitModulo(ProgParser::ModuloContext *ctx) override {

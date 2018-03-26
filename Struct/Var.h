@@ -30,7 +30,7 @@ protected:
 	/* ------------ Attributs ------------ */
 	Type::Type type;
 	std::string name;
-	int size = 0;
+	int size = 0; // TODO Update size
 	Expr *expr;
 };
 
