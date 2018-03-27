@@ -23,6 +23,8 @@
  * extended to create a visitor which only needs to handle a subset of the available methods.
  */
 class  Prog : public ProgBaseVisitor {
+
+
 private:
     std::map<std::pair<Block*,std::string>,Var*>* varTable;
     std::stack<Block*> *blockStack;
