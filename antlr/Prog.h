@@ -27,6 +27,7 @@ class  Prog : public ProgBaseVisitor {
 
 private:
     std::map<std::pair<Block*,std::string>,Var*>* varTable;
+    std::map<std::string,Function*>* functionTable;
     std::stack<Block*> *blockStack;
 
 public:
@@ -34,16 +35,25 @@ public:
         varTable = new std::map<std::pair<Block*,std::string>,Var*>();
         blockStack = new std::stack<Block*>();
         blockStack->push(nullptr);
+        functionTable = new std::map<std::string,Function*>();
     }
 
     /* Table method */
     void printVarTable(){
-        std::cout << "TABLE" << std::endl;
+        std::cout << "TABLE VAR:" << std::endl;
 
         for(auto it = varTable->cbegin(); it != varTable->cend(); ++it)
         {
             std::cout << it->first.second << "( Var:" << it->second;
             std::cout << " ) : Block :" << it->first.first << std::endl;
+        }
+    }
+
+    void printFunctionTable(){
+        std::cout << "TABLE FUNCTION:" << std::endl;
+        for(auto it = functionTable->cbegin(); it != functionTable->cend(); ++it)
+        {
+            std::cout << it->first << " : " << it->second << std::endl;
         }
     }
 
@@ -77,9 +87,27 @@ public:
             return varTable->at(std::make_pair(b,varName));
         }
 //        return nullptr;
-        std::cerr<<"Variable "<<varName<<" undefined here"<<std::endl;
+        std::cerr<<"Variable '"<<varName<<"' undefined here"<<std::endl;
         std::cerr.flush();
         exit(3);
+    }
+
+    void addFunction(std::string name,Function* f){
+        if ( !functionTable->insert( std::make_pair(name,f)).second) {
+            std::cerr << "Function '"<<name<<"' already exists" << std::endl;
+            std::cerr.flush();
+            exit(4);
+        }
+    }
+
+    Function* getFunction(std::string name){
+        if(functionTable->find(name) != functionTable->end()){
+            //function exists
+            return functionTable->at(name);
+        }
+        std::cerr<<"Function '"<<name<<"' undefined"<<std::endl;
+        std::cerr.flush();
+        exit(5);
     }
 
     virtual antlrcpp::Any visitProgram(ProgParser::ProgramContext *ctx) override {
@@ -98,6 +126,7 @@ public:
             Function* f =visit(i);
             prog->addFunction(f);
         }
+        printFunctionTable();
 
         prog->print();
 
@@ -112,6 +141,7 @@ public:
 
     virtual antlrcpp::Any visitFunction(ProgParser::FunctionContext *ctx) override {
         Function* f = new Function(ctx->NAME()->getText(),visit(ctx->retType()));
+        addFunction(ctx->NAME()->getText(),f);
 
         ProgParser::SigParamsContext* sigParamsChild = ctx->sigParams();
         if(sigParamsChild){
@@ -416,14 +446,17 @@ public:
 
     virtual antlrcpp::Any visitCallfunction(ProgParser::CallfunctionContext *ctx) override {
         std::cout<<"Visited CallFunction"<<std::endl;
-        FunctionCall *fc = new FunctionCall();
-        ProgParser::ParamsContext* paramChild = ctx->params();
-        for(auto i : paramChild->expr()){
+        Function* f = getFunction(ctx->NAME()->getText());
+        FunctionCall *fc = new FunctionCall(f);
+        ProgParser::ParamsContext *paramChild = ctx->params();
+        for (auto i : paramChild->expr()) {
             //Adding global var
             fc->addParam(visit(i));
         }
-        std::cout<<"parent : "<<ctx->parent->getText()<<std::endl;
-        return (Expr*)fc;
+        std::cout << "parent : " << ctx->parent->getText() << std::endl;
+        return (Expr *) fc;
+
+
     }
 
     virtual antlrcpp::Any visitPredecr(ProgParser::PredecrContext *ctx) override {
