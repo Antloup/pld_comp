@@ -20,6 +20,7 @@ CFG::CFG() {
 
 void CFG::add_bb(BasicBlock *bb) {
     bbs.push_back(bb);
+    current_bb = bb;
 }
 
 void CFG::gen_asm(ostream &o) {

@@ -12,6 +12,7 @@ public:
 
 	/* ------------- Methods ------------- */
 	void print();
+	void buildIR();
 private:
 
 	/* ------------ Attributs ------------ */

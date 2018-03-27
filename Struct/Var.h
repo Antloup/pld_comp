@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include <iostream>
 #include "Expr/Expr.h"
+
 
 namespace Type{
 	enum Type { CHAR , INT32_T , INT64_T };
@@ -25,6 +27,8 @@ public:
 	Expr* getExpr() const;
 
 	virtual void print();
+
+	void buildIR(CFG* cfg);
 
 protected:
 	/* ------------ Attributs ------------ */

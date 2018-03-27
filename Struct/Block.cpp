@@ -29,3 +29,13 @@ void Block::setProgram(Program *p) {
 Program *Block::getProgram() {
     return prog;
 }
+
+void Block::buildIR(CFG *cfg) {
+    // todo : compléter cette fonction
+    for (auto &it : declares) {
+        it->buildIR(cfg);
+    }
+    for (auto &it : instrs) {
+        it->buildIR(cfg);
+    }
+}

@@ -1,6 +1,7 @@
 #pragma once
 #include "../Instr/Instr.h"
 
+class CFG;
 class Expr
 {
 public:
@@ -10,8 +11,9 @@ public:
 
 	/* ------------- Methods ------------- */
 	virtual void print() = 0;
-private:
 
-	/* ------------ Attributs ------------ */
+    void buildIR(CFG *pCFG);
+
+    /* ------------ Attributs ------------ */
 };
 

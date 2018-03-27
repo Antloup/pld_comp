@@ -4,6 +4,7 @@
 
 class Expr;
 class Block;
+class CFG;
 class Instr
 {
 public:
@@ -13,8 +14,8 @@ public:
 
 	/* ------------- Methods ------------- */
     void addBlock(Block* b);
-
-private:
+	virtual void buildIR(CFG* cfg);
+protected:
 
 	/* ------------ Attributs ------------ */
 	Block* parentBlock;

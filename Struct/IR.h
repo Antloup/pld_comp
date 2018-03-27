@@ -2,8 +2,7 @@
 // Created by nathan on 26/03/18.
 //
 
-#ifndef PLD_COMP_IR_H
-#define PLD_COMP_IR_H
+#pragma once
 
 #include <vector>
 #include <string>
@@ -134,7 +133,3 @@ protected:
 
     vector <BasicBlock*> bbs; /**< all the basic blocks of this CFG*/
 };
-
-
-
-#endif //PLD_COMP_IR_H

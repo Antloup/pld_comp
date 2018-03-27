@@ -10,3 +10,7 @@ Expr::Expr()
 Expr::~Expr()
 {
 }
+
+void Expr::buildIR(CFG *pCFG) {
+    // todo : écrire cette fonction :)
+}

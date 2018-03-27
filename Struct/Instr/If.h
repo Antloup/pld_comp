@@ -12,8 +12,9 @@ public:
 
 	/* ------------- Methods ------------- */
 	void setProgram(Program* p);
+	void buildIR(CFG* cfg);
 
-private:
+protected:
 
 	/* ------------ Attributs ------------ */
 	Block* childIf;

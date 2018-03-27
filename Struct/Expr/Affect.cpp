@@ -16,3 +16,8 @@ void Affect::print()
 {
     std::cout<<"Affectation"<<std::endl;
 }
+
+void Affect::buildIR() {
+    // todo : compléter cette fonction
+
+}

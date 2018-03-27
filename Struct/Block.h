@@ -19,6 +19,8 @@ public:
 	void setProgram(Program* p);
 	Program* getProgram();
 
+    void buildIR(CFG *cfg);
+
 private:
 
 	/* ------------ Attributs ------------ */

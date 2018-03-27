@@ -12,13 +12,8 @@ GlobalVar::~GlobalVar()
 }
 
 void GlobalVar::buildIR(CFG *cfg) {
-//    if (value != 0) {
-        BasicBlock* bb = new BasicBlock(cfg,"globalvar " + name);
         vector<string> params;
         params.push_back(name);
-        params.push_back("valeur_expression");
-        bb->add_IRInstr(IRInstr::ldconst,*this, params);
-        cfg->add_bb(bb);
-//    }
-
+        params.push_back("valeur expression");
+        cfg->current_bb->add_IRInstr(IRInstr::ldconst,*this, params);
 }

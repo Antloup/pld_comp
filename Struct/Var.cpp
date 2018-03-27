@@ -1,5 +1,5 @@
 #include "Var.h"
-#include <iostream>
+
 
 
 Var::Var(Type::Type type, std::string name, Expr *expr) : type(type),name(name),expr(expr)
@@ -33,4 +33,9 @@ void Var::print() {
     if(size > 1){
         std::cout << "          Array (Size : " << size << std::endl;
     }
+}
+
+void Var::buildIR(CFG *cfg) {
+    // todo : compléter cette fonction
+
 }

@@ -25,6 +25,7 @@ public:
 	void addBlock(Block* b);
 	void setProgram(Program* p);
 	Program* getProgram();
+	void buildIR(CFG* cfg);
 
 private:
 

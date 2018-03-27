@@ -42,3 +42,9 @@ void Function::setProgram(Program *p) {
 Program *Function::getProgram() {
     return prog;
 }
+
+void Function::buildIR(CFG* cfg) {
+    // todo : compléter cette fonction
+    // todo : (peut-être) ajouter des buildIR ici
+    block->buildIR(cfg);
+}
