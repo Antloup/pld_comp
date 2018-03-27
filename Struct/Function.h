@@ -23,6 +23,7 @@ public:
 	void print();
 	void addParam(Param* param);
 	void addBlock(Block* b);
+	void buildIR(CFG* cfg);
 
 private:
 

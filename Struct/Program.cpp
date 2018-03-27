@@ -32,4 +32,7 @@ void Program::buildIR(CFG *cfg) {
     for(auto &it : globalVars) {
         it->buildIR(cfg);
     }
+    for(auto &it : functions) {
+        it->buildIR(cfg);
+    }
 }

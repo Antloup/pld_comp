@@ -16,6 +16,10 @@ void Instr::setParentBlock(Block *b)
     parentBlock = b;
 }
 
+void Instr::buildIR(CFG *cfg) {
+
+}
+
 Block* Instr::getParentBlock(){
     return parentBlock;
 }

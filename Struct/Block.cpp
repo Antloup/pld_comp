@@ -21,3 +21,13 @@ void Block::addInstruction(Instr *i) {
     instrs.push_back(i);
     instrs.back()->setParentBlock(this);
 }
+
+void Block::buildIR(CFG *cfg) {
+    // todo : compléter cette fonction
+    for (auto &it : declares) {
+        it->buildIR(cfg);
+    }
+    for (auto &it : instrs) {
+        it->buildIR(cfg);
+    }
+}
