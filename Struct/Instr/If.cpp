@@ -11,15 +11,6 @@ If::~If()
 {
 }
 
-void If::setProgram(Program *p) {
-    if(childIf){
-        childIf->setProgram(p);
-    }
-    if(childElse){
-        childElse->setProgram(p);
-    }
-}
-
 void If::buildIR(CFG *cfg) {
     // todo : compléter cette fonction
     // ici expr est le test du if
