@@ -13,6 +13,7 @@ public:
 
 	/* ------------- Methods ------------- */
     void addBlock(Block* b);
+    Block* getParentBlock();
 
 private:
 

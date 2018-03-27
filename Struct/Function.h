@@ -23,8 +23,6 @@ public:
 	void print();
 	void addParam(Param* param);
 	void addBlock(Block* b);
-	void setProgram(Program* p);
-	Program* getProgram();
 
 private:
 
@@ -33,6 +31,5 @@ private:
 	std::vector<Param*> params;
 	Block* block;
 	int retType;
-	Program* prog;
 };
 

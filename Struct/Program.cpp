@@ -22,8 +22,3 @@ void Program::addFunction(Function *f) {
 void Program::print() {
     std::cout << "Program" << std::endl;
 }
-
-void Program::addVarName(Block *b, std::string name)
-{
-//TODO
-}

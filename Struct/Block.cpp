@@ -21,11 +21,3 @@ void Block::addInstruction(Instr *i) {
     instrs.push_back(i);
     instrs.back()->addBlock(this);
 }
-
-void Block::setProgram(Program *p) {
-    prog = p;
-}
-
-Program *Block::getProgram() {
-    return prog;
-}
