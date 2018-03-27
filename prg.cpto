@@ -4,9 +4,14 @@
 int32_t a=5;
 char b='b';
 
+int32_t plus(int32_t a,int32_t b){
+    return a+b;
+}
+
 void main(){
     int i;
-    i = a + 1 * 5;
+    int d;
+    i = a + 1;
     i =!a;
 //    d++;
 //    i = c;
@@ -19,7 +24,7 @@ void main(){
 //    int32_t i;
 //    //EH SALUT
 //    c = 4 * 5 + 3 % 'o' / 1; //ÇA VA BIEN ?
-//    d = plus(c,3);
+    d = plus(a,3);
 //    if(d >= c){
 //        int64_t e;
 //        putchar('o');
@@ -42,7 +47,3 @@ void main(){
 //    }
 
  }
-
- int32_t plus(int32_t a,int32_t b){
-    return a+b;
-}
