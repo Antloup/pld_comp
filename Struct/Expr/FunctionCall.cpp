@@ -3,7 +3,7 @@
 
 
 
-FunctionCall::FunctionCall() : Expr()
+FunctionCall::FunctionCall(Function* function) : Expr(), function(function)
 {
 }
 
