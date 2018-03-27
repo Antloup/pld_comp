@@ -2,6 +2,7 @@ grammar Prog;
 
 WS              : [ \t\n\r]+ ->skip;
 INCLUDE         : '#'.*?[\r\n] ->skip;
+COMMENTS        : '//'.*?[\r\n] ->skip;
 program         : globalVar* function*;
 globalVar       : type name '=' expr';';
 function        : retType NAME'('sigParams?')' block;
@@ -51,7 +52,7 @@ expr  : expr '*' expr   # mult
 
 CHAR        : 'char';
 INT32_T     : 'int32_t';
-INT64_T     : 'int64_t';
+INT64_T     : 'int64_t'|'int';
 IF          : 'if';
 ELSE        : 'else';
 RETURN      : 'return';

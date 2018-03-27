@@ -12,7 +12,7 @@ public:
 	virtual ~Instr();
 
 	/* ------------- Methods ------------- */
-    void addBlock(Block* b);
+    void setParentBlock(Block* b);
     Block* getParentBlock();
 
 private:
