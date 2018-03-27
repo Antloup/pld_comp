@@ -11,7 +11,8 @@ Instr::~Instr()
 {
 }
 
-void Instr::addBlock(Block *b) {
+void Instr::setParentBlock(Block *b)
+{
     parentBlock = b;
 }
 

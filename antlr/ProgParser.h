@@ -16,8 +16,9 @@ public:
     T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, T__11 = 12, T__12 = 13, T__13 = 14, 
     T__14 = 15, T__15 = 16, T__16 = 17, T__17 = 18, T__18 = 19, T__19 = 20, 
     T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, WS = 26, 
-    INCLUDE = 27, CHAR = 28, INT32_T = 29, INT64_T = 30, IF = 31, ELSE = 32, 
-    RETURN = 33, WHILE = 34, VOID = 35, NAME = 36, CHARACTER = 37, NUMBER = 38
+    INCLUDE = 27, COMMENTS = 28, CHAR = 29, INT32_T = 30, INT64_T = 31, 
+    IF = 32, ELSE = 33, RETURN = 34, WHILE = 35, VOID = 36, NAME = 37, CHARACTER = 38, 
+    NUMBER = 39
   };
 
   enum {
