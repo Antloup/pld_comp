@@ -11,7 +11,6 @@ public:
 	~While();
 
 	/* ------------- Methods ------------- */
-	void setProgram(Program* p);
 
 private:
 

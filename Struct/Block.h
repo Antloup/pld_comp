@@ -16,8 +16,6 @@ public:
 	/* ------------- Methods ------------- */
 	void addDeclare(Var* d);
 	void addInstruction(Instr *i);
-	void setProgram(Program* p);
-	Program* getProgram();
 
     void buildIR(CFG *cfg);
 
@@ -26,6 +24,5 @@ private:
 	/* ------------ Attributs ------------ */
 	std::vector<Var*> declares;
 	std::vector<Instr*> instrs;
-	Program* prog;
 };
 

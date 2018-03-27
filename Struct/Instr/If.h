@@ -11,10 +11,8 @@ public:
 	~If();
 
 	/* ------------- Methods ------------- */
-	void setProgram(Program* p);
-	void buildIR(CFG* cfg);
 
-protected:
+private:
 
 	/* ------------ Attributs ------------ */
 	Block* childIf;

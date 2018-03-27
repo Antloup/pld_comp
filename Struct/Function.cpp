@@ -34,17 +34,3 @@ void Function::addParam(Param* param) {
 void Function::addBlock(Block *b) {
     block = b;
 }
-
-void Function::setProgram(Program *p) {
-    prog = p;
-}
-
-Program *Function::getProgram() {
-    return prog;
-}
-
-void Function::buildIR(CFG* cfg) {
-    // todo : compléter cette fonction
-    // todo : (peut-être) ajouter des buildIR ici
-    block->buildIR(cfg);
-}

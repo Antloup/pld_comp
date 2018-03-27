@@ -10,34 +10,3 @@ If::If(Expr* e, Block* ifBlock,Block* elseBlock) : Instr(e), childIf(ifBlock), c
 If::~If()
 {
 }
-
-void If::setProgram(Program *p) {
-    if(childIf){
-        childIf->setProgram(p);
-    }
-    if(childElse){
-        childElse->setProgram(p);
-    }
-}
-
-void If::buildIR(CFG *cfg) {
-    // todo : compléter cette fonction
-    // ici expr est le test du if
-    // todo : faire en sorte que le buildIR mette bien à jour cfg->currentBB
-    expr->buildIR(cfg);
-    BasicBlock* exprBB = cfg->current_bb;
-    // todo : faire en sorte que thenBB et elseBB correspondent bien à leur code
-    BasicBlock* thenBB = new BasicBlock(cfg,"trueCode"/*, trueCode*/);
-    BasicBlock* elseBB = new BasicBlock(cfg,"falseCode"/*, trueCode*/);
-    BasicBlock* afterIfBB = new BasicBlock(cfg,"afterIf");
-    afterIfBB->exit_true = exprBB->exit_true;
-    afterIfBB->exit_false = exprBB->exit_false;
-    exprBB->exit_true = thenBB;
-    exprBB->exit_false = elseBB;
-    thenBB->exit_true = afterIfBB;
-    thenBB->exit_false = nullptr;
-    elseBB->exit_true = afterIfBB;
-    elseBB->exit_false = nullptr;
-    cfg->current_bb = afterIfBB;
-
-}

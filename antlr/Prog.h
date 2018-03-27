@@ -23,14 +23,92 @@
  * extended to create a visitor which only needs to handle a subset of the available methods.
  */
 class  Prog : public ProgBaseVisitor {
+private:
+    std::map<std::string,std::pair<std::vector<Block*>,Var*>>* varTable;
+    Block* currentBlock = nullptr;
+    Block* parentBlock = nullptr;
+
 public:
+    Prog() : ProgBaseVisitor(){
+        varTable = new std::map<std::string,std::pair<std::vector<Block*>,Var*>>();
+    }
+
+    /* Table method */
+    void printVarTable(){
+        std::cout << "TABLE" << std::endl;
+
+        for(auto it = varTable->cbegin(); it != varTable->cend(); ++it)
+        {
+            std::cout << it->first << " (Var:" << it->second.second << ") : Block :";
+            for(auto j : it->second.first){
+                std::cout << j << " ,";
+            }
+            std::cout << std::endl;
+        }
+    }
+
+    std::vector<std::string> getVar(Block* b){
+        std::vector<std::string> names;
+        for (auto it = varTable->begin(); it != varTable->end(); ++it ){
+            for(auto j : it->second.first){
+                if(j == b){
+                    names.push_back(it->first);
+                    break;
+                }
+            }
+        }
+        return names;
+    }
+
+    void refreshTableName(Block* b){
+        this->parentBlock = currentBlock;
+        this->currentBlock = b;
+
+        for(auto i : getVar(this->parentBlock)){
+            varTable->at(i).first.push_back(currentBlock);
+        }
+
+    }
+
+    void addVar(Block *b, Var* var)
+    {
+        std::string varName = var->getName();
+        if(varTable->find(varName) != varTable->end()){
+            //Var already exists, adding the block
+            varTable->at(varName).first.push_back(b);
+        }
+        else{
+            //Adding a new variable
+            std::vector<Block*> blockVector = std::vector<Block*>();
+            blockVector.push_back(b);
+            std::pair<std::vector<Block*>,Var*> pair (blockVector,var);
+            varTable->insert(std::make_pair(varName,pair));
+
+        }
+    }
+
+    Var* getVar(Block* b,std::string varName){
+        Var* var = nullptr;
+        if(varTable->find(varName) != varTable->end()){
+            //Variable exists
+            for (auto i : varTable->at(varName).first){
+                if(i == b || i == nullptr){
+                    // Var is reachable from the block or globalvar
+                    return varTable->at(varName).second;
+                }
+            }
+        }
+        return var;
+    }
 
     virtual antlrcpp::Any visitProgram(ProgParser::ProgramContext *ctx) override {
         Program* prog = new Program();
         std::vector<ProgParser::GlobalVarContext*> globalVarChild = ctx->globalVar();
         for(auto i : globalVarChild){
             //Adding global var
-            prog->addGlobalVar(visit(i));
+            GlobalVar* gv = visit(i);
+            prog->addGlobalVar(gv);
+            this->addVar(nullptr,gv);
         }
 
         std::vector<ProgParser::FunctionContext*> functionChild = ctx->function();
@@ -38,10 +116,10 @@ public:
             //Adding functions
             Function* f =visit(i);
             prog->addFunction(f);
-            f->setProgram(prog);
         }
 
         prog->print();
+
         return prog;
     }
 
@@ -65,7 +143,6 @@ public:
 
         Block* block = visit(ctx->block());
         f->addBlock(block);
-        block->setProgram(f->getProgram());
         f->print();
 
         return f;
@@ -73,11 +150,14 @@ public:
 
     virtual antlrcpp::Any visitBlock(ProgParser::BlockContext *ctx) override {
         Block* block = new Block();
+        this->refreshTableName(block);
 
         std::vector<ProgParser::DeclareContext*> declareChild = ctx->declare();
         for(auto i : declareChild){
             //Adding declares
-            block->addDeclare(visit(i));
+            Var* var = visit(i);
+            block->addDeclare(var);
+            this->addVar(block,var);
         }
 
         std::vector<ProgParser::InstructionContext*> instructionChild = ctx->instruction();
@@ -85,14 +165,7 @@ public:
             //Adding instructions
             Instr* instr = visit(i);
             block->addInstruction(instr);
-
-            if(If* ifInstr = dynamic_cast<If*>(instr)) {
-                ifInstr->setProgram(block->getProgram());
-            }
-            else if(While* whileInstr = dynamic_cast<While*>(instr)) {
-                whileInstr->setProgram(block->getProgram());
-            }
-
+            printVarTable();
         }
 
         return block;
@@ -209,8 +282,8 @@ public:
 
     virtual antlrcpp::Any visitVariable(ProgParser::VariableContext *ctx) override {
         std::string value = ctx->getText();
-        //TODO verif var existe (on pourra alors récupérer un pointeur vers la Var, avec son type)
-        ExprVar *expr = new ExprVar(new Var(Type::INT64_T, value, 0));
+        Var* var = this->getVar(this->currentBlock,value);
+        ExprVar *expr = new ExprVar(var);
         return (Expr*)expr;
     }
 
@@ -273,7 +346,8 @@ public:
 
     virtual antlrcpp::Any visitAffect(ProgParser::AffectContext *ctx) override {
         std::cout<<"Visited Affect"<<std::endl;
-        Affect *affect = new Affect(new Var(Type::INT64_T, ctx->name()->getText(),0),visit(ctx->expr()));
+        Var* var = this->getVar(this->currentBlock,ctx->name()->getText());
+        Affect *affect = new Affect(var,visit(ctx->expr()));
         return (Expr*)affect;
     }
 
@@ -370,14 +444,16 @@ public:
 
     virtual antlrcpp::Any visitPredecr(ProgParser::PredecrContext *ctx) override {
         std::cout<<"Visited Predecr"<<std::endl;
-        ExprVar* ev = new ExprVar(new Var(Type::INT64_T, ctx->name()->getText(), 0));
+        Var* var = this->getVar(this->currentBlock,ctx->name()->getText());
+        ExprVar* ev = new ExprVar(var);
         ExprUni* expr = new ExprUni(ev,ExprUniType::PREDECR);
         return (Expr*)expr;
     }
 
     virtual antlrcpp::Any visitPostdecr(ProgParser::PostdecrContext *ctx) override {
         std::cout<<"Visited Postdecr"<<std::endl;
-        ExprVar* ev = new ExprVar(new Var(Type::INT64_T, ctx->name()->getText(), 0));
+        Var* var = this->getVar(this->currentBlock,ctx->name()->getText());
+        ExprVar* ev = new ExprVar(var);
         ExprUni* expr = new ExprUni(ev,ExprUniType::POSTDECR);
         return (Expr*)expr;
     }
@@ -406,16 +482,16 @@ public:
 
     virtual antlrcpp::Any visitPostincr(ProgParser::PostincrContext *ctx) override {
         std::cout<<"Visited Postincr"<<std::endl;
-        //TODO: Get variable from ctx->name()
-        ExprVar* ev = new ExprVar(new Var(Type::INT64_T, ctx->name()->getText(), 0));
+        Var* var = this->getVar(this->currentBlock,ctx->name()->getText());
+        ExprVar* ev = new ExprVar(var);
         ExprUni* expr = new ExprUni(ev,ExprUniType::POSTINCR);
         return (Expr*)expr;
     }
 
     virtual antlrcpp::Any visitPreincr(ProgParser::PreincrContext *ctx) override {
         std::cout<<"Visited Preincr"<<std::endl;
-        //TODO: Get variable from ctx->name()
-        ExprVar* ev = new ExprVar(new Var(Type::INT64_T, ctx->name()->getText(), 0));
+        Var* var = this->getVar(this->currentBlock,ctx->name()->getText());
+        ExprVar* ev = new ExprVar(var);
         ExprUni* expr = new ExprUni(ev,ExprUniType::PREINCR);
         return (Expr*)expr;
     }

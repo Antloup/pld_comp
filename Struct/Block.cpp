@@ -21,21 +21,3 @@ void Block::addInstruction(Instr *i) {
     instrs.push_back(i);
     instrs.back()->addBlock(this);
 }
-
-void Block::setProgram(Program *p) {
-    prog = p;
-}
-
-Program *Block::getProgram() {
-    return prog;
-}
-
-void Block::buildIR(CFG *cfg) {
-    // todo : compléter cette fonction
-    for (auto &it : declares) {
-        it->buildIR(cfg);
-    }
-    for (auto &it : instrs) {
-        it->buildIR(cfg);
-    }
-}

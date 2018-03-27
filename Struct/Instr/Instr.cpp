@@ -15,6 +15,6 @@ void Instr::addBlock(Block *b) {
     parentBlock = b;
 }
 
-void Instr::buildIR(CFG *cfg) {
-
+Block* Instr::getParentBlock(){
+    return parentBlock;
 }
