@@ -2,6 +2,7 @@
 #include "Expr.h"
 #include "../Var.h"
 
+using namespace std;
 class ExprVar :
 	public Expr
 {
@@ -12,7 +13,7 @@ public:
 
 	/* ------------- Methods ------------- */
 	void print();
-	void buildIR(CFG *cfg);
+	string buildIR(CFG *cfg);
 
 private:
 

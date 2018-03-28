@@ -12,7 +12,7 @@ public:
 
 	/* ------------- Methods ------------- */
 	void print();
-	void buildIR();
+	string buildIR(CFG* cfg);
 private:
 
 	/* ------------ Attributs ------------ */

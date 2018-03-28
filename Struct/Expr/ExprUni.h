@@ -1,6 +1,7 @@
 #pragma once
 #include "Expr.h"
 
+using namespace std;
 namespace ExprUniType
 {
 	enum ExprUniType
@@ -17,7 +18,7 @@ public:
 
 	/* ------------- Methods ------------- */
 	void print();
-	void buildIR(CFG *cfg);
+	string buildIR(CFG *cfg);
 
 private:
 

@@ -1,5 +1,5 @@
 #include "ExprVar.h"
-
+#include "../IR.h"
 
 
 ExprVar::ExprVar(Var *var) : Expr(), var(var)
@@ -16,8 +16,8 @@ void ExprVar::print()
     var->print();
 }
 
-void ExprVar::buildIR(CFG *cfg) {
-
+string ExprVar::buildIR(CFG *cfg) {
+    return var->getName();
 }
 
 
