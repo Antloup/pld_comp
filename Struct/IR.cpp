@@ -85,6 +85,7 @@ void BasicBlock::add_IRInstr(IRInstr::Operation op, vector<string> params) {
 }
 
 IRInstr::IRInstr(BasicBlock *bb, IRInstr::Operation op, vector<string> params) :bb(bb),op(op),params(params){}
+
 void BasicBlock::gen_asm(ostream& o) {}
 
 
