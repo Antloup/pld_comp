@@ -87,7 +87,29 @@ IRInstr::IRInstr(BasicBlock *bb, IRInstr::Operation op, vector<string> params) :
 void BasicBlock::gen_asm(ostream& o) {}
 
 void BasicBlock::print() {
-    cout << "----- Block : " + label << "-----" << endl;
+    cout << "----- Block : " << label << "(" << this <<")-----" << endl;
+    cout << "ExitTrue : ";
+    if(exit_true){
+        if(exit_true->label.size() < 1000){ //todo: weird bug when label is empty
+            cout << exit_true->label;
+        }
+        cout << "(" << exit_true << ")" << endl;
+    }
+    else{
+        cout << "None" << endl;
+    }
+
+    cout << "ExitFalse : ";
+    if(exit_false){
+        if(exit_false->label.size() < 1000){ //todo: weird bug when label is empty
+            cout << exit_false->label;
+        }
+        cout << "(" << exit_false << ")" << endl;
+    }
+    else{
+        cout << "None" << endl;
+    }
+
     for (auto &it : instrs) {
         it->print();
     }
