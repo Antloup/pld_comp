@@ -1,8 +1,8 @@
 #pragma once
 #include "../Instr/Instr.h"
-
-class IRInstr;
-class BasicBlock;
+#include <string>
+using namespace std;
+class CFG;
 class Expr
 {
 public:
@@ -13,7 +13,7 @@ public:
 	/* ------------- Methods ------------- */
 	virtual void print() = 0;
 
-    virtual void buildIR(CFG *cfg) = 0;
+    virtual string buildIR(CFG *cfg) = 0;
 
     /* ------------ Attributs ------------ */
 };

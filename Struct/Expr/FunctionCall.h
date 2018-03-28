@@ -2,6 +2,8 @@
 #include "Expr.h"
 #include "../Function.h"
 #include <vector>
+#include <string>
+using namespace std;
 class FunctionCall :
 	public Expr
 {
@@ -13,6 +15,7 @@ public:
 	/* ------------- Methods ------------- */
 	void print();
 	void addParam(Expr* expr);
+	string buildIR(CFG *cfg);
 
 private:
 

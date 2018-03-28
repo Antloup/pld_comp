@@ -50,8 +50,10 @@ void CFG::add_to_symbol_table(string name, Var t) {
 
 }
 
-string CFG::create_new_tempvar(Var t) {
-    return std::__cxx11::string();
+string CFG::create_new_tempvar() {
+    string tmp = "tmp"+tmpVarCount;
+    tmpVarCount++;
+    return tmp;
 }
 
 int CFG::get_var_index(string name) {
@@ -78,10 +80,11 @@ void CFG::print() {
 
 BasicBlock::BasicBlock(CFG *cfg, string entry_label):cfg(cfg),label(entry_label){}
 
-void BasicBlock::add_IRInstr(IRInstr::Operation op, Var t, vector<string> params) {
-    this->instrs.push_back(new IRInstr(this,op,t,params));
+void BasicBlock::add_IRInstr(IRInstr::Operation op, vector<string> params) {
+    this->instrs.push_back(new IRInstr(this,op,params));
 }
 
+IRInstr::IRInstr(BasicBlock *bb, IRInstr::Operation op, vector<string> params) :bb(bb),op(op),params(params){}
 void BasicBlock::gen_asm(ostream& o) {}
 
 IRInstr::IRInstr(BasicBlock *bb_, IRInstr::Operation op, Var t, vector<string> params) :bb(bb),op(op),t(t),params(params){}

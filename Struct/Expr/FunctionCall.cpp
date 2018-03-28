@@ -21,3 +21,7 @@ void FunctionCall::addParam(Expr *expr)
 {
     exprs.push_back(expr);
 }
+
+string FunctionCall::buildIR(CFG *cfg) {
+
+}

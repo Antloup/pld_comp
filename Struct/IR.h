@@ -34,11 +34,12 @@ public:
         cmp_eq,
         cmp_lt,
         cmp_le,
+        no,
     } Operation;
 
 
     /**  constructor */
-    IRInstr(BasicBlock* bb_, Operation op, Var t, vector<string> params);
+    IRInstr(BasicBlock* bb_, Operation op, vector<string> params);
 
     /** Actual code generation */
     void gen_asm(std::ostream &o); /**< x86 assembly code generation for this IR instruction */
@@ -46,7 +47,7 @@ public:
 private:
     BasicBlock* bb; /**< The BB this instruction belongs to, which provides a pointer to the CFG this instruction belong to */
     Operation op;
-    Var t;
+    string t;
     vector<string> params; /**< For 3-op instrs: d, x, y; for ldconst: d, c;  For call: label, d, params;  for wmem and rmem: choose yourself */
     // if you subclass IRInstr, each IRInstr subclass has its parameters and the previous (very important) comment becomes useless: it would be a better design.
 };
@@ -75,7 +76,9 @@ public:
     BasicBlock(CFG* cfg, string entry_label);
     void gen_asm(ostream &o); /**< x86 assembly code generation for this basic block (very simple) */
 
-    void add_IRInstr(IRInstr::Operation op, Var t, vector<string> params);
+    //todo : ajouter type ?
+    void add_IRInstr(IRInstr::Operation op, vector<string> params);
+
 
     // No encapsulation whatsoever here. Feel free to do better.
     BasicBlock* exit_true;  /**< pointer to the next basic block, true branch. If nullptr, return from procedure */
@@ -116,13 +119,14 @@ public:
 
     // symbol table methods
     void add_to_symbol_table(string name, Var t);
-    string create_new_tempvar(Var t);
+    string create_new_tempvar();
     int get_var_index(string name);
     Var get_var_type(string name);
 
     // basic block management
     string new_BB_name();
     BasicBlock* current_bb;
+    int tmpVarCount = 0;
     void print();
 
 protected:

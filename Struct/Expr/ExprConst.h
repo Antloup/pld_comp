@@ -1,6 +1,7 @@
 #pragma once
 #include "Expr.h"
 
+using namespace std;
 class ExprConst : public Expr
 {
 public :
@@ -9,7 +10,7 @@ public :
 
     int getConstant();
     void print();
-    void buildIR(CFG *cfg);
+    string buildIR(CFG *cfg);
 
 protected :
     int constant;

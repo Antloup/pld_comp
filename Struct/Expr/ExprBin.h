@@ -1,6 +1,8 @@
 #pragma once
 #include "Expr.h"
 
+using namespace std;
+
 namespace ExprBinType
 {
 	enum ExprBinType
@@ -16,7 +18,7 @@ public:
 
 	/* ------------- Methods ------------- */
 	void print();
-	void buildIR(CFG *cfg);
+	string buildIR(CFG *cfg);
 private:
 
 	/* ------------ Attributs ------------ */

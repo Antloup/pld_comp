@@ -200,6 +200,7 @@ public:
             Instr *instr = new Instr((Expr*)visit(ctx->expr()));
             return instr;
         }
+        return nullptr;
     }
 
     virtual antlrcpp::Any visitReturnStatement(ProgParser::ReturnStatementContext *ctx) override {

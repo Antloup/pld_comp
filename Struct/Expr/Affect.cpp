@@ -17,7 +17,7 @@ void Affect::print()
     std::cout<<"Affectation"<<std::endl;
 }
 
-void Affect::buildIR() {
+string Affect::buildIR(CFG* cfg) {
     // todo : compléter cette fonction
 
 }
