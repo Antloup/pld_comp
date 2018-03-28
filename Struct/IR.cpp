@@ -136,6 +136,23 @@ void IRInstr::print() {
             break;
         case IRInstr::ret:
             opName = "ret";
+        case IRInstr::cmp_ge:
+            opName = "cmp_ge";
+            break;
+        case IRInstr::cmp_gt:
+            opName = "cmp_gt";
+            break;
+        case IRInstr::and_op:
+            opName = "and_op";
+            break;
+        case IRInstr::or_op:
+            opName = "or_op";
+            break;
+        case IRInstr::div:
+            opName = "div";
+            break;
+        case IRInstr::cmp_neq:
+            opName = "cmp_neq";
             break;
     }
     cout << opName;

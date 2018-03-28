@@ -10,4 +10,12 @@ void main(){
         int64_t d;
         d++;
     }
+    else{
+        c = 7;
+    }
+    c = 6;
+    while(c != 0){
+        c--;
+    }
+    c = 8;
 }

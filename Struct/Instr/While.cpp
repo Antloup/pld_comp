@@ -13,15 +13,15 @@ While::~While()
 
 string While::buildIR(CFG* cfg){
     BasicBlock* beforeWhileBB = cfg->current_bb;
-    BasicBlock* bodyBB = new BasicBlock(cfg,"bodyBB");
-    BasicBlock* testBB = new BasicBlock(cfg,"testBB");
+    BasicBlock* bodyBB = new BasicBlock(cfg,"WhileBody");
+    BasicBlock* testBB = new BasicBlock(cfg,"WhileTest");
     beforeWhileBB->exit_true = testBB;
     beforeWhileBB->exit_false = nullptr;
     cfg->add_bb(testBB);
     expr->buildIR(cfg);
     cfg->add_bb(bodyBB);
     child->buildIR(cfg);
-    BasicBlock* afterWhileBB = new BasicBlock(cfg,"afterWhileBB");
+    BasicBlock* afterWhileBB = new BasicBlock(cfg,"afterWhile");
     cfg->current_bb->exit_true = bodyBB;
     cfg->current_bb->exit_false = afterWhileBB;
     beforeWhileBB->exit_true = bodyBB;
