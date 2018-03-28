@@ -24,14 +24,17 @@ void CFG::add_bb(BasicBlock *bb) {
 }
 
 void CFG::gen_asm(ostream &o) {
+    gen_asm_prologue(o);
+    //todo : parcours du CFG
 
+    gen_asm_epilogue(o);
 }
 
 string CFG::IR_reg_to_asm(string reg) {
     return std::__cxx11::string();
 }
 
-//todo : parcourt le CFG pour calculer la taille de l'AR (nombre de variables * 8 octets + 8)
+//todo : parcourt le CFG pour calculer la taille de l'AR (nombre de variables * 8 octets + 8) ; METHODE A PART ?
 void CFG::gen_asm_prologue(ostream &o) {
     o << "pushq %rbp" << endl;
     o << "movq %rsp, %rbp" <<endl;
@@ -79,8 +82,12 @@ void BasicBlock::add_IRInstr(IRInstr::Operation op, Var t, vector<string> params
     this->instrs.push_back(new IRInstr(this,op,t,params));
 }
 
+void BasicBlock::gen_asm(ostream& o) {}
+
 IRInstr::IRInstr(BasicBlock *bb_, IRInstr::Operation op, Var t, vector<string> params) :bb(bb),op(op),t(t),params(params){}
 
 void IRInstr::print() {
     cout << op << " " << params[0] << " " << params[1] << endl;
 }
+
+void IRInstr::gen_asm(ostream& o) {}
