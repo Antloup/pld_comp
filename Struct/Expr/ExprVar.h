@@ -12,6 +12,8 @@ public:
 
 	/* ------------- Methods ------------- */
 	void print();
+	void buildIR(CFG *cfg);
+
 private:
 
 	/* ------------ Attributs ------------ */

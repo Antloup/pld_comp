@@ -16,11 +16,12 @@ public:
 
 	/* ------------- Methods ------------- */
 	void print();
+	void buildIR(CFG *cfg);
 private:
 
 	/* ------------ Attributs ------------ */
-	Expr* expr1;
-	Expr* expr2;
+	Expr* exprLeft;
+	Expr* exprRight;
 	ExprBinType::ExprBinType type;
 };
 
