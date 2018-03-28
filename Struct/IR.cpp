@@ -87,7 +87,6 @@ void BasicBlock::add_IRInstr(IRInstr::Operation op, vector<string> params) {
 IRInstr::IRInstr(BasicBlock *bb, IRInstr::Operation op, vector<string> params) :bb(bb),op(op),params(params){}
 void BasicBlock::gen_asm(ostream& o) {}
 
-IRInstr::IRInstr(BasicBlock *bb_, IRInstr::Operation op, Var t, vector<string> params) :bb(bb),op(op),t(t),params(params){}
 
 void IRInstr::print() {
     cout << op << " " << params[0] << " " << params[1] << endl;
