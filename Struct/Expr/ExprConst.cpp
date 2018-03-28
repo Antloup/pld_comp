@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ExprConst.h"
 #include "../IR.h"
+#include "../../Tools/PrintTool.h"
 
 using namespace std;
 
@@ -12,9 +13,10 @@ int ExprConst::getConstant()
     return constant;
 }
 
-void ExprConst::print()
+void ExprConst::print(int tabs)
 {
-    std::cout<<"Constante : "<<constant<<std::endl;
+    string stab = PrintTool::getTabs(tabs);
+    std::cout<< stab <<"Constante : "<<constant<<std::endl;
 }
 
 ExprConst::~ExprConst()

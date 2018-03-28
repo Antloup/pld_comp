@@ -23,3 +23,7 @@ string Instr::buildIR(CFG *cfg) {
 Block* Instr::getParentBlock(){
     return parentBlock;
 }
+
+void Instr::print(int tabs) {
+    this->expr->print(tabs+1);
+}

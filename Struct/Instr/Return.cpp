@@ -19,3 +19,7 @@ string Return::buildIR(CFG *cfg)
     cfg->current_bb->add_IRInstr(IRInstr::ret, params);
     return ret;
 }
+
+void Return::print(int tabs) {
+    expr->print(tabs+1);
+}

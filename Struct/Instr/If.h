@@ -15,6 +15,7 @@ public:
 
 	/* ------------- Methods ------------- */
 	string buildIR(CFG* cfg);
+	void print(int tabs=0);
 
 protected:
 

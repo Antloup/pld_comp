@@ -17,7 +17,7 @@ public:
 	~ExprUni();
 
 	/* ------------- Methods ------------- */
-	void print();
+	void print(int tabs=0);
 	string buildIR(CFG *cfg);
 
 private:

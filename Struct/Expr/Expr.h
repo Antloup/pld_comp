@@ -11,7 +11,7 @@ public:
 	virtual ~Expr();
 
 	/* ------------- Methods ------------- */
-	virtual void print() = 0;
+	virtual void print(int tabs=0) = 0;
 
     virtual string buildIR(CFG *cfg) = 0;
 

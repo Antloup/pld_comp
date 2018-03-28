@@ -1,5 +1,5 @@
 #include "While.h"
-
+#include "../../Tools/PrintTool.h"
 
 
 While::While(Expr* e,Block* b): Instr(e), child(b)
@@ -41,4 +41,15 @@ string While::buildIR(CFG* cfg){
 //    bodyBB→exitFalse = NULL . unconditional
 //    exit cfg→currentBB = afterWhileBB
 
+}
+
+void While::print(int tabs) {
+    string stab = PrintTool::getTabs(tabs);
+    cout << stab << "While" << endl;
+    cout << stab <<"Condition : "<<endl;
+    expr->print(tabs+1);
+    cout << endl;
+    cout << stab <<"If Block: "<<endl;
+    child->print(tabs+1);
+    cout << endl;
 }

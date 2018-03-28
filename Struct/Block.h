@@ -18,6 +18,7 @@ public:
 	void addInstruction(Instr *i);
 
     void buildIR(CFG *cfg);
+    void print(int tabs=0);
 
 private:
 

@@ -20,7 +20,17 @@ void Program::addFunction(Function *f) {
 }
 
 void Program::print() {
-    std::cout << "Program" << std::endl;
+    int tabs = 0;
+    cout << "------ Program Structure ------" << endl;
+
+    cout << "--- GLOBAL VARS ---" << endl;
+    for(auto i : globalVars){
+        i->print(tabs+1);
+    }
+    cout << "--- FUNCTIONS ---" << endl;
+    for(auto i : functions){
+        i->print(tabs+1);
+    }
 }
 
 void Program::buildIR(CFG *cfg) {

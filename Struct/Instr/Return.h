@@ -13,6 +13,7 @@ public:
 	/* ---- Constructors / Destructor ---- */
 	Return(Expr* e,Function* f);
 	~Return();
+	void print(int tabs=0);
 
 	/* ------------- Methods ------------- */
 	string buildIR(CFG *cfg);

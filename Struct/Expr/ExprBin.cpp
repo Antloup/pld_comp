@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ExprBin.h"
 #include "../IR.h"
+#include "../../Tools/PrintTool.h"
 
 
 ExprBin::ExprBin(Expr *exprLeft, ExprBinType::ExprBinType type, Expr *exprRight)
@@ -14,13 +15,15 @@ ExprBin::~ExprBin()
 {
 }
 
-void ExprBin::print()
+void ExprBin::print(int tabs)
 {
-    std::cout<<"Binary Expression : Type : "<<type<<std::endl;
-    std::cout<<"Expr 1 :";
-    exprLeft->print();
-    std::cout<<"Expr 2 :";
-    exprRight->print();
+    string stab = PrintTool::getTabs(tabs);
+    cout<< stab << "Binary Expression :" << endl;
+    cout <<stab <<"Type : "<<type<<endl;
+    cout<<stab <<"Expr 1 :" << endl;
+    exprLeft->print(tabs+1);
+    cout<<stab <<"Expr 2 :"<<endl;
+    exprRight->print(tabs+1);
 }
 
 string ExprBin::buildIR(CFG *cfg) {

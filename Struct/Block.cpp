@@ -1,5 +1,6 @@
 #include "Block.h"
 #include "Instr/If.h"
+#include "../Tools/PrintTool.h"
 
 
 Block::Block()
@@ -29,5 +30,17 @@ void Block::buildIR(CFG *cfg) {
     }
     for (auto &it : instrs) {
         it->buildIR(cfg);
+    }
+}
+
+void Block::print(int tabs) {
+    string stab = PrintTool::getTabs(tabs);
+    cout << stab <<"Declares :" << endl;
+    for(auto i : declares){
+        i->print(tabs+1);
+    }
+    cout << stab <<"Instrs :" << endl;
+    for(auto i : instrs){
+        i->print(tabs+1);
     }
 }

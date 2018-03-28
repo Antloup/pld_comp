@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ExprUni.h"
 #include "../IR.h"
+#include "../../Tools/PrintTool.h"
 
 
 ExprUni::ExprUni(Expr* expr, ExprUniType::ExprUniType type)
@@ -12,10 +13,12 @@ ExprUni::~ExprUni()
 {
 }
 
-void ExprUni::print()
+void ExprUni::print(int tabs)
 {
-    std::cout<<"Unary Expression : Type :"<<type<<std::endl;
-    expr->print();
+    string stab = PrintTool::getTabs(tabs);
+    std::cout<< stab <<"Unary Expression :"<<endl;
+    cout << stab <<"Type :"<<type<<std::endl;
+    expr->print(tabs+1);
 }
 
 string ExprUni::buildIR(CFG *cfg) {

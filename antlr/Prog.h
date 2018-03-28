@@ -137,15 +137,13 @@ public:
             prog->addFunction(f);
         }
         printFunctionTable();
-
-        prog->print();
+        printVarTable();
 
         return prog;
     }
 
     virtual antlrcpp::Any visitGlobalVar(ProgParser::GlobalVarContext *ctx) override {
         GlobalVar* gv = new GlobalVar(visit(ctx->type()),visit(ctx->name()),visit(ctx->expr()));
-        gv->print();
         return gv;
     }
 
@@ -164,7 +162,6 @@ public:
 
         Block* block = visit(ctx->block());
         f->addBlock(block);
-        f->print();
 
         return f;
     }
@@ -188,7 +185,6 @@ public:
             Instr* instr = visit(i);
             instr->setParentBlock(block);
             block->addInstruction(instr);
-            printVarTable();
         }
         blockStack->pop();
         return block;
@@ -259,7 +255,6 @@ public:
     }
 
     virtual antlrcpp::Any visitType(ProgParser::TypeContext *ctx) override {
-        std::cout<<"Visited Type"<<std::endl;
         std::string type = ctx->getText();
         if(type == "int32_t")      return Type::INT32_T;
         else if(type == "int64_t") return Type::INT64_T;
@@ -268,7 +263,6 @@ public:
     }
 
     virtual antlrcpp::Any visitSigType(ProgParser::SigTypeContext *ctx) override {
-        std::cout<<"Visited SigType"<<std::endl;
         std::string type = ctx->getText();
         if(type == "int32_t")           return SigType::INT32_T;
         else if(type == "int32_t[]")    return SigType::INT32_T_ARRAY;
@@ -280,7 +274,6 @@ public:
     }
 
     virtual antlrcpp::Any visitRetType(ProgParser::RetTypeContext *ctx) override {
-        std::cout<<"Visited RetType"<<std::endl;
         std::string type = ctx->getText();
         if(type == "int32_t")      return RetType::INT32_T;
         else if(type == "int64_t") return RetType::INT64_T;
@@ -290,17 +283,14 @@ public:
     }
 
     virtual antlrcpp::Any visitSigParams(ProgParser::SigParamsContext *ctx) override {
-        std::cout<<"Visited SigParams"<<std::endl;
         return visitChildren(ctx);
     }
 
     virtual antlrcpp::Any visitSigDeclare(ProgParser::SigDeclareContext *ctx) override {
-        std::cout<<"Visited SigDeclare"<<std::endl;
         return visitChildren(ctx);
     }
 
     virtual antlrcpp::Any visitParams(ProgParser::ParamsContext *ctx) override {
-        std::cout<<"Visited Params"<<std::endl;
         return visitChildren(ctx);
     }
 
@@ -327,136 +317,112 @@ public:
     }
 
     virtual antlrcpp::Any visitName(ProgParser::NameContext *ctx) override {
-        std::cout<<"Visited Name"<<std::endl;
         return ctx->getText();
     }
 
     virtual antlrcpp::Any visitPar(ProgParser::ParContext *ctx) override {
-        std::cout<<"Visited Par"<<std::endl;
         return (Expr*)visit(ctx->expr());
     }
 
     virtual antlrcpp::Any visitInf(ProgParser::InfContext *ctx) override {
-        std::cout<<"Visited inf"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::INF,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitEgal(ProgParser::EgalContext *ctx) override {
-        std::cout<<"Visited Egal"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::EGAL,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitMult(ProgParser::MultContext *ctx) override {
-        std::cout<<"Visited Mult"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::MULT,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitAffect(ProgParser::AffectContext *ctx) override {
-        std::cout<<"Visited Affect"<<std::endl;
         Var* var = this->getVar(blockStack->top(),ctx->name()->getText());
         Affect *affect = new Affect(var,visit(ctx->expr()));
         return (Expr*)affect;
     }
 
     virtual antlrcpp::Any visitOr(ProgParser::OrContext *ctx) override {
-        std::cout<<"Visited Ou"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::OR,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitDiff(ProgParser::DiffContext *ctx) override {
-        std::cout<<"Visited Diff"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::DIFF,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitNo(ProgParser::NoContext *ctx) override {
-        std::cout<<"Visited Non"<<std::endl;
         Expr* e = visit(ctx->expr());
         ExprUni* expr = new ExprUni(e,ExprUniType::NO);
         return (Expr*)expr;
     }
 
     virtual antlrcpp::Any visitPlus(ProgParser::PlusContext *ctx) override {
-        std::cout<<"Visited Plus"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::PLUS,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitSup(ProgParser::SupContext *ctx) override {
-        std::cout<<"Visited Sup"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::SUP,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitAnd(ProgParser::AndContext *ctx) override {
-        std::cout<<"Visited Et"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::AND,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitInv(ProgParser::InvContext *ctx) override {
-        std::cout<<"Visited Inv"<<std::endl;
         ExprUni* expr = new ExprUni(visit(ctx->expr()),ExprUniType::INV);
         return (Expr*)expr;
     }
 
     virtual antlrcpp::Any visitDiv(ProgParser::DivContext *ctx) override {
-        std::cout<<"Visited Div"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::DIV,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitCallfunction(ProgParser::CallfunctionContext *ctx) override {
-        std::cout<<"Visited CallFunction"<<std::endl;
         Function* f = getFunction(ctx->NAME()->getText());
         FunctionCall *fc = new FunctionCall(f);
         ProgParser::ParamsContext *paramChild = ctx->params();
@@ -471,7 +437,6 @@ public:
     }
 
     virtual antlrcpp::Any visitPredecr(ProgParser::PredecrContext *ctx) override {
-        std::cout<<"Visited Predecr"<<std::endl;
         Var* var = this->getVar(blockStack->top(),ctx->name()->getText());
         ExprVar* ev = new ExprVar(var);
         ExprUni* expr = new ExprUni(ev,ExprUniType::PREDECR);
@@ -479,7 +444,6 @@ public:
     }
 
     virtual antlrcpp::Any visitPostdecr(ProgParser::PostdecrContext *ctx) override {
-        std::cout<<"Visited Postdecr"<<std::endl;
         Var* var = this->getVar(blockStack->top(),ctx->name()->getText());
         ExprVar* ev = new ExprVar(var);
         ExprUni* expr = new ExprUni(ev,ExprUniType::POSTDECR);
@@ -487,29 +451,24 @@ public:
     }
 
     virtual antlrcpp::Any visitSupegal(ProgParser::SupegalContext *ctx) override {
-        std::cout<<"Visited Supegal"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::SUPEGAL,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitMinus(ProgParser::MinusContext *ctx) override {
-        std::cout<<"Visited Moins"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::MINUS,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitPostincr(ProgParser::PostincrContext *ctx) override {
-        std::cout<<"Visited Postincr"<<std::endl;
         Var* var = this->getVar(blockStack->top(),ctx->name()->getText());
         ExprVar* ev = new ExprVar(var);
         ExprUni* expr = new ExprUni(ev,ExprUniType::POSTINCR);
@@ -517,7 +476,6 @@ public:
     }
 
     virtual antlrcpp::Any visitPreincr(ProgParser::PreincrContext *ctx) override {
-        std::cout<<"Visited Preincr"<<std::endl;
         Var* var = this->getVar(blockStack->top(),ctx->name()->getText());
         ExprVar* ev = new ExprVar(var);
         ExprUni* expr = new ExprUni(ev,ExprUniType::PREINCR);
@@ -525,24 +483,20 @@ public:
     }
 
     virtual antlrcpp::Any visitModulo(ProgParser::ModuloContext *ctx) override {
-        std::cout<<"Visited Modulo"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::MODULO,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitInfegal(ProgParser::InfegalContext *ctx) override {
-        std::cout<<"Visited Infegal"<<std::endl;
         std::vector<ProgParser::ExprContext*> child = ctx->expr();
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
         ExprBin *exprBin = new ExprBin(expr1,ExprBinType::INFEGAL,expr2);
-        exprBin->print();
         return (Expr*)exprBin;
     }
 

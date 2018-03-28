@@ -40,6 +40,7 @@ int main(void){
 	Prog visitor;
 
     Program* prog = visitor.visit(tree);
+    prog->print();
     cout << "----------------------------------------------------------" << endl;
     CFG* cfg = new CFG();
     prog->buildIR(cfg);

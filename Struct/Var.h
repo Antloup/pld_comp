@@ -26,7 +26,7 @@ public:
 
 	Expr* getExpr() const;
 
-	virtual void print();
+	virtual void print(int tabs=0);
 
 	void buildIR(CFG* cfg);
 

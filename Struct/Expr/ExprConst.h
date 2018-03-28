@@ -9,7 +9,7 @@ public :
     ~ExprConst();
 
     int getConstant();
-    void print();
+    void print(int tabs=0);
     string buildIR(CFG *cfg);
 
 protected :

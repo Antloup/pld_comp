@@ -1,5 +1,6 @@
 #include "Var.h"
 #include "IR.h"
+#include "../Tools/PrintTool.h"
 
 using namespace std;
 
@@ -29,11 +30,13 @@ Expr* Var::getExpr() const {
     return expr;
 }
 
-void Var::print() {
-    std::cout << "GlobalVar :   Name : " << name << std::endl;
-    std::cout << "              Type : " << type << std::endl;
+void Var::print(int tabs) {
+    string stab = PrintTool::getTabs(tabs);
+    cout << stab <<"Var :"<<endl;
+    cout << stab <<"Name : " << name << endl;
+    cout << stab <<"Type : " << type << endl;
     if(size > 1){
-        std::cout << "          Array (Size : " << size << std::endl;
+        cout << stab <<"Array (Size : " << size << endl;
     }
 }
 

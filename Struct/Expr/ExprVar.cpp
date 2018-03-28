@@ -11,9 +11,9 @@ ExprVar::~ExprVar()
 {
 }
 
-void ExprVar::print()
+void ExprVar::print(int tabs)
 {
-    var->print();
+    var->print(tabs+1);
 }
 
 string ExprVar::buildIR(CFG *cfg) {

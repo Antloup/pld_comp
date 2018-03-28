@@ -13,7 +13,7 @@ public:
 	~FunctionCall();
 
 	/* ------------- Methods ------------- */
-	void print();
+	void print(int tabs=0);
 	void addParam(Expr* expr);
 	string buildIR(CFG *cfg);
 

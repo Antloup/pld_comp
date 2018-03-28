@@ -1,6 +1,7 @@
 #include "Function.h"
 #include "IR.h"
 #include <iostream>
+#include "../Tools/PrintTool.cpp"
 
 
 Function::Function()
@@ -17,15 +18,18 @@ Function::Function(std::string name, RetType::RetType retType) : name(name), ret
 
 }
 
-void Function::print() {
-    std::cout << "Function :    Name : " << name << std::endl;
-    std::cout << "              RetType : " << retType << std::endl;
-    std::cout << "              Params : "<< std::endl;
+void Function::print(int tabs) {
+    cout << "Function :" << endl;
+    string stab = PrintTool::getTabs(tabs);
+    cout << stab <<"Name : " << name << endl;
+    cout << stab <<"RetType : " << retType << endl;
+    cout << stab <<"Params : "<< endl;
     for(auto i : params){
         // Print each params
-        (*i).print();
+        (*i).print(tabs+1);
     }
-    std::cout << "              Block : "<< block << std::endl;
+    cout << stab << "Block ("<< block << ") :" <<endl;
+    block->print(tabs+1);
 }
 
 void Function::addParam(Param* param) {

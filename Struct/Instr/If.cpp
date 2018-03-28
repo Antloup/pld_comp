@@ -1,5 +1,5 @@
 #include "If.h"
-
+#include "../../Tools/PrintTool.h"
 
 
 If::If(Expr* e, Block* ifBlock,Block* elseBlock) : Instr(e), childIf(ifBlock), childElse(elseBlock)
@@ -35,4 +35,20 @@ string If::buildIR(CFG *cfg) {
         this->childElse->buildIR(cfg);
     }
     cfg->add_bb(afterIfBB);
+}
+
+void If::print(int tabs) {
+    string stab = PrintTool::getTabs(tabs);
+    cout << stab <<"If" << endl;
+    cout << stab <<"Condition : "<<endl;
+    expr->print(tabs+1);
+    cout << endl;
+    cout << stab <<"If Block: " <<endl;
+    childIf->print(tabs+1);
+    cout << endl;
+    if(childElse){
+        cout << stab <<"Else Block: "<<endl;
+        childElse->print(tabs+1);
+        cout << endl;
+    }
 }

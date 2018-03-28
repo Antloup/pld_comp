@@ -18,6 +18,7 @@ public:
 	void addFunction(Function* f);
 	void print();
 	void buildIR(CFG* cfg);
+	static string getTabs(int tabs);
 
 private:
 

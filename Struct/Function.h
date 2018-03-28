@@ -20,7 +20,7 @@ public:
 
 	/* ------------- Methods ------------- */
 
-	void print();
+	void print(int tabs=0);
 	void addParam(Param* param);
 	void addBlock(Block* b);
 	void buildIR(CFG* cfg);

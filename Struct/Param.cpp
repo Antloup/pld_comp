@@ -11,7 +11,7 @@ Param::~Param()
 {
 }
 
-void Param::print() {
+void Param::print(int tab) {
     std::cout << "Name : " << name << std::endl;
     std::cout << "Type : " << type << std::endl;
 }

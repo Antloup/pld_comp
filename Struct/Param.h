@@ -13,7 +13,7 @@ public:
 	~Param();
 
 	/* ------------- Methods ------------- */
-	void print();
+	void print(int tabs=0);
 
 private:
 

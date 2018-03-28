@@ -20,6 +20,7 @@ public:
     Block* getParentBlock();
 
 	virtual string buildIR(CFG* cfg);
+	virtual void print(int tabs=0);
 protected:
 
 	/* ------------ Attributs ------------ */
