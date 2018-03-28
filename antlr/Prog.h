@@ -123,6 +123,13 @@ public:
             this->addVar(nullptr,gv);
         }
 
+        //Adding default function
+        Function* putCharFunction = new Function("putchar",RetType::VOID);
+        putCharFunction->addParam(new Param(SigType::CHAR,"output"));
+        Function* getCharFunction = new Function("getchar",RetType::CHAR);
+        functionTable->insert( std::make_pair("putchar",putCharFunction));
+        functionTable->insert( std::make_pair("getchar",getCharFunction));
+
         std::vector<ProgParser::FunctionContext*> functionChild = ctx->function();
         for(auto i : functionChild){
             //Adding functions
