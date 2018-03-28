@@ -1,7 +1,8 @@
 #pragma once
 #include "../Instr/Instr.h"
 
-class CFG;
+class IRInstr;
+class BasicBlock;
 class Expr
 {
 public:

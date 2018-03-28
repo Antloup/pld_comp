@@ -1,6 +1,5 @@
 #pragma once
 #include "Var.h"
-#include "IR.h"
 
 class GlobalVar :
         public Var
@@ -13,7 +12,6 @@ public:
 
 	/* ------------- Methods ------------- */
 
-	void buildIR(CFG* cfg);
 private:
 
 	/* ------------ Attributs ------------ */
