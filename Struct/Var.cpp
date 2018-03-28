@@ -1,5 +1,7 @@
 #include "Var.h"
+#include "IR.h"
 
+using namespace std;
 
 
 Var::Var(Type::Type type, std::string name, Expr *expr) : type(type),name(name),expr(expr)
@@ -36,6 +38,8 @@ void Var::print() {
 }
 
 void Var::buildIR(CFG *cfg) {
-    // todo : compléter cette fonction
-
+    vector<string> params;
+    params.push_back(name);
+    params.push_back("buildIR var");
+    cfg->current_bb->add_IRInstr(IRInstr::ldconst,*this, params);
 }
