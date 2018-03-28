@@ -22,7 +22,7 @@ int main(void){
     while (!prgFile.eof())
     {
         getline(prgFile, line);
-        prg += line;
+        prg += line+"\n";
         cout << line << endl;
     }
 	//string userInput = "int32_t a=5;\nint32_t b=4; int32_t main(){int64_t c; c = 4 + a;}";
