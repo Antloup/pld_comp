@@ -40,6 +40,7 @@ string ExprBin::buildIR(CFG *cfg) {
             break;
         case ExprBinType::MINUS:
             cfg->current_bb->add_IRInstr(IRInstr::sub, params);
+
             break;
         default:
             cfg->current_bb->add_IRInstr(IRInstr::add, params);

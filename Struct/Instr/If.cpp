@@ -12,9 +12,8 @@ If::~If()
 }
 
 void If::buildIR(CFG *cfg) {
-    // todo : compléter cette fonction
+    // todo : compléter cette fonction (générale)
     // ici expr est le test du if
-    // todo : faire en sorte que le buildIR mette bien à jour cfg->currentBB
     expr->buildIR(cfg);
     BasicBlock* exprBB = cfg->current_bb;
     // todo : faire en sorte que thenBB et elseBB correspondent bien à leur code

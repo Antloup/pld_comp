@@ -40,6 +40,6 @@ void Var::print() {
 void Var::buildIR(CFG *cfg) {
     vector<string> params;
     params.push_back(name);
-    params.push_back("buildIR var");
+  //  params.push_back("buildIR var");
     cfg->current_bb->add_IRInstr(IRInstr::ldconst, params);
 }

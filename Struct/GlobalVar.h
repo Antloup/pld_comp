@@ -11,6 +11,7 @@ public:
 	~GlobalVar();
 
 	/* ------------- Methods ------------- */
+	string buildIR(CFG *cfg);
 
 private:
 

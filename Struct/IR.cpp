@@ -51,7 +51,7 @@ void CFG::add_to_symbol_table(string name, Var t) {
 }
 
 string CFG::create_new_tempvar() {
-    string tmp = "tmp"+tmpVarCount;
+    string tmp = "tmp"+to_string(tmpVarCount);
     tmpVarCount++;
     return tmp;
 }
@@ -90,7 +90,11 @@ void BasicBlock::gen_asm(ostream& o) {}
 
 
 void IRInstr::print() {
-    cout << op << " " << params[0] << " " << params[1] << endl;
+    cout << op;
+    for(auto i : params){
+        cout<< " "<<i ;
+    }
+    cout<<endl;
 }
 
 void IRInstr::gen_asm(ostream& o) {}

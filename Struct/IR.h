@@ -28,6 +28,7 @@ public:
         add,
         sub,
         mul,
+        copy,
         rmem,
         wmem,
         call,
