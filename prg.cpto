@@ -6,7 +6,7 @@ char b='b';
 
 void main(){
     int i;
-    i = a + 1;
+    i = a + 1 * 5;
     i =!a;
 //    d++;
 //    i = c;

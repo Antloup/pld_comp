@@ -12,6 +12,8 @@ public:
 	~Return();
 
 	/* ------------- Methods ------------- */
+	void buildIR(CFG *cfg);
+
 
 private:
 

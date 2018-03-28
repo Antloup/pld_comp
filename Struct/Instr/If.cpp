@@ -29,6 +29,11 @@ void If::buildIR(CFG *cfg) {
     thenBB->exit_false = nullptr;
     elseBB->exit_true = afterIfBB;
     elseBB->exit_false = nullptr;
-    cfg->current_bb = afterIfBB;
-
+    cfg->add_bb(thenBB);
+    this->childIf->buildIR(cfg);
+    cfg->add_bb(elseBB);
+    if (childElse) {
+        this->childElse->buildIR(cfg);
+    }
+    cfg->add_bb(afterIfBB);
 }
