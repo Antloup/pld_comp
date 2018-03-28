@@ -9,6 +9,8 @@ public :
 
     int getConstant();
     void print();
+    void buildIR(CFG *cfg);
+
 protected :
     int constant;
 };

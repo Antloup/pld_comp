@@ -18,3 +18,6 @@ ExprConst::~ExprConst()
 {
 
 }
+
+void ExprConst::buildIR(CFG *cfg) {
+}

@@ -1,10 +1,10 @@
 #include <iostream>
 #include "ExprBin.h"
+#include "../IR.h"
 
 
-
-ExprBin::ExprBin(Expr *expr1, ExprBinType::ExprBinType type, Expr *expr2)
-        : Expr(), expr1(expr1),type(type),expr2(expr2)
+ExprBin::ExprBin(Expr *exprLeft, ExprBinType::ExprBinType type, Expr *exprRight)
+        : Expr(), exprLeft(exprLeft),type(type),exprRight(exprRight)
 {
 
 }
@@ -18,8 +18,13 @@ void ExprBin::print()
 {
     std::cout<<"Binary Expression : Type : "<<type<<std::endl;
     std::cout<<"Expr 1 :";
-    expr1->print();
+    exprLeft->print();
     std::cout<<"Expr 2 :";
-    expr2->print();
+    exprRight->print();
+}
+
+void ExprBin::buildIR(CFG *cfg) {
+    exprRight->buildIR(cfg);
+    exprLeft->buildIR(cfg);
 }
 

@@ -17,3 +17,7 @@ void ExprUni::print()
     std::cout<<"Unary Expression : Type :"<<type<<std::endl;
     expr->print();
 }
+
+void ExprUni::buildIR(CFG *cfg) {
+
+}

@@ -13,7 +13,7 @@ public:
 	/* ------------- Methods ------------- */
 	virtual void print() = 0;
 
-    void buildIR(CFG *pCFG);
+    virtual void buildIR(CFG *cfg) = 0;
 
     /* ------------ Attributs ------------ */
 };

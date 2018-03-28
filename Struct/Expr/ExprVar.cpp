@@ -16,5 +16,9 @@ void ExprVar::print()
     var->print();
 }
 
+void ExprVar::buildIR(CFG *cfg) {
+
+}
+
 
 
