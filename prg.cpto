@@ -1,5 +1,13 @@
 #include <iostream>
 #include "UnHeader.h"
 
-int32_t a=5;
-char b='b';
+int64_t a=5;
+
+void main(){
+    int64_t c;
+    c = a*4+5;
+    if(c == 3){
+        int64_t d;
+        d++;
+    }
+}

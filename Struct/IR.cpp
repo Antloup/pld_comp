@@ -72,9 +72,7 @@ Var CFG::get_var_type(string name) {
 void CFG::print() {
     // todo : à remplacer par un parcours intelligent qui passe par les pointeurs (exit_true/false et compagnie)
     for (auto &it : bbs) {
-        for (auto &jt : it->instrs) {
-            jt->print();
-        }
+        it->print();
     }
 }
 
@@ -88,9 +86,59 @@ IRInstr::IRInstr(BasicBlock *bb, IRInstr::Operation op, vector<string> params) :
 
 void BasicBlock::gen_asm(ostream& o) {}
 
+void BasicBlock::print() {
+    cout << "----- Block : " + label << "-----" << endl;
+    for (auto &it : instrs) {
+        it->print();
+    }
+    cout << endl;
+}
+
 
 void IRInstr::print() {
-    cout << op;
+    string opName = "unk";
+    switch(op){
+        case IRInstr::ldconst:
+            opName = "ldconst";
+            break;
+        case IRInstr::add:
+            opName = "add";
+            break;
+        case IRInstr::sub:
+            opName = "sub";
+            break;
+        case IRInstr::mul:
+            opName = "mul";
+            break;
+        case IRInstr::copy:
+            opName = "copy";
+            break;
+        case IRInstr::rmem:
+            opName = "rmem";
+            break;
+        case IRInstr::wmem:
+            opName = "wmem";
+            break;
+        case IRInstr::call:
+            opName = "call";
+            break;
+        case IRInstr::cmp_eq:
+            opName = "cmp_eq";
+            break;
+        case IRInstr::cmp_lt:
+            opName = "cmp_lt";
+            break;
+        case IRInstr::cmp_le:
+            opName = "cmp_le";
+            break;
+        case IRInstr::no:
+            opName = "no";
+            break;
+        case IRInstr::ret:
+            opName = "ret";
+            break;
+    }
+    cout << opName;
     for(auto i : params){
         cout<< " "<<i ;
     }

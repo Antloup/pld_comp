@@ -1,5 +1,5 @@
 #include "Instr.h"
-
+#include "../Expr/Expr.h"
 
 
 Instr::Instr(Expr *expr) : expr(expr)
@@ -16,8 +16,8 @@ void Instr::setParentBlock(Block *b)
     parentBlock = b;
 }
 
-void Instr::buildIR(CFG *cfg) {
-
+string Instr::buildIR(CFG *cfg) {
+    return expr->buildIR(cfg);
 }
 
 Block* Instr::getParentBlock(){

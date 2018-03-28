@@ -1,6 +1,9 @@
 #pragma once
 #include "Instr.h"
+#include "../Function.h"
+#include <string>
 
+using namespace std;
 class Expr;
 
 class Return :
@@ -8,15 +11,15 @@ class Return :
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	Return(Expr* e);
+	Return(Expr* e,Function* f);
 	~Return();
 
 	/* ------------- Methods ------------- */
-	void buildIR(CFG *cfg);
+	string buildIR(CFG *cfg);
 
 
 private:
-
+	Function* function;
 	/* ------------ Attributs ------------ */
 };
 

@@ -11,6 +11,7 @@ public:
 	~While();
 
 	/* ------------- Methods ------------- */
+	string buildIR(CFG* cfg);
 
 private:
 

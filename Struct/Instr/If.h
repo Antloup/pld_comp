@@ -1,6 +1,9 @@
 #pragma once
 #include "Instr.h"
 #include "../Program.h"
+#include <string>
+
+using namespace std;
 
 class If :
 	public Instr
@@ -11,7 +14,7 @@ public:
 	~If();
 
 	/* ------------- Methods ------------- */
-	void buildIR(CFG* cfg);
+	string buildIR(CFG* cfg);
 
 protected:
 

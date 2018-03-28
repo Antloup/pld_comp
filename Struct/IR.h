@@ -36,6 +36,14 @@ public:
         cmp_lt,
         cmp_le,
         no,
+        ret,
+        unk,
+        and_op,
+        or_op,
+        div,
+        cmp_ge,
+        cmp_gt,
+        cmp_neq,
     } Operation;
 
 
@@ -79,7 +87,7 @@ public:
 
     //todo : ajouter type ?
     void add_IRInstr(IRInstr::Operation op, vector<string> params);
-
+    void print();
 
     // No encapsulation whatsoever here. Feel free to do better.
     BasicBlock* exit_true;  /**< pointer to the next basic block, true branch. If nullptr, return from procedure */

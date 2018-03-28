@@ -29,6 +29,7 @@ private:
     std::map<std::pair<Block*,std::string>,Var*>* varTable;
     std::map<std::string,Function*>* functionTable;
     std::stack<Block*> *blockStack;
+    Function* lastFunction;
 
 public:
     Prog() : ProgBaseVisitor(){
@@ -93,11 +94,13 @@ public:
     }
 
     void addFunction(std::string name,Function* f){
+
         if ( !functionTable->insert( std::make_pair(name,f)).second) {
             std::cerr << "Function '"<<name<<"' already exists" << std::endl;
             std::cerr.flush();
             exit(4);
         }
+        lastFunction = f;
     }
 
     Function* getFunction(std::string name){
@@ -204,7 +207,7 @@ public:
     }
 
     virtual antlrcpp::Any visitReturnStatement(ProgParser::ReturnStatementContext *ctx) override {
-        Return* ret = new Return((Expr*)visit(ctx->expr()));
+        Return* ret = new Return((Expr*)visit(ctx->expr()),this->lastFunction);
         return (Instr*)ret;
     }
 

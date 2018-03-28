@@ -1,4 +1,5 @@
 #include "Function.h"
+#include "IR.h"
 #include <iostream>
 
 
@@ -36,7 +37,22 @@ void Function::addBlock(Block *b) {
 }
 
 void Function::buildIR(CFG* cfg) {
+    cout << "Function" << endl;
     // todo : compléter cette fonction
-    // todo : (peut-être) ajouter des buildIR ici
+    // todo: buildIR Param ?
     block->buildIR(cfg);
+
+    BasicBlock* functionBB = cfg->current_bb;
+
+    BasicBlock* afterBB = new BasicBlock(cfg,"EndFunction");
+    // todo : inverser exit_true et exit_false ? gneuh ô.O
+    functionBB->exit_true = afterBB;
+    functionBB->exit_false = nullptr;
+    cfg->add_bb(afterBB);
+
+
+}
+
+string Function::getName() {
+    return name;
 }

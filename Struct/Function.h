@@ -24,6 +24,7 @@ public:
 	void addParam(Param* param);
 	void addBlock(Block* b);
 	void buildIR(CFG* cfg);
+	string getName();
 
 private:
 

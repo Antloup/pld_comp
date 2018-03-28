@@ -1,6 +1,9 @@
 #pragma once
 
 #include <vector>
+#include <string>
+
+using namespace std;
 
 class Expr;
 class Block;
@@ -16,7 +19,7 @@ public:
     void setParentBlock(Block* b);
     Block* getParentBlock();
 
-	virtual void buildIR(CFG* cfg);
+	virtual string buildIR(CFG* cfg);
 protected:
 
 	/* ------------ Attributs ------------ */

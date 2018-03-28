@@ -11,7 +11,7 @@ If::~If()
 {
 }
 
-void If::buildIR(CFG *cfg) {
+string If::buildIR(CFG *cfg) {
     // todo : compléter cette fonction (générale)
     // ici expr est le test du if
     expr->buildIR(cfg);
