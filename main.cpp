@@ -8,9 +8,9 @@
 using namespace std;
 using namespace antlr4;
 
-int main(void){
+int main(int argc, char **argv){
     ifstream prgFile;
-    prgFile.open("../prg.cpto");
+    prgFile.open(argv[1]);
     string prg;
     string line;
     if(!prgFile.is_open()){
