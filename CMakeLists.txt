@@ -4,7 +4,7 @@ project(pld_comp)
 set(CMAKE_CXX_STANDARD 11)
 
 # mettez ici le chemin vers votre runtime (en supposant que vous avez réussi à tout installer :3)
-set(ANTLR_RUNTIME_DIR /home/lucas/Documents/antlr4-cpp-runtime-4.7.1-source)
+set(ANTLR_RUNTIME_DIR /home/nathan/Téléchargements/antlr_cpp_runtime_4.7.1)
 
 set(ANTLR_LIB_DIR ${ANTLR_RUNTIME_DIR}/dist)
 set(ANTLR_SRC_DIR ${ANTLR_RUNTIME_DIR}/runtime/src)

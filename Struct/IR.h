@@ -15,7 +15,11 @@
 
 class BasicBlock;
 class CFG;
-class DefFonction;
+class Function;
+
+const string RED = "\033[1;31m";
+const string RESET = "\033[0m";
+const string BLUE = "\033[1;34m";
 
 using namespace std;
 //! The class for one 3-address instruction
@@ -45,7 +49,6 @@ public:
         cmp_gt,
         cmp_neq,
     } Operation;
-
 
     /**  constructor */
     IRInstr(BasicBlock* bb_, Operation op, vector<string> params);
@@ -114,9 +117,8 @@ protected:
  */
 class CFG {
 public:
-//    CFG(DefFonction* ast);
-    CFG();
-//    DefFonction* ast; /**< The AST this CFG comes from */
+    CFG(Function* ast);
+    Function* ast; /**< The AST this CFG comes from */
 
     void add_bb(BasicBlock* bb);
 

@@ -17,14 +17,16 @@ public:
 	void addGlobalVar(GlobalVar* gv);
 	void addFunction(Function* f);
 	void print();
-	void buildIR(CFG* cfg);
+	void buildIR();
 	static string getTabs(int tabs);
+
+    vector<CFG*> getCFGs();
 
 private:
 
 	/* ------------ Attributs ------------ */
 	std::vector<Function*> functions;
 	std::vector<GlobalVar*> globalVars;
-
+    vector<CFG*> cfgs;
 };
 

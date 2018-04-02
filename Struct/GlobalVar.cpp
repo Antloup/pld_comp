@@ -13,8 +13,6 @@ GlobalVar::~GlobalVar()
 }
 
 string GlobalVar::buildIR(CFG *cfg) {
-
-
         vector<string> params;
         string dest = name;
         string source = expr->buildIR(cfg);

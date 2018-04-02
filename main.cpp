@@ -18,32 +18,29 @@ int main(void){
         return 1;
     }
 
-    cout << "Program :" << endl;
     while (!prgFile.eof())
     {
         getline(prgFile, line);
         prg += line+"\n";
-        cout << line << endl;
     }
-	//string userInput = "int32_t a=5;\nint32_t b=4; int32_t main(){int64_t c; c = 4 + a;}";
 	ANTLRInputStream input(prg);
 	ProgLexer lexer(&input);
 	CommonTokenStream tokens(&lexer);
     tokens.fill();
-    for (auto token : tokens.getTokens()) {
-        std::cout << token->toString() << std::endl;
-    }
+//    for (auto token : tokens.getTokens()) {
+//        std::cout << token->toString() << std::endl;
+//    }
 	ProgParser parser(&tokens);
 	tree::ParseTree* tree = parser.program();
-    std::cout<<tree->toStringTree(&parser)<<std::endl;
 
 	Prog visitor;
 
     Program* prog = visitor.visit(tree);
-    prog->print();
-    cout << "----------------------------------------------------------" << endl;
-    CFG* cfg = new CFG();
-    prog->buildIR(cfg);
-    cfg->print();
+//    on crée l'IR
+    prog->buildIR();
+//    on génère l'assembleur
+    for (auto &it : prog->getCFGs()) {
+        it->gen_asm(cout);
+    }
 	return 0;
 }

@@ -6,16 +6,4 @@ int64_t a=5;
 void main(){
     int64_t c;
     c = a*4+5;
-    if(c == 3){
-        int64_t d;
-        d++;
-    }
-    else{
-        c = 7;
-    }
-    c = 6;
-    while(c != 0){
-        c--;
-    }
-    c = 8;
 }

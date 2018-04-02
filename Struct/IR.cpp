@@ -3,10 +3,11 @@
 //
 
 #include "IR.h"
+#include "Function.h"
 
 using namespace std;
 
-CFG::CFG() {
+CFG::CFG(Function* f) : ast(f) {
     BasicBlock* prologue = new BasicBlock(this, "prologue");
     BasicBlock* epilogue = new BasicBlock(this, "epilogue");
     prologue->exit_true = epilogue;
@@ -24,9 +25,16 @@ void CFG::add_bb(BasicBlock *bb) {
 }
 
 void CFG::gen_asm(ostream &o) {
+    if (ast != nullptr) {
+        o << RED << "------ CFG de " << ast->getName() << "-------" << RESET << endl;
+    }
+    else {
+        o << RED << "------ CFG de GlobalVars -------" << RESET << endl;
+    }
     gen_asm_prologue(o);
-    //todo : parcours du CFG
-
+    for (auto &it : bbs) {
+        it->gen_asm(o);
+    }
     gen_asm_epilogue(o);
 }
 
@@ -69,13 +77,6 @@ Var CFG::get_var_type(string name) {
     return Var(Type::CHAR, basic_string<char, char_traits<char>, allocator<char>>(), 0);
 }
 
-void CFG::print() {
-    // todo : à remplacer par un parcours intelligent qui passe par les pointeurs (exit_true/false et compagnie)
-    for (auto &it : bbs) {
-        it->print();
-    }
-}
-
 BasicBlock::BasicBlock(CFG *cfg, string entry_label):cfg(cfg),label(entry_label){}
 
 void BasicBlock::add_IRInstr(IRInstr::Operation op, vector<string> params) {
@@ -84,42 +85,39 @@ void BasicBlock::add_IRInstr(IRInstr::Operation op, vector<string> params) {
 
 IRInstr::IRInstr(BasicBlock *bb, IRInstr::Operation op, vector<string> params) :bb(bb),op(op),params(params){}
 
-void BasicBlock::gen_asm(ostream& o) {}
-
-void BasicBlock::print() {
-    cout << "----- Block : " << label << "(" << this <<")-----" << endl;
-    cout << "ExitTrue : ";
+void BasicBlock::gen_asm(ostream& o) {
+    o << BLUE << "----- Block : " << label << "(" << this <<")-----" << endl;
+    o << "ExitTrue : ";
     if(exit_true){
         if(exit_true->label.size() < 1000){ //todo: weird bug when label is empty
-            cout << exit_true->label;
+            o << exit_true->label;
         }
-        cout << "(" << exit_true << ")" << endl;
+        o << "(" << exit_true << ")" << endl;
     }
     else{
-        cout << "None" << endl;
+        o << "None" << endl;
     }
 
-    cout << "ExitFalse : ";
+    o << "ExitFalse : ";
     if(exit_false){
         if(exit_false->label.size() < 1000){ //todo: weird bug when label is empty
-            cout << exit_false->label;
+            o << exit_false->label;
         }
-        cout << "(" << exit_false << ")" << endl;
+        o << "(" << exit_false << ")" << endl;
     }
     else{
-        cout << "None" << endl;
+        o << "None" << endl;
     }
-
+    o << RESET;
     for (auto &it : instrs) {
-        it->print();
+        it->gen_asm(o);
     }
-    cout << endl;
+    o << endl;
 }
 
-
-void IRInstr::print() {
+void IRInstr::gen_asm(std::ostream &o) {
     string opName = "unk";
-    switch(op){
+    switch (op) {
         case IRInstr::ldconst:
             opName = "ldconst";
             break;
@@ -177,11 +175,9 @@ void IRInstr::print() {
             opName = "cmp_neq";
             break;
     }
-    cout << opName;
+    o << opName;
     for(auto i : params){
-        cout<< " "<<i ;
+        o<< " "<<i ;
     }
-    cout<<endl;
+    o<<endl;
 }
-
-void IRInstr::gen_asm(ostream& o) {}
