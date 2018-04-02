@@ -28,6 +28,7 @@ void Block::buildIR(CFG *cfg) {
     for (auto &it : declares) {
         it->buildIR(cfg);
     }
+    cfg->incrementSize(declares.size());
     for (auto &it : instrs) {
         it->buildIR(cfg);
     }

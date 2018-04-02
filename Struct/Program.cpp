@@ -34,10 +34,12 @@ void Program::print() {
 }
 
 void Program::buildIR() {
-    CFG* cfg  = new CFG(nullptr);
-    cfgs.push_back(cfg);
-    for(auto &it : globalVars) {
-        it->buildIR(cfg);
+    if (!globalVars.empty()) {
+        CFG* cfg  = new CFG(nullptr);
+        cfgs.push_back(cfg);
+        for(auto &it : globalVars) {
+            it->buildIR(cfg);
+        }
     }
     for(auto &it : functions) {
         CFG* function_cfg = new CFG(it);

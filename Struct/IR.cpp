@@ -7,7 +7,7 @@
 
 using namespace std;
 
-CFG::CFG(Function* f) : ast(f) {
+CFG::CFG(Function* f) : ast(f), size(0) {
     BasicBlock* prologue = new BasicBlock(this, "prologue");
     bbs = std::vector<BasicBlock*>(0);
     add_bb(prologue);
@@ -21,7 +21,7 @@ void CFG::add_bb(BasicBlock *bb) {
 
 void CFG::gen_asm(ostream &o) {
     if (ast != nullptr) {
-        o << RED << "------ CFG de " << ast->getName() << "-------" << RESET << endl;
+        o << RED << "------ CFG de " << ast->getName() << " -------" << RESET << endl;
     }
     else {
         o << RED << "------ CFG de GlobalVars -------" << RESET << endl;
@@ -37,16 +37,26 @@ string CFG::IR_reg_to_asm(string reg) {
     return std::__cxx11::string();
 }
 
-//todo : parcourt le CFG pour calculer la taille de l'AR (nombre de variables * 8 octets + 8) ; METHODE A PART ?
 void CFG::gen_asm_prologue(ostream &o) {
-    o << "pushq %rbp" << endl;
-    o << "movq %rsp, %rbp" <<endl;
-    o << "sub $" << "TAILLE_AR_CALCULEE" << ", %rsp" <<endl;
+    if (ast) {
+        o << "pushq %rbp" << endl;
+        o << "movq %rsp, %rbp" <<endl;
+        if (ast->getName()=="main") {
+            o << "sub $" << (size+1)/2*16 << ", %rsp" <<endl;
+        }
+    }
 }
 
 void CFG::gen_asm_epilogue(ostream &o) {
-    o << "leave" << endl;
-    o << "ret" << endl;
+    if (ast) {
+        if (ast->getName()=="main") {
+            o << "leave" << endl;
+        } else {
+            o << "movq -" << size*8 << "(%rbp), %rax" <<endl;
+            o << "popq %rbp" <<endl;
+        }
+        o << "ret" << endl;
+    }
 }
 
 void CFG::add_to_symbol_table(string name, Var t) {
@@ -70,6 +80,10 @@ string CFG::new_BB_name() {
 
 Var CFG::get_var_type(string name) {
     return Var(Type::CHAR, basic_string<char, char_traits<char>, allocator<char>>(), 0);
+}
+
+void CFG::incrementSize(int add = 1) {
+    size += add;
 }
 
 BasicBlock::BasicBlock(CFG *cfg, string entry_label):cfg(cfg),label(entry_label){}
