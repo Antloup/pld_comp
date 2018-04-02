@@ -19,6 +19,7 @@ string Return::buildIR(CFG *cfg)
     BasicBlock* epilogue = new BasicBlock(cfg, "epilogue");
     cfg->current_bb->exit_true = epilogue;
     epilogue->exit_true = nullptr;
+    epilogue->exit_false = nullptr;
     cfg->add_bb(epilogue);
     return ret;
 }
