@@ -9,14 +9,9 @@ using namespace std;
 
 CFG::CFG(Function* f) : ast(f) {
     BasicBlock* prologue = new BasicBlock(this, "prologue");
-    BasicBlock* epilogue = new BasicBlock(this, "epilogue");
-    prologue->exit_true = epilogue;
-    epilogue->exit_false = nullptr;
     bbs = std::vector<BasicBlock*>(0);
     add_bb(prologue);
-    add_bb(epilogue);
     current_bb = prologue;
-    bbs.push_back(epilogue);
 }
 
 void CFG::add_bb(BasicBlock *bb) {

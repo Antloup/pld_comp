@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Affect.h"
-#include "ExprBin.h"
 #include "../IR.h"
 #include "../../Tools/PrintTool.h"
 
