@@ -20,17 +20,25 @@ void CFG::add_bb(BasicBlock *bb) {
 }
 
 void CFG::gen_asm(ostream &o) {
+    gen_asm_prologue(o);
+    for (auto &it : bbs) {
+        it->gen_asm(o);
+    }
+    gen_asm_epilogue(o);
+}
+
+void CFG::printIR(ostream &o) {
     if (ast != nullptr) {
         o << RED << "------ CFG de " << ast->getName() << " -------" << RESET << endl;
     }
     else {
         o << RED << "------ CFG de GlobalVars -------" << RESET << endl;
     }
-    gen_asm_prologue(o);
+    o << "- prologue -" << endl;
     for (auto &it : bbs) {
-        it->gen_asm(o);
+        it->print(o);
     }
-    gen_asm_epilogue(o);
+    o << "- epilogue -" << endl;
 }
 
 string CFG::IR_reg_to_asm(string reg) {
@@ -95,6 +103,12 @@ void BasicBlock::add_IRInstr(IRInstr::Operation op, vector<string> params) {
 IRInstr::IRInstr(BasicBlock *bb, IRInstr::Operation op, vector<string> params) :bb(bb),op(op),params(params){}
 
 void BasicBlock::gen_asm(ostream& o) {
+    for (auto &it : instrs) {
+        it->gen_asm(o);
+    }
+}
+
+void BasicBlock::print(ostream& o) {
     o << BLUE << "----- Block : " << label << "(" << this <<")-----" << endl;
     o << "ExitTrue : ";
     if(exit_true){
@@ -119,12 +133,75 @@ void BasicBlock::gen_asm(ostream& o) {
     }
     o << RESET;
     for (auto &it : instrs) {
-        it->gen_asm(o);
+        it->print(o);
     }
     o << endl;
 }
 
 void IRInstr::gen_asm(std::ostream &o) {
+    string opName = "unk";
+    switch (op) {
+        case IRInstr::ldconst:
+            //todo
+            break;
+        case IRInstr::add:
+            //todo
+            break;
+        case IRInstr::sub:
+            //todo
+            break;
+        case IRInstr::mul:
+            //todo
+            break;
+        case IRInstr::copy:
+            //todo
+            break;
+        case IRInstr::rmem:
+            //todo
+            break;
+        case IRInstr::wmem:
+            //todo
+            break;
+        case IRInstr::call:
+            //todo
+            break;
+        case IRInstr::cmp_eq:
+            //todo
+            break;
+        case IRInstr::cmp_lt:
+            //todo
+            break;
+        case IRInstr::cmp_le:
+            //todo
+            break;
+        case IRInstr::no:
+            //todo
+            break;
+        case IRInstr::ret:
+            //todo
+            break;
+        case IRInstr::cmp_ge:
+            //todo
+            break;
+        case IRInstr::cmp_gt:
+            //todo
+            break;
+        case IRInstr::and_op:
+            //todo
+            break;
+        case IRInstr::or_op:
+            //todo
+            break;
+        case IRInstr::div:
+            //todo
+            break;
+        case IRInstr::cmp_neq:
+            //todo
+            break;
+    }
+}
+
+void IRInstr::print(std::ostream &o) {
     string opName = "unk";
     switch (op) {
         case IRInstr::ldconst:
@@ -165,6 +242,7 @@ void IRInstr::gen_asm(std::ostream &o) {
             break;
         case IRInstr::ret:
             opName = "ret";
+            break;
         case IRInstr::cmp_ge:
             opName = "cmp_ge";
             break;
