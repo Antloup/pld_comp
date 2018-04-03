@@ -55,7 +55,7 @@ public:
 
     /** Actual code generation */
     void gen_asm(std::ostream &o); /**< x86 assembly code generation for this IR instruction */
-    void print();
+    void print(std::ostream &o);
 private:
     BasicBlock* bb; /**< The BB this instruction belongs to, which provides a pointer to the CFG this instruction belong to */
     Operation op;
@@ -90,7 +90,7 @@ public:
 
     //todo : ajouter type ?
     void add_IRInstr(IRInstr::Operation op, vector<string> params);
-    void print();
+    void print(ostream& o);
 
     // No encapsulation whatsoever here. Feel free to do better.
     BasicBlock* exit_true;  /**< pointer to the next basic block, true branch. If nullptr, return from procedure */
@@ -138,7 +138,7 @@ public:
     string new_BB_name();
     BasicBlock* current_bb;
     int tmpVarCount = 0;
-    void print();
+    void printIR(ostream &o);
 
     void incrementSize(int add);
 

@@ -63,15 +63,19 @@ int main(int argc, char **argv){
         prog->print();
     }
 
+    //    on crée l'IR
+    prog->buildIR();
+
     if(printIR){
-        //todo
+        for (auto &it : prog->getCFGs()) {
+            it->printIR(cout);
+        }
     }
 
-//    on crée l'IR
-    prog->buildIR();
-//    on génère l'assembleur
+    //    on génère l'assembleur
     for (auto &it : prog->getCFGs()) {
         it->gen_asm(cout);
     }
+
 	return 0;
 }

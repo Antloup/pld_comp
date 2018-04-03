@@ -1,7 +1,7 @@
 #include <iostream>
 #include "FunctionCall.h"
 #include "../../Tools/PrintTool.h"
-
+#include "../IR.h"
 
 FunctionCall::FunctionCall(Function* function) : Expr(), function(function)
 {
@@ -29,5 +29,20 @@ void FunctionCall::addParam(Expr *expr)
 }
 
 string FunctionCall::buildIR(CFG *cfg) {
+    vector<string> params;
+    string val = "";
+    if(function->getretType() == RetType::VOID){
+        val = cfg->create_new_tempvar();
+    }
+    else{
+        //todo : var destination retour ?
+    }
 
+    params.push_back(val); // destination
+    params.push_back(function->getName()); // function label
+    for(auto i : exprs){
+        params.push_back(i->buildIR(cfg)); // op
+    }
+    cfg->current_bb->add_IRInstr(IRInstr::call, params);
+    return function->getName();
 }
