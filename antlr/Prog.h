@@ -426,10 +426,13 @@ public:
         Function* f = getFunction(ctx->NAME()->getText());
         FunctionCall *fc = new FunctionCall(f);
         ProgParser::ParamsContext *paramChild = ctx->params();
-        for (auto i : paramChild->expr()) {
-            //Adding global var
-            fc->addParam(visit(i));
+        if(paramChild != nullptr){
+            for (auto i : paramChild->expr()) {
+                //Adding global var
+                fc->addParam(visit(i));
+            }
         }
+
         std::cout << "parent : " << ctx->parent->getText() << std::endl;
         return (Expr *) fc;
 

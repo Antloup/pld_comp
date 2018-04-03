@@ -31,6 +31,7 @@ void FunctionCall::addParam(Expr *expr)
 string FunctionCall::buildIR(CFG *cfg) {
     vector<string> params;
     string val = "";
+
     if(function->getretType() == RetType::VOID){
         val = cfg->create_new_tempvar();
     }
