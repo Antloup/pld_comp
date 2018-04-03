@@ -15,6 +15,8 @@ public:
 
     virtual string buildIR(CFG *cfg) = 0;
 
-    /* ------------ Attributs ------------ */
+protected:
+	/* ------------ Attributs ------------ */
+	Block *parentBlock;
 };
 

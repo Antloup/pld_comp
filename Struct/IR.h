@@ -141,6 +141,7 @@ public:
     void printIR(ostream &o);
 
     void incrementSize(int add);
+    int getSize ();
 
 protected:
     map<string, Var> SymbolType; /**< part of the symbol table  */

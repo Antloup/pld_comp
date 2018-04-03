@@ -4,9 +4,11 @@
 #include "../../Tools/PrintTool.h"
 
 
-ExprUni::ExprUni(Expr* expr, ExprUniType::ExprUniType type)
+ExprUni::ExprUni(Expr* expr, ExprUniType::ExprUniType type, Block *block)
         : Expr(), expr(expr), type(type)
-{}
+{
+    this->parentBlock = block;
+}
 
 
 ExprUni::~ExprUni()

@@ -30,11 +30,16 @@ public:
 
 	void buildIR(CFG* cfg);
 
+    void setAddr(int addr);
+
+	int getAddr();
+
 protected:
 	/* ------------ Attributs ------------ */
 	Type::Type type;
 	std::string name;
 	int size = 0; // TODO Update size
 	Expr *expr;
+    int addr;
 };
 

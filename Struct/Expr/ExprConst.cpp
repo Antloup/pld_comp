@@ -5,8 +5,10 @@
 
 using namespace std;
 
-ExprConst::ExprConst(int constant) : Expr(), constant(constant)
-{}
+ExprConst::ExprConst(int constant, Block *block) : Expr(), constant(constant)
+{
+    this->parentBlock = block;
+}
 
 int ExprConst::getConstant()
 {
@@ -27,8 +29,8 @@ ExprConst::~ExprConst()
 string ExprConst::buildIR(CFG *cfg) {
     vector<string> params;
     string tmp = cfg->create_new_tempvar();
+    params.push_back("$"+to_string(this->constant));
     params.push_back(tmp);
-    params.push_back(to_string(this->constant));
     cfg->current_bb->add_IRInstr(IRInstr::ldconst, params);
     return tmp;
 }

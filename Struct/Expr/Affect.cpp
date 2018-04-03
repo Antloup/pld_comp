@@ -4,8 +4,9 @@
 #include "../../Tools/PrintTool.h"
 
 
-Affect::Affect(Var *var, Expr *expr) : Expr(), var(var), expr(expr)
+Affect::Affect(Var *var, Expr *expr, Block *block) : Expr(), var(var), expr(expr)
 {
+    this->parentBlock = block;
 }
 
 
@@ -25,7 +26,7 @@ void Affect::print(int tabs)
 
 string Affect::buildIR(CFG* cfg) {
     vector<string> params;
-    string dest = var->getName();
+    string dest = to_string(-var->getAddr())+"(%rbp)";
     string source = expr->buildIR(cfg);
     params.push_back(dest);
     params.push_back(source);

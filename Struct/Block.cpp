@@ -25,10 +25,12 @@ void Block::addInstruction(Instr *i) {
 
 void Block::buildIR(CFG *cfg) {
     // todo : compléter cette fonction
+
     for (auto &it : declares) {
         it->buildIR(cfg);
     }
-    cfg->incrementSize(declares.size());
+    cfg->incrementSize((int)declares.size());
+    cfg->tmpVarCount = cfg->getSize()+1;
     for (auto &it : instrs) {
         it->buildIR(cfg);
     }

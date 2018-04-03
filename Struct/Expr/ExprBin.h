@@ -13,7 +13,7 @@ class ExprBin :
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	ExprBin(Expr* expr1, ExprBinType::ExprBinType type, Expr* expr2);
+	ExprBin(Expr* expr1, ExprBinType::ExprBinType type, Expr* expr2, Block* block);
 	~ExprBin();
 
 	/* ------------- Methods ------------- */

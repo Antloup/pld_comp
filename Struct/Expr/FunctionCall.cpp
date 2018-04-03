@@ -3,8 +3,10 @@
 #include "../../Tools/PrintTool.h"
 #include "../IR.h"
 
-FunctionCall::FunctionCall(Function* function) : Expr(), function(function)
+FunctionCall::FunctionCall(Function* function, Block *block)
+        : Expr(), function(function)
 {
+    this->parentBlock = block;
 }
 
 

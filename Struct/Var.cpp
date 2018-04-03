@@ -45,3 +45,12 @@ void Var::buildIR(CFG *cfg) {
 //    params.push_back(name);
 //    cfg->current_bb->add_IRInstr(IRInstr::ldconst, params);
 }
+
+void Var::setAddr(int addr) {
+    this->addr = addr;
+}
+
+int Var::getAddr()
+{
+    return this->addr;
+}

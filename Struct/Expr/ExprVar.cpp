@@ -2,8 +2,11 @@
 #include "../IR.h"
 
 
-ExprVar::ExprVar(Var *var) : Expr(), var(var)
-{}
+ExprVar::ExprVar(Var *var, Block *block) :
+        Expr(), var(var)
+{
+    this->parentBlock = block;
+}
 
 
 
@@ -17,7 +20,8 @@ void ExprVar::print(int tabs)
 }
 
 string ExprVar::buildIR(CFG *cfg) {
-    return var->getName();
+    string addr = to_string(-var->getAddr())+"(%rbp)";
+    return addr;
 }
 
 

@@ -9,7 +9,7 @@ class FunctionCall :
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	FunctionCall(Function* function);
+	FunctionCall(Function* function, Block *block);
 	~FunctionCall();
 
 	/* ------------- Methods ------------- */

@@ -5,7 +5,7 @@ using namespace std;
 class ExprConst : public Expr
 {
 public :
-    ExprConst(int constant);
+    ExprConst(int constant, Block *block);
     ~ExprConst();
 
     int getConstant();

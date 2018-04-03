@@ -75,7 +75,7 @@ void CFG::add_to_symbol_table(string name, Var t) {
 }
 
 string CFG::create_new_tempvar() {
-    string tmp = "tmp"+to_string(tmpVarCount);
+    string tmp = to_string(-8*tmpVarCount)+"(%rbp)";
     tmpVarCount++;
     return tmp;
 }
@@ -95,6 +95,11 @@ Var CFG::get_var_type(string name) {
 
 void CFG::incrementSize(int add = 1) {
     size += add;
+}
+
+int CFG::getSize()
+{
+    return this->size;
 }
 
 BasicBlock::BasicBlock(CFG *cfg, string entry_label):cfg(cfg),label(entry_label){}
@@ -145,7 +150,12 @@ void IRInstr::gen_asm(std::ostream &o) {
     string opName = "unk";
     switch (op) {
         case IRInstr::ldconst:
-            //todo
+            opName = "movq";
+            o << opName;
+            for(auto i : params){
+                o<< " "<<i ;
+            }
+            o<<endl;
             break;
         case IRInstr::add:
             //todo

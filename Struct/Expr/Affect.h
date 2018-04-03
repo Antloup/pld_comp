@@ -7,7 +7,7 @@ class Affect :
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	Affect(Var *var, Expr *expr);
+	Affect(Var *var, Expr *expr, Block *block);
 	~Affect();
 
 	/* ------------- Methods ------------- */

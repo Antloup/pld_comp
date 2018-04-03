@@ -1,11 +1,11 @@
 #include <iostream>
 #include "UnHeader.h"
 
-int64_t a=5;
-
 int main(){
     int64_t c;
-    c = a*4+5;
+    int64_t d;
+    c = 4+5;
+    d = 42;
     if (c == 25) {
         c = 2;
     } else {

@@ -4,10 +4,10 @@
 #include "../../Tools/PrintTool.h"
 
 
-ExprBin::ExprBin(Expr *exprLeft, ExprBinType::ExprBinType type, Expr *exprRight)
+ExprBin::ExprBin(Expr *exprLeft, ExprBinType::ExprBinType type, Expr *exprRight, Block *block)
         : Expr(), exprLeft(exprLeft),type(type),exprRight(exprRight)
 {
-
+    this->parentBlock = block;
 }
 
 
@@ -18,11 +18,11 @@ ExprBin::~ExprBin()
 void ExprBin::print(int tabs)
 {
     string stab = PrintTool::getTabs(tabs);
-    cout<< stab << "Binary Expression :" << endl;
-    cout <<stab <<"Type : "<<type<<endl;
-    cout<<stab <<"Expr 1 :" << endl;
+    cout << stab << "Binary Expression :" << endl;
+    cout << stab <<"Type : "<<type<<endl;
+    cout << stab <<"Expr 1 :" << endl;
     exprLeft->print(tabs+1);
-    cout<<stab <<"Expr 2 :"<<endl;
+    cout << stab <<"Expr 2 :"<<endl;
     exprRight->print(tabs+1);
 }
 

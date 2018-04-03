@@ -30,6 +30,7 @@ private:
     std::map<std::string,Function*>* functionTable;
     std::stack<Block*> *blockStack;
     Function* lastFunction;
+    int addrCounter;
 
 public:
     Prog() : ProgBaseVisitor(){
@@ -37,6 +38,7 @@ public:
         blockStack = new std::stack<Block*>();
         blockStack->push(nullptr);
         functionTable = new std::map<std::string,Function*>();
+        addrCounter = 8;
         // todo : dans la table des fonctions rajouter putchar et getchar
     }
 
@@ -192,6 +194,8 @@ public:
 
     virtual antlrcpp::Any visitDeclare(ProgParser::DeclareContext *ctx) override {
         Var *var = new Var(visit(ctx->type()),visit(ctx->name()),0);
+        var->setAddr(addrCounter);
+        addrCounter += 8;
         return var;
     }
 
@@ -298,12 +302,12 @@ public:
     {
         std::string value = ctx->getText();
         Var *var = this->getVar(blockStack->top(), value);
-        ExprVar *expr = new ExprVar(var);
+        ExprVar *expr = new ExprVar(var,blockStack->top());
         return (Expr *) expr;
     }
 
     virtual antlrcpp::Any visitConst(ProgParser::ConstContext *ctx) override {
-        ExprConst *expr = new ExprConst((int)visit(ctx->constant()));
+        ExprConst *expr = new ExprConst((int)visit(ctx->constant()),blockStack->top());
         return (Expr*)expr;
     }
 
@@ -329,7 +333,7 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::INF,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::INF,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
@@ -338,7 +342,7 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::EGAL,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::EGAL,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
@@ -347,13 +351,13 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::MULT,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::MULT,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitAffect(ProgParser::AffectContext *ctx) override {
         Var* var = this->getVar(blockStack->top(),ctx->name()->getText());
-        Affect *affect = new Affect(var,visit(ctx->expr()));
+        Affect *affect = new Affect(var,visit(ctx->expr()),blockStack->top());
         return (Expr*)affect;
     }
 
@@ -362,7 +366,7 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::OR,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::OR,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
@@ -371,13 +375,13 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::DIFF,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::DIFF,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitNo(ProgParser::NoContext *ctx) override {
         Expr* e = visit(ctx->expr());
-        ExprUni* expr = new ExprUni(e,ExprUniType::NO);
+        ExprUni* expr = new ExprUni(e,ExprUniType::NO,blockStack->top());
         return (Expr*)expr;
     }
 
@@ -386,7 +390,7 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::PLUS,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::PLUS,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
@@ -395,7 +399,7 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::SUP,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::SUP,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
@@ -404,12 +408,12 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::AND,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::AND,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitInv(ProgParser::InvContext *ctx) override {
-        ExprUni* expr = new ExprUni(visit(ctx->expr()),ExprUniType::INV);
+        ExprUni* expr = new ExprUni(visit(ctx->expr()),ExprUniType::INV,blockStack->top());
         return (Expr*)expr;
     }
 
@@ -418,13 +422,13 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::DIV,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::DIV,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitCallfunction(ProgParser::CallfunctionContext *ctx) override {
         Function* f = getFunction(ctx->NAME()->getText());
-        FunctionCall *fc = new FunctionCall(f);
+        FunctionCall *fc = new FunctionCall(f,blockStack->top());
         ProgParser::ParamsContext *paramChild = ctx->params();
         if(paramChild != nullptr){
             for (auto i : paramChild->expr()) {
@@ -441,15 +445,15 @@ public:
 
     virtual antlrcpp::Any visitPredecr(ProgParser::PredecrContext *ctx) override {
         Var* var = this->getVar(blockStack->top(),ctx->name()->getText());
-        ExprVar* ev = new ExprVar(var);
-        ExprUni* expr = new ExprUni(ev,ExprUniType::PREDECR);
+        ExprVar* ev = new ExprVar(var,blockStack->top());
+        ExprUni* expr = new ExprUni(ev,ExprUniType::PREDECR,blockStack->top());
         return (Expr*)expr;
     }
 
     virtual antlrcpp::Any visitPostdecr(ProgParser::PostdecrContext *ctx) override {
         Var* var = this->getVar(blockStack->top(),ctx->name()->getText());
-        ExprVar* ev = new ExprVar(var);
-        ExprUni* expr = new ExprUni(ev,ExprUniType::POSTDECR);
+        ExprVar* ev = new ExprVar(var,blockStack->top());
+        ExprUni* expr = new ExprUni(ev,ExprUniType::POSTDECR,blockStack->top());
         return (Expr*)expr;
     }
 
@@ -458,7 +462,7 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::SUPEGAL,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::SUPEGAL,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
@@ -467,21 +471,21 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::MINUS,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::MINUS,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
     virtual antlrcpp::Any visitPostincr(ProgParser::PostincrContext *ctx) override {
         Var* var = this->getVar(blockStack->top(),ctx->name()->getText());
-        ExprVar* ev = new ExprVar(var);
-        ExprUni* expr = new ExprUni(ev,ExprUniType::POSTINCR);
+        ExprVar* ev = new ExprVar(var,blockStack->top());
+        ExprUni* expr = new ExprUni(ev,ExprUniType::POSTINCR,blockStack->top());
         return (Expr*)expr;
     }
 
     virtual antlrcpp::Any visitPreincr(ProgParser::PreincrContext *ctx) override {
         Var* var = this->getVar(blockStack->top(),ctx->name()->getText());
-        ExprVar* ev = new ExprVar(var);
-        ExprUni* expr = new ExprUni(ev,ExprUniType::PREINCR);
+        ExprVar* ev = new ExprVar(var,blockStack->top());
+        ExprUni* expr = new ExprUni(ev,ExprUniType::PREINCR,blockStack->top());
         return (Expr*)expr;
     }
 
@@ -490,7 +494,7 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::MODULO,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::MODULO,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 
@@ -499,7 +503,7 @@ public:
 
         Expr *expr1 = (Expr*)(visit(child.at(0)));
         Expr *expr2 = (Expr*)(visit(child.at(1)));
-        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::INFEGAL,expr2);
+        ExprBin *exprBin = new ExprBin(expr1,ExprBinType::INFEGAL,expr2,blockStack->top());
         return (Expr*)exprBin;
     }
 

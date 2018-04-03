@@ -13,7 +13,7 @@ class ExprUni :
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	ExprUni(Expr* expr, ExprUniType::ExprUniType type);
+	ExprUni(Expr* expr, ExprUniType::ExprUniType type, Block *block);
 	~ExprUni();
 
 	/* ------------- Methods ------------- */

@@ -8,7 +8,7 @@ class ExprVar :
 {
 public:
 	/* ---- Constructors / Destructor ---- */
-	ExprVar(Var* var);
+	ExprVar(Var* var, Block *block);
 	~ExprVar();
 
 	/* ------------- Methods ------------- */
