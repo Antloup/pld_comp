@@ -38,20 +38,21 @@ int main(int argc, char **argv){
     }
 	ANTLRInputStream input(prg);
 	ProgLexer lexer(&input);
+	
 	CommonTokenStream tokens(&lexer);
-    tokens.fill();
+    tokens.fill();//todo catch token recognition error and stop compilation
 
+    //Analyse syntaxique
 	ProgParser parser(&tokens);
 	tree::ParseTree* tree = parser.program();
-	size_t nbSyntaxErrors=parser.getNumberOfSyntaxErrors();
+    size_t nbSyntaxErrors=parser.getNumberOfSyntaxErrors();
 	if(nbSyntaxErrors!=0){
 	    cerr<< "Il y a "<<nbSyntaxErrors<<" erreur(s) de syntaxe! \nCompilation échouée."<<endl;
 	    return 3;
 	}
 
 	Prog visitor;
-
-    Program* prog = visitor.visit(tree);
+	Program* prog = visitor.visit(tree);
 
     if(printToken){
         for (auto token : tokens.getTokens()) {
