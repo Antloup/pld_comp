@@ -46,6 +46,9 @@ string CFG::IR_reg_to_asm(string reg) {
 }
 
 void CFG::gen_asm_prologue(ostream &o) {
+    o << ".globl    "<< ast->getName() << endl;
+    o << ".type    "<< ast->getName() << ",@function" << endl;
+    o << ast->getName() << ":" << endl;
     if (ast) {
         o << "pushq %rbp" << endl;
         o << "movq %rsp, %rbp" <<endl;
@@ -163,7 +166,14 @@ void IRInstr::gen_asm(std::ostream &o) {
             //todo
             break;
         case IRInstr::call:
-            //todo
+            if(params.at(1) == "putchar"){
+                //todo : convert params name to @
+                o << "movl  "<< params.at(2) << ", %edi"<<endl;
+                o << "call putchar"<<endl;
+            }
+            else{
+                //todo
+            }
             break;
         case IRInstr::cmp_eq:
             //todo

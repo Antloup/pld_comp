@@ -13,19 +13,26 @@ While::~While()
 
 string While::buildIR(CFG* cfg){
     BasicBlock* beforeWhileBB = cfg->current_bb;
-    BasicBlock* bodyBB = new BasicBlock(cfg,"WhileBody");
     BasicBlock* testBB = new BasicBlock(cfg,"WhileTest");
+    BasicBlock* bodyBB = new BasicBlock(cfg,"WhileBody");
+    BasicBlock* afterWhileBB = new BasicBlock(cfg,"afterWhile");
     beforeWhileBB->exit_true = testBB;
     beforeWhileBB->exit_false = nullptr;
+    testBB->exit_true = bodyBB;
+    testBB->exit_false = afterWhileBB;
+    bodyBB->exit_true = testBB;
+    bodyBB->exit_false = nullptr;
+    afterWhileBB->exit_true = beforeWhileBB->exit_true;
+    afterWhileBB->exit_false = beforeWhileBB->exit_false;
     cfg->add_bb(testBB);
     expr->buildIR(cfg);
     cfg->add_bb(bodyBB);
     child->buildIR(cfg);
-    BasicBlock* afterWhileBB = new BasicBlock(cfg,"afterWhile");
-    cfg->current_bb->exit_true = bodyBB;
-    cfg->current_bb->exit_false = afterWhileBB;
-    beforeWhileBB->exit_true = bodyBB;
-    beforeWhileBB->exit_false = afterWhileBB;
+    cfg->add_bb(afterWhileBB);
+
+   // cfg->current_bb->exit_true = bodyBB;
+  //  cfg->current_bb->exit_false = afterWhileBB;
+
 
 //    beforeWhileBB = cfg→currentBB
 //    bodyBB = new BasicBlock(cfg) . it is empty
