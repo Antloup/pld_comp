@@ -5,4 +5,4 @@ for file in `find FrontEndTests -name *.c`; do
     ../cmake-build-debug/pld_comp $file;
     echo -e "-----------------------------------------\n\n\n";
 done
-
+echo -e "Fin des tests!"

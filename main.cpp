@@ -43,6 +43,11 @@ int main(int argc, char **argv){
 
 	ProgParser parser(&tokens);
 	tree::ParseTree* tree = parser.program();
+	size_t nbSyntaxErrors=parser.getNumberOfSyntaxErrors();
+	if(nbSyntaxErrors!=0){
+	    cerr<< "Il y a "<<nbSyntaxErrors<<" erreur(s) de syntaxe! \nCompilation échouée."<<endl;
+	    return 3;
+	}
 
 	Prog visitor;
 
