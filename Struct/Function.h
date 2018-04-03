@@ -25,6 +25,7 @@ public:
 	void addBlock(Block* b);
 	void buildIR(CFG* cfg);
 	string getName();
+	int getretType(){return retType;}
 
 private:
 
