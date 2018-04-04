@@ -17,7 +17,8 @@ string While::buildIR(CFG* cfg){
     BasicBlock* bodyBB = new BasicBlock(cfg,"WhileBody");
     BasicBlock* afterWhileBB = new BasicBlock(cfg,"afterWhile");
     cfg->add_bb(testBB);
-    expr->buildIR(cfg);
+    expr->buildIR(cfg,true);
+    cfg->add_bb(bodyBB);
     child->buildIR(cfg);
     afterWhileBB->exit_true = beforeWhileBB->exit_true;
     afterWhileBB->exit_false = beforeWhileBB->exit_false;
@@ -28,7 +29,7 @@ string While::buildIR(CFG* cfg){
     bodyBB->exit_true = testBB;
     bodyBB->exit_false = nullptr;
 
-    cfg->add_bb(bodyBB);
+
 
     cfg->add_bb(afterWhileBB);
 

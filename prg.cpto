@@ -21,7 +21,7 @@ int main(){
         }
         while(b>=0){
             putchar('A');
-            b = b - 1;
+            b--;
         }
 
         if(0){

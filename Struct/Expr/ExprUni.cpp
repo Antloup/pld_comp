@@ -33,20 +33,24 @@ string ExprUni::buildIR(CFG *cfg, bool isComparedToZero) {
             cfg->current_bb->add_IRInstr(IRInstr::no, params,isComparedToZero);
             break;
         case ExprUniType::PREINCR:
+            params.push_back(val);
             params.push_back(to_string(1));
             cfg->current_bb->add_IRInstr(IRInstr::add, params,isComparedToZero);
             break;
         case ExprUniType::POSTINCR:
+            params.push_back(val);
             params.push_back(to_string(1));
             cfg->current_bb->add_IRInstr(IRInstr::add, params,isComparedToZero);
             break;
         case ExprUniType::POSTDECR:
-            params.push_back(to_string(-1));
-            cfg->current_bb->add_IRInstr(IRInstr::add, params,isComparedToZero);
+            params.push_back(val);
+            params.push_back(to_string(1));
+            cfg->current_bb->add_IRInstr(IRInstr::sub, params,isComparedToZero);
             break;
         case ExprUniType::PREDECR:
-            params.push_back(to_string(-1));
-            cfg->current_bb->add_IRInstr(IRInstr::add, params,isComparedToZero);
+            params.push_back(val);
+            params.push_back(to_string(1));
+            cfg->current_bb->add_IRInstr(IRInstr::sub, params,isComparedToZero);
             break;
         case ExprUniType::INV:
             params.push_back(to_string(0));
