@@ -4,12 +4,21 @@
 int main(){
     int a;
     int b;
+    int i;
+    i=0;
     a=43;
     b=4;
 
 
     if((a-40)<=2*b){
 
+        while(i<3) {
+//            int a;
+            putchar('0'+i);
+            i = i + 1;
+//            a = 5;
+//            putchar('0'+a);
+        }
         while(b>=0){
             putchar('A');
             b = b - 1;
