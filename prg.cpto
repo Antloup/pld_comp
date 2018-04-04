@@ -11,6 +11,11 @@ int main(){
     putchar(a);
     putchar(b);
     putchar('\n');
+    if(3==2){
+        putchar('O');
+        putchar('K');
+        putchar('\n');
+    }
 //    int64_t c;
 //    int64_t d;
 //    c = 4+5;

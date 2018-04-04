@@ -105,7 +105,9 @@ int CFG::getSize()
     return this->size;
 }
 
-BasicBlock::BasicBlock(CFG *cfg, string entry_label):cfg(cfg),label(entry_label){}
+int BasicBlock::labelNumber = 1;
+
+BasicBlock::BasicBlock(CFG *cfg, string entry_label):cfg(cfg),label(entry_label+to_string(labelNumber)){labelNumber++;}
 
 void BasicBlock::add_IRInstr(IRInstr::Operation op, vector<string> params) {
     this->instrs.push_back(new IRInstr(this,op,params));
@@ -114,8 +116,15 @@ void BasicBlock::add_IRInstr(IRInstr::Operation op, vector<string> params) {
 IRInstr::IRInstr(BasicBlock *bb, IRInstr::Operation op, vector<string> params) :bb(bb),op(op),params(params){}
 
 void BasicBlock::gen_asm(ostream& o) {
+    o << "." << label << ":" << endl;
     for (auto &it : instrs) {
         it->gen_asm(o);
+    }
+    if(exit_false){
+        o << "jz ." << exit_false->label << endl;
+    }
+    if(exit_true){
+        o << "jmp ." << exit_true->label << endl;
     }
 }
 
