@@ -16,18 +16,20 @@ string While::buildIR(CFG* cfg){
     BasicBlock* testBB = new BasicBlock(cfg,"WhileTest");
     BasicBlock* bodyBB = new BasicBlock(cfg,"WhileBody");
     BasicBlock* afterWhileBB = new BasicBlock(cfg,"afterWhile");
+    cfg->add_bb(testBB);
+    expr->buildIR(cfg);
+    child->buildIR(cfg);
+    afterWhileBB->exit_true = beforeWhileBB->exit_true;
+    afterWhileBB->exit_false = beforeWhileBB->exit_false;
     beforeWhileBB->exit_true = testBB;
     beforeWhileBB->exit_false = nullptr;
     testBB->exit_true = bodyBB;
     testBB->exit_false = afterWhileBB;
     bodyBB->exit_true = testBB;
     bodyBB->exit_false = nullptr;
-    afterWhileBB->exit_true = beforeWhileBB->exit_true;
-    afterWhileBB->exit_false = beforeWhileBB->exit_false;
-    cfg->add_bb(testBB);
-    expr->buildIR(cfg);
+
     cfg->add_bb(bodyBB);
-    child->buildIR(cfg);
+
     cfg->add_bb(afterWhileBB);
 
    // cfg->current_bb->exit_true = bodyBB;
@@ -47,6 +49,8 @@ string While::buildIR(CFG* cfg){
 //    bodyBB→exitTrue = testBB . pointer stitching
 //    bodyBB→exitFalse = NULL . unconditional
 //    exit cfg→currentBB = afterWhileBB
+
+    return "";
 
 }
 

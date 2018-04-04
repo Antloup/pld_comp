@@ -5,8 +5,16 @@ int main(){
     int a;
     int b;
     a=43;
-    b=2;
+    b=4;
+
+
     if((a-40)<=2*b){
+
+        while(b>=0){
+            putchar('A');
+            b = b - 1;
+        }
+
         if(0){
             putchar('W');
         }
