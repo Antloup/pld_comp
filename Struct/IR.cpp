@@ -53,7 +53,7 @@ void CFG::gen_asm_prologue(ostream &o) {
     if (ast) {
         o << "pushq %rbp" << endl;
         o << "movq %rsp, %rbp" <<endl;
-        if (ast->getName()=="main") {
+        if (ast->getName()=="main" && size > 0) {
             o << "sub $" << (size+1)/2*16 << ", %rsp" <<endl;
         }
     }
@@ -166,13 +166,22 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << parseArg(params[2]) << ", %rax" << endl;
             o << "movq ";
             o << "%rax, " << parseArg(params[0]) << endl;
-            //todo
             break;
         case IRInstr::sub:
-            //todo
+            o << "movq ";
+            o << parseArg(params[1]) << ", %rax" << endl;
+            o << "subq ";
+            o << parseArg(params[2]) << ", %rax" << endl;
+            o << "movq ";
+            o << "%rax, " << parseArg(params[0]) << endl;
             break;
         case IRInstr::mul:
-            //todo
+            o << "movq ";
+            o << parseArg(params[1]) << ", %rax" << endl;
+            o << "imulq ";
+            o << parseArg(params[2]) << ", %rax" << endl;
+            o << "movq ";
+            o << "%rax, " << parseArg(params[0]) << endl;
             break;
         case IRInstr::copy:
             o << "movq ";

@@ -1,13 +1,23 @@
-#include<inttypes.h>
-void toto() {
-    int64_t x;
-    int64_t y;
-    int64_t z;
-}
+#include <iostream>
+#include "UnHeader.h"
 
-void main(){
-    toto();
-    putchar('O');
-    putchar('K');
-    putchar('\n');
+int main(){
+    int a;
+    int b;
+    int c;
+    c = 33;
+    a = 98;
+    b = c * 2;
+    putchar(a);
+    putchar(b);
+//    int64_t c;
+//    int64_t d;
+//    c = 4+5;
+//    d = 42;
+//    if (c == 25) {
+//        c = 2;
+//    } else {
+//        c = 3;
+//    }
+    return 0;
 }
