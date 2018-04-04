@@ -233,7 +233,18 @@ void IRInstr::gen_asm(std::ostream &o) {
             //todo
             break;
         case IRInstr::div:
-            //todo
+            o << "movq " << parseArg(params[1]) << ", %rax" << endl;
+            o << "movq " << parseArg(params[2]) << ", %rbx" << endl;
+            o << "cdq" << endl;
+            o << "idiv %rbx" << endl;
+            o << "movq %rax, " << parseArg(params[0]) << endl;
+            break;
+        case IRInstr::modulo:
+            o << "movq " << parseArg(params[1]) << ", %rax" << endl;
+            o << "movq " << parseArg(params[2]) << ", %rbx" << endl;
+            o << "cdq" << endl;
+            o << "idiv %rbx" << endl;
+            o << "movq %rdx, " << parseArg(params[0]) << endl;
             break;
         case IRInstr::cmp_neq:
             //todo
@@ -300,6 +311,9 @@ void IRInstr::print(std::ostream &o) {
             break;
         case IRInstr::cmp_neq:
             opName = "cmp_neq";
+            break;
+        case IRInstr::modulo:
+            opName = "modulo";
             break;
     }
     o << opName;

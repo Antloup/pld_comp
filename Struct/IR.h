@@ -48,6 +48,7 @@ public:
         cmp_ge,
         cmp_gt,
         cmp_neq,
+        modulo,
     } Operation;
 
     /**  constructor */
