@@ -53,7 +53,7 @@ void CFG::gen_asm_prologue(ostream &o) {
     if (ast) {
         o << "pushq %rbp" << endl;
         o << "movq %rsp, %rbp" <<endl;
-        if (ast->getName()=="main") {
+        if (ast->getName()=="main" && size > 0) {
             o << "sub $" << (size+1)/2*16 << ", %rsp" <<endl;
         }
     }
