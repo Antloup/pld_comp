@@ -49,8 +49,8 @@ string ExprUni::buildIR(CFG *cfg, bool isComparedToZero) {
             cfg->current_bb->add_IRInstr(IRInstr::add, params,isComparedToZero);
             break;
         case ExprUniType::INV:
-            //Todo : a voir...
             params.push_back(to_string(0));
+            params.push_back(val);
             cfg->current_bb->add_IRInstr(IRInstr::sub, params,isComparedToZero);
             break;
         default:

@@ -24,13 +24,13 @@ constant        : NUMBER | CHARACTER;
 name            : NAME('['expr?']')?;
 
 
-expr  : expr '*' expr   # mult
+expr  : '-' expr        # inv
+      | expr '*' expr   # mult
       | expr '/' expr   # div
       | expr '+' expr   # plus
       | name '++'       # postincr
       | '++' name       # preincr
       | expr '-' expr   # minus
-      | '-' expr        # inv
       | name '--'       # postdecr
       | '--' name       # predecr
       | expr '%' expr   # modulo
