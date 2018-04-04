@@ -34,7 +34,6 @@ expr  : expr '*' expr   # mult
       | name '--'       # postdecr
       | '--' name       # predecr
       | expr '%' expr   # modulo
-      | name '=' expr   # affect
       | expr '==' expr  # egal
       | expr '!=' expr  # diff
       | expr '>' expr   # sup
@@ -43,6 +42,7 @@ expr  : expr '*' expr   # mult
       | expr '<=' expr  # infegal
       | expr '||' expr  # or
       | expr '&&' expr  # and
+      | name '=' expr   # affect
       | '(' expr ')'    # par
       | '!'expr         # no
       | NAME'('params?')' # callfunction
