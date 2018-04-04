@@ -3,8 +3,11 @@
 
 int main(){
     int a;
-    a = 4 + 1;
-//    putchar('a');
+    int b;
+    a = 97;
+    b = a + 1;
+    putchar(a);
+    putchar(b);
 //    int64_t c;
 //    int64_t d;
 //    c = 4+5;

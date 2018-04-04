@@ -173,7 +173,10 @@ void IRInstr::gen_asm(std::ostream &o) {
             //todo
             break;
         case IRInstr::copy:
-            //todo
+            o << "movq ";
+            o << parseArg(params[1]) << ", %rax" << endl;
+            o << "movq ";
+            o << "%rax, " << parseArg(params[0]) << endl;
             break;
         case IRInstr::rmem:
             //todo
@@ -184,7 +187,7 @@ void IRInstr::gen_asm(std::ostream &o) {
         case IRInstr::call:
             if(params[1] == "putchar"){
                 //todo : convert params name to @
-                o << "movl  "<< parseArg(params[2])<< ", %edi"<<endl;
+                o << "movl "<< parseArg(params[2])<< ", %edi"<<endl;
                 o << "call putchar"<<endl;
             }
             else{
