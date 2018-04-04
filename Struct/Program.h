@@ -22,11 +22,20 @@ public:
 
     vector<CFG*> getCFGs();
 
-private:
+	map<string, Function *> *getFunctionTable() const;
 
+	void setFunctionTable(map<string, Function *> *functionTable);
+	map<pair<Block *, string>, Var *> *getVarTable() const;
+
+	void setVarTable(map<pair<Block *, string>, Var *> *varTable);
+
+private:
 	/* ------------ Attributs ------------ */
 	std::vector<Function*> functions;
 	std::vector<GlobalVar*> globalVars;
-    vector<CFG*> cfgs;
+	vector<CFG*> cfgs;
+	std::map<std::pair<Block*,std::string>,Var*>* varTable;
+	std::map<std::string,Function*>* functionTable;
+
 };
 

@@ -20,8 +20,8 @@ void ExprVar::print(int tabs)
 }
 
 string ExprVar::buildIR(CFG *cfg) {
-    string addr = to_string(-var->getAddr())+"(%rbp)";
-    return addr;
+//    string addr = to_string(-var->getAddr())+"(%rbp)";
+    return var->getName();
 }
 
 

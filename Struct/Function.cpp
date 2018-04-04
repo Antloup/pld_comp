@@ -51,3 +51,18 @@ void Function::buildIR(CFG* cfg) {
 string Function::getName() {
     return name;
 }
+
+Block *Function::getBlock()
+{
+    return block;
+}
+
+Program *Function::getProgram() const
+{
+    return program;
+}
+
+void Function::setProgram(Program *program)
+{
+    Function::program = program;
+}

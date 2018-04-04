@@ -25,6 +25,7 @@ public:
 	void addBlock(Block* b);
 	void buildIR(CFG* cfg);
 	string getName();
+	Block* getBlock();
 	int getretType(){return retType;}
 
 private:
@@ -34,5 +35,10 @@ private:
 	std::vector<Param*> params;
 	Block* block;
 	int retType;
+	Program *program;
+public:
+	Program *getProgram() const;
+
+	void setProgram(Program *program);
 };
 

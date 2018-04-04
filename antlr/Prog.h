@@ -39,7 +39,6 @@ public:
         blockStack->push(nullptr);
         functionTable = new std::map<std::string,Function*>();
         addrCounter = 8;
-        // todo : dans la table des fonctions rajouter putchar et getchar
     }
 
     /* Table method */
@@ -138,7 +137,10 @@ public:
             //Adding functions
             Function* f =visit(i);
             prog->addFunction(f);
+            f->setProgram(prog);
         }
+        prog->setFunctionTable(this->functionTable);
+        prog->setVarTable(this->varTable);
 //        printFunctionTable();
 //        printVarTable();
         return prog;

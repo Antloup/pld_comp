@@ -4,6 +4,7 @@
 
 #include "IR.h"
 #include "Function.h"
+#include "Program.h"
 
 using namespace std;
 
@@ -75,7 +76,7 @@ void CFG::add_to_symbol_table(string name, Var t) {
 }
 
 string CFG::create_new_tempvar() {
-    string tmp = to_string(-8*tmpVarCount)+"(%rbp)";
+    string tmp = "!tmp"+to_string(8*tmpVarCount);
     tmpVarCount++;
     return tmp;
 }
@@ -151,13 +152,18 @@ void IRInstr::gen_asm(std::ostream &o) {
     switch (op) {
         case IRInstr::ldconst:
             opName = "movq";
-            o << opName;
-            for(auto i : params){
-                o<< " "<<i ;
-            }
+            o << opName << " ";
+            o << parseArg(params[0]) << ", ";
+            o << parseArg(params[1]);
             o<<endl;
             break;
         case IRInstr::add:
+            o << "movq ";
+            o << parseArg(params[1]) << ", %rax" << endl;
+            o << "addq ";
+            o << parseArg(params[2]) << ", %rax" << endl;
+            o << "movq ";
+            o << "%rax, " << parseArg(params[0]) << endl;
             //todo
             break;
         case IRInstr::sub:
@@ -176,9 +182,9 @@ void IRInstr::gen_asm(std::ostream &o) {
             //todo
             break;
         case IRInstr::call:
-            if(params.at(1) == "putchar"){
+            if(params[1] == "putchar"){
                 //todo : convert params name to @
-                o << "movl  "<< params.at(2) << ", %edi"<<endl;
+                o << "movl  "<< parseArg(params[2])<< ", %edi"<<endl;
                 o << "call putchar"<<endl;
             }
             else{
@@ -287,4 +293,17 @@ void IRInstr::print(std::ostream &o) {
         o<< " "<<i ;
     }
     o<<endl;
+}
+
+string IRInstr::parseArg(string arg)
+{
+    if (arg[0] == '!') { //arg is a temp var
+        return "-"+arg.substr(4)+"(%rbp)";
+    } else if (arg[0]<48 || arg[0]>57){ //arg is a variable name
+        Block *block = bb->cfg->ast->getBlock();
+        Var *var = bb->cfg->ast->getProgram()->getVarTable()->at(make_pair(block,arg));
+        return to_string(-var->getAddr())+"(%rbp)";
+    } else { //arg is a constant
+        return "$"+arg;
+    }
 }

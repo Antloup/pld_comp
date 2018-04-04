@@ -26,7 +26,8 @@ void Affect::print(int tabs)
 
 string Affect::buildIR(CFG* cfg) {
     vector<string> params;
-    string dest = to_string(-var->getAddr())+"(%rbp)";
+//    string dest = to_string(-var->getAddr())+"(%rbp)";
+    string dest = var->getName();
     string source = expr->buildIR(cfg);
     params.push_back(dest);
     params.push_back(source);

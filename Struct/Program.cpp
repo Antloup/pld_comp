@@ -51,3 +51,23 @@ void Program::buildIR() {
 vector<CFG*> Program::getCFGs() {
     return cfgs;
 }
+
+map<pair<Block *, string>, Var *> *Program::getVarTable() const
+{
+    return varTable;
+}
+
+void Program::setVarTable(map<pair<Block *, string>, Var *> *varTable)
+{
+    Program::varTable = varTable;
+}
+
+map<string, Function *> *Program::getFunctionTable() const
+{
+    return functionTable;
+}
+
+void Program::setFunctionTable(map<string, Function *> *functionTable)
+{
+    Program::functionTable = functionTable;
+}
