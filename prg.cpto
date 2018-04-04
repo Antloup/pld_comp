@@ -6,14 +6,14 @@ int main(){
     int b;
     int i;
     i=0;
-    a=43;
+    a=0;
     b=4;
 
 
     if((a-40)<=2*b){
 
         while(i<3) {
-//            int a;
+            int a;
             putchar('0'+i);
             i = i + 1;
 //            a = 5;
@@ -24,7 +24,7 @@ int main(){
             b--;
         }
 
-        if(0){
+        if(!a){
             putchar('W');
         }
         else{

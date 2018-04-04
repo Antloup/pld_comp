@@ -30,7 +30,9 @@ string ExprUni::buildIR(CFG *cfg, bool isComparedToZero) {
     switch(type){
         // todo: nb : pas de diff entre post et pre
         case ExprUniType::NO:
-            cfg->current_bb->add_IRInstr(IRInstr::no, params,isComparedToZero);
+            params.push_back(val);
+            params.push_back("0");
+            cfg->current_bb->add_IRInstr(IRInstr::cmp_eq, params,isComparedToZero);
             break;
         case ExprUniType::PREINCR:
             params.push_back(val);

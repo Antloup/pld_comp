@@ -276,14 +276,14 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "cmovle ";
             o << "%rbx, %rax" << endl;
             o << "movq ";
-            o <<"%rax, " << parseArg(params[0]) << endl;
+            o << "%rax, " << parseArg(params[0]) << endl;
             if(isComparedToZero){
                 o <<"movq $0, %rbx"<<endl;
                 o << "cmpq %rax, %rbx" << endl;
             }
             break;
         case IRInstr::no:
-            //todo
+
             break;
         case IRInstr::ret:
             //todo
