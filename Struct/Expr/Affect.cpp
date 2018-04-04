@@ -24,14 +24,14 @@ void Affect::print(int tabs)
     cout << endl;
 }
 
-string Affect::buildIR(CFG* cfg) {
+string Affect::buildIR(CFG* cfg, bool isComparedToZero) {
     vector<string> params;
 //    string dest = to_string(-var->getAddr())+"(%rbp)";
     string dest = var->getName();
     string source = expr->buildIR(cfg);
     params.push_back(dest);
     params.push_back(source);
-    cfg->current_bb->add_IRInstr(IRInstr::copy, params);
+    cfg->current_bb->add_IRInstr(IRInstr::copy, params,isComparedToZero);
 
     return dest;
 

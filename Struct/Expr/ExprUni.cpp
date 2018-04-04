@@ -23,38 +23,38 @@ void ExprUni::print(int tabs)
     expr->print(tabs+1);
 }
 
-string ExprUni::buildIR(CFG *cfg) {
+string ExprUni::buildIR(CFG *cfg, bool isComparedToZero) {
     vector<string> params;
     string val = expr->buildIR(cfg);
     params.push_back(val);
     switch(type){
         // todo: nb : pas de diff entre post et pre
         case ExprUniType::NO:
-            cfg->current_bb->add_IRInstr(IRInstr::no, params);
+            cfg->current_bb->add_IRInstr(IRInstr::no, params,isComparedToZero);
             break;
         case ExprUniType::PREINCR:
             params.push_back(to_string(1));
-            cfg->current_bb->add_IRInstr(IRInstr::add, params);
+            cfg->current_bb->add_IRInstr(IRInstr::add, params,isComparedToZero);
             break;
         case ExprUniType::POSTINCR:
             params.push_back(to_string(1));
-            cfg->current_bb->add_IRInstr(IRInstr::add, params);
+            cfg->current_bb->add_IRInstr(IRInstr::add, params,isComparedToZero);
             break;
         case ExprUniType::POSTDECR:
             params.push_back(to_string(-1));
-            cfg->current_bb->add_IRInstr(IRInstr::add, params);
+            cfg->current_bb->add_IRInstr(IRInstr::add, params,isComparedToZero);
             break;
         case ExprUniType::PREDECR:
             params.push_back(to_string(-1));
-            cfg->current_bb->add_IRInstr(IRInstr::add, params);
+            cfg->current_bb->add_IRInstr(IRInstr::add, params,isComparedToZero);
             break;
         case ExprUniType::INV:
             //Todo : a voir...
             params.push_back(to_string(0));
-            cfg->current_bb->add_IRInstr(IRInstr::sub, params);
+            cfg->current_bb->add_IRInstr(IRInstr::sub, params,isComparedToZero);
             break;
         default:
-            cfg->current_bb->add_IRInstr(IRInstr::unk, params);
+            cfg->current_bb->add_IRInstr(IRInstr::unk, params,isComparedToZero);
             break;
     }
     return val;

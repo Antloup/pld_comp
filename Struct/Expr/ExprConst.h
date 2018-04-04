@@ -10,7 +10,7 @@ public :
 
     int getConstant();
     void print(int tabs=0);
-    string buildIR(CFG *cfg);
+    string buildIR(CFG *cfg, bool isComparedToZero = false);
 
 protected :
     int constant;

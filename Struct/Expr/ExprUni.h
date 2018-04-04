@@ -18,7 +18,7 @@ public:
 
 	/* ------------- Methods ------------- */
 	void print(int tabs=0);
-	string buildIR(CFG *cfg);
+	string buildIR(CFG *cfg, bool isComparedToZero = false);
 	string getType(int type);
 
 private:

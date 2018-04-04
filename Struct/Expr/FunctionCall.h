@@ -15,7 +15,7 @@ public:
 	/* ------------- Methods ------------- */
 	void print(int tabs=0);
 	void addParam(Expr* expr);
-	string buildIR(CFG *cfg);
+	string buildIR(CFG *cfg, bool isComparedToZero = false);
 
 private:
 

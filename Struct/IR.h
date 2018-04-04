@@ -52,7 +52,7 @@ public:
     } Operation;
 
     /**  constructor */
-    IRInstr(BasicBlock* bb_, Operation op, vector<string> params);
+    IRInstr(BasicBlock* bb_, Operation op, vector<string> params, bool isComparedToZero = false);
 
     /** Actual code generation */
     void gen_asm(std::ostream &o); /**< x86 assembly code generation for this IR instruction */
@@ -63,6 +63,7 @@ private:
     string t;
     vector<string> params; /**< For 3-op instrs: d, x, y; for ldconst: d, c;  For call: label, d, params;  for wmem and rmem: choose yourself */
     string parseArg (string arg);
+    bool isComparedToZero;
     // if you subclass IRInstr, each IRInstr subclass has its parameters and the previous (very important) comment becomes useless: it would be a better design.
 };
 
@@ -91,7 +92,7 @@ public:
     void gen_asm(ostream &o); /**< x86 assembly code generation for this basic block (very simple) */
 
     //todo : ajouter type ?
-    void add_IRInstr(IRInstr::Operation op, vector<string> params);
+    void add_IRInstr(IRInstr::Operation op, vector<string> params, bool isComparedToZero = false);
     void print(ostream& o);
 
     // No encapsulation whatsoever here. Feel free to do better.

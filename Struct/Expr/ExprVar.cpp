@@ -19,7 +19,7 @@ void ExprVar::print(int tabs)
     var->print(tabs+1);
 }
 
-string ExprVar::buildIR(CFG *cfg) {
+string ExprVar::buildIR(CFG *cfg, bool isComparedToZero) {
 //    string addr = to_string(-var->getAddr())+"(%rbp)";
     return var->getName();
 }

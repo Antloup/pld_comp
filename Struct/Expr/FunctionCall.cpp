@@ -30,7 +30,7 @@ void FunctionCall::addParam(Expr *expr)
     exprs.push_back(expr);
 }
 
-string FunctionCall::buildIR(CFG *cfg) {
+string FunctionCall::buildIR(CFG *cfg, bool isComparedToZero) {
     vector<string> params;
     string val = "";
 
@@ -46,6 +46,6 @@ string FunctionCall::buildIR(CFG *cfg) {
     for(auto i : exprs){
         params.push_back(i->buildIR(cfg)); // op
     }
-    cfg->current_bb->add_IRInstr(IRInstr::call, params);
+    cfg->current_bb->add_IRInstr(IRInstr::call, params,isComparedToZero);
     return function->getName();
 }

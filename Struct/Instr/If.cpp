@@ -14,7 +14,7 @@ If::~If()
 string If::buildIR(CFG *cfg) {
     // todo : compléter cette fonction (générale)
     // ici expr est le test du if
-    expr->buildIR(cfg);
+    expr->buildIR(cfg,true);
     BasicBlock* exprBB = cfg->current_bb;
     // todo : faire en sorte que thenBB et elseBB correspondent bien à leur code
     BasicBlock* thenBB = new BasicBlock(cfg,"trueCode"/*, trueCode*/);

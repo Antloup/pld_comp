@@ -26,7 +26,7 @@ void ExprBin::print(int tabs)
     exprRight->print(tabs+1);
 }
 
-string ExprBin::buildIR(CFG *cfg) {
+string ExprBin::buildIR(CFG *cfg, bool isComparedToZero) {
     vector<string> params;
     string val = cfg->create_new_tempvar();
     string right = exprRight->buildIR(cfg);
@@ -36,46 +36,46 @@ string ExprBin::buildIR(CFG *cfg) {
     params.push_back(right);
     switch(type){
         case ExprBinType::MULT:
-            cfg->current_bb->add_IRInstr(IRInstr::mul, params);
+            cfg->current_bb->add_IRInstr(IRInstr::mul, params,isComparedToZero);
             break;
         case ExprBinType::PLUS:
-            cfg->current_bb->add_IRInstr(IRInstr::add, params);
+            cfg->current_bb->add_IRInstr(IRInstr::add, params,isComparedToZero);
             break;
         case ExprBinType::MINUS:
-            cfg->current_bb->add_IRInstr(IRInstr::sub, params);
+            cfg->current_bb->add_IRInstr(IRInstr::sub, params,isComparedToZero);
             break;
         case ExprBinType::AND:
-            cfg->current_bb->add_IRInstr(IRInstr::and_op, params);
+            cfg->current_bb->add_IRInstr(IRInstr::and_op, params,isComparedToZero);
             break;
         case ExprBinType::OR:
-            cfg->current_bb->add_IRInstr(IRInstr::or_op, params);
+            cfg->current_bb->add_IRInstr(IRInstr::or_op, params,isComparedToZero);
             break;
         case ExprBinType::EGAL:
-            cfg->current_bb->add_IRInstr(IRInstr::cmp_eq, params);
+            cfg->current_bb->add_IRInstr(IRInstr::cmp_eq, params,isComparedToZero);
             break;
         case ExprBinType::DIV:
-            cfg->current_bb->add_IRInstr(IRInstr::div, params);
+            cfg->current_bb->add_IRInstr(IRInstr::div, params,isComparedToZero);
             break;
         case ExprBinType::INF:
-            cfg->current_bb->add_IRInstr(IRInstr::cmp_lt, params);
+            cfg->current_bb->add_IRInstr(IRInstr::cmp_lt, params,isComparedToZero);
             break;
         case ExprBinType::INFEGAL:
-            cfg->current_bb->add_IRInstr(IRInstr::cmp_le, params);
+            cfg->current_bb->add_IRInstr(IRInstr::cmp_le, params,isComparedToZero);
             break;
         case ExprBinType::SUPEGAL:
-            cfg->current_bb->add_IRInstr(IRInstr::cmp_ge, params);
+            cfg->current_bb->add_IRInstr(IRInstr::cmp_ge, params,isComparedToZero);
             break;
         case ExprBinType::SUP:
-            cfg->current_bb->add_IRInstr(IRInstr::cmp_gt, params);
+            cfg->current_bb->add_IRInstr(IRInstr::cmp_gt, params,isComparedToZero);
             break;
         case ExprBinType::MODULO:
-            cfg->current_bb->add_IRInstr(IRInstr::modulo, params);
+            cfg->current_bb->add_IRInstr(IRInstr::modulo, params,isComparedToZero);
             break;
         case ExprBinType::DIFF:
-            cfg->current_bb->add_IRInstr(IRInstr::cmp_neq, params);
+            cfg->current_bb->add_IRInstr(IRInstr::cmp_neq, params,isComparedToZero);
             break;
         default:
-            cfg->current_bb->add_IRInstr(IRInstr::unk, params);
+            cfg->current_bb->add_IRInstr(IRInstr::unk, params,isComparedToZero);
             break;
     }
     return val;

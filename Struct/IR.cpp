@@ -109,11 +109,11 @@ int BasicBlock::labelNumber = 1;
 
 BasicBlock::BasicBlock(CFG *cfg, string entry_label):cfg(cfg),label(entry_label+to_string(labelNumber)){labelNumber++;}
 
-void BasicBlock::add_IRInstr(IRInstr::Operation op, vector<string> params) {
-    this->instrs.push_back(new IRInstr(this,op,params));
+void BasicBlock::add_IRInstr(IRInstr::Operation op, vector<string> params, bool isComparedToZero) {
+    this->instrs.push_back(new IRInstr(this,op,params,isComparedToZero));
 }
 
-IRInstr::IRInstr(BasicBlock *bb, IRInstr::Operation op, vector<string> params) :bb(bb),op(op),params(params){}
+
 
 void BasicBlock::gen_asm(ostream& o) {
     o << "." << label << ":" << endl;
@@ -121,7 +121,7 @@ void BasicBlock::gen_asm(ostream& o) {
         it->gen_asm(o);
     }
     if(exit_false){
-        o << "jnz ." << exit_false->label << endl;
+        o << "je ." << exit_false->label << endl;
     }
     if(exit_true){
         o << "jmp ." << exit_true->label << endl;
@@ -158,6 +158,8 @@ void BasicBlock::print(ostream& o) {
     o << endl;
 }
 
+IRInstr::IRInstr(BasicBlock *bb, IRInstr::Operation op, vector<string> params, bool isComparedToZero) :bb(bb),op(op),params(params),isComparedToZero(isComparedToZero){}
+
 void IRInstr::gen_asm(std::ostream &o) {
     string opName = "unk";
     switch (op) {
@@ -167,6 +169,10 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << parseArg(params[0]) << ", ";
             o << parseArg(params[1]);
             o<<endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq " << parseArg(params[1]) << ", %rbx" << endl;
+            }
             break;
         case IRInstr::add:
             o << "movq ";
@@ -175,6 +181,10 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << parseArg(params[2]) << ", %rax" << endl;
             o << "movq ";
             o << "%rax, " << parseArg(params[0]) << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq " << parseArg(params[0]) << ", %rbx" << endl;
+            }
             break;
         case IRInstr::sub:
             o << "movq ";
@@ -183,6 +193,10 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << parseArg(params[2]) << ", %rax" << endl;
             o << "movq ";
             o << "%rax, " << parseArg(params[0]) << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq " << parseArg(params[0]) << ", %rbx" << endl;
+            }
             break;
         case IRInstr::mul:
             o << "movq ";
@@ -191,12 +205,18 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << parseArg(params[2]) << ", %rax" << endl;
             o << "movq ";
             o << "%rax, " << parseArg(params[0]) << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq " << parseArg(params[0]) << ", %rbx" << endl;
+            }
             break;
         case IRInstr::copy:
             o << "movq ";
             o << parseArg(params[1]) << ", %rax" << endl;
             o << "movq ";
             o << "%rax, " << parseArg(params[0]) << endl;
+            o <<"movq $0, %rbx"<<endl;
+            o << "cmpq " << parseArg(params[0]) << ", %rbx" << endl;
             break;
         case IRInstr::rmem:
             //todo
@@ -225,7 +245,10 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
-            o << "cmpq %rax, %rax" << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq %rax, %rbx" << endl;
+            }
             break;
         case IRInstr::cmp_lt:
             o << "movq ";
@@ -238,7 +261,10 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
-            o << "cmpq %rax, %rax" << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq %rax, %rbx" << endl;
+            }
             break;
         case IRInstr::cmp_le:
             o << "movq ";
@@ -251,7 +277,10 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
-            o << "cmpq %rax, %rax" << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq %rax, %rbx" << endl;
+            }
             break;
         case IRInstr::no:
             //todo
@@ -270,7 +299,10 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
-            o << "cmpq %rax, %rax" << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq %rax, %rbx" << endl;
+            }
             break;
         case IRInstr::cmp_gt:
             o << "movq ";
@@ -283,7 +315,10 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
-            o << "cmpq %rax, %rax" << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq %rax, %rbx" << endl;
+            }
             break;
         case IRInstr::and_op:
             //todo
@@ -297,6 +332,10 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "cdq" << endl;
             o << "idiv %rbx" << endl;
             o << "movq %rax, " << parseArg(params[0]) << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq " << parseArg(params[0]) << ", %rbx" << endl;
+            }
             break;
         case IRInstr::modulo:
             o << "movq " << parseArg(params[1]) << ", %rax" << endl;
@@ -304,6 +343,10 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "cdq" << endl;
             o << "idiv %rbx" << endl;
             o << "movq %rdx, " << parseArg(params[0]) << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq " << parseArg(params[0]) << ", %rbx" << endl;
+            }
             break;
         case IRInstr::cmp_neq:
             o << "movq ";
@@ -316,9 +359,13 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
-            o << "cmpq %rax, %rax" << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq %rax, %rbx" << endl;
+            }
             break;
     }
+
 }
 
 void IRInstr::print(std::ostream &o) {

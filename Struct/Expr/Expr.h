@@ -13,7 +13,7 @@ public:
 	/* ------------- Methods ------------- */
 	virtual void print(int tabs=0) = 0;
 
-    virtual string buildIR(CFG *cfg) = 0;
+    virtual string buildIR(CFG *cfg, bool isComparedToZero = false) = 0;
 
 protected:
 	/* ------------ Attributs ------------ */
