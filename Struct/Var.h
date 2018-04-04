@@ -34,6 +34,8 @@ public:
 
 	int getAddr();
 
+	string getType(int type);
+
 protected:
 	/* ------------ Attributs ------------ */
 	Type::Type type;

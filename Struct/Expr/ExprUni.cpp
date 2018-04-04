@@ -19,7 +19,7 @@ void ExprUni::print(int tabs)
 {
     string stab = PrintTool::getTabs(tabs);
     std::cout<< stab <<"Unary Expression :"<<endl;
-    cout << stab <<"Type :"<<type<<std::endl;
+    cout << stab <<"Type :"<<getType(type)<<std::endl;
     expr->print(tabs+1);
 }
 
@@ -58,4 +58,23 @@ string ExprUni::buildIR(CFG *cfg) {
             break;
     }
     return val;
+}
+
+
+string ExprUni::getType(int type) {
+    switch(type){
+        case ExprUniType::PREDECR:
+            return "--(pre)";
+        case ExprUniType::INV:
+            return "-";
+        case ExprUniType::POSTDECR:
+            return "--(post)";
+        case ExprUniType::POSTINCR:
+            return "++(post)";
+        case ExprUniType::PREINCR:
+            return "++(pre)";
+        case ExprUniType::NO:
+            return "!";
+    }
+    return "unk";
 }

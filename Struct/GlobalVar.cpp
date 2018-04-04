@@ -28,7 +28,7 @@ void GlobalVar::print(int tabs) {
         std::cout << stab <<"GlobalVar :" << endl;
         string stab2 = PrintTool::getTabs(tabs+1);
         cout << stab2 <<"Name : " << name << std::endl;
-        std::cout << stab2 <<"Type : " << type << std::endl;
+        std::cout << stab2 <<"Type : " << getType(type) << std::endl;
         if(size > 1){
                 std::cout << stab2 <<"Array (Size : " << size << std::endl;
         }

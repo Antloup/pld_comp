@@ -14,6 +14,7 @@ public:
 
 	/* ------------- Methods ------------- */
 	void print(int tabs=0);
+	string getType(int type);
 
 private:
 

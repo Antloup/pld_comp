@@ -19,7 +19,7 @@ void ExprBin::print(int tabs)
 {
     string stab = PrintTool::getTabs(tabs);
     cout << stab << "Binary Expression :" << endl;
-    cout << stab <<"Type : "<<type<<endl;
+    cout << stab <<"Type : "<<getType(type)<<endl;
     cout << stab <<"Expr 1 :" << endl;
     exprLeft->print(tabs+1);
     cout << stab <<"Expr 2 :"<<endl;
@@ -79,5 +79,37 @@ string ExprBin::buildIR(CFG *cfg) {
             break;
     }
     return val;
+}
+
+string ExprBin::getType(int type) {
+    switch(type){
+        case ExprBinType::MODULO:
+            return "%";
+        case ExprBinType::SUPEGAL:
+            return ">=";
+        case ExprBinType::SUP:
+            return ">";
+        case ExprBinType::INFEGAL:
+            return "<=";
+        case ExprBinType::INF:
+            return "<";
+        case ExprBinType::DIFF:
+            return "!=";
+        case ExprBinType::EGAL:
+            return "==";
+        case ExprBinType::AND:
+            return "&&";
+        case ExprBinType::PLUS:
+            return "+";
+        case ExprBinType::MULT:
+            return "*";
+        case ExprBinType::DIV:
+            return "/";
+        case ExprBinType::MINUS:
+            return "-";
+        case ExprBinType::OR:
+            return "||";
+    }
+    return "unk";
 }
 
