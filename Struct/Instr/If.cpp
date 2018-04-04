@@ -20,8 +20,8 @@ string If::buildIR(CFG *cfg) {
     BasicBlock* thenBB = new BasicBlock(cfg,"trueCode"/*, trueCode*/);
     BasicBlock* elseBB = new BasicBlock(cfg,"falseCode"/*, trueCode*/);
     BasicBlock* afterIfBB = new BasicBlock(cfg,"afterIf");
-    afterIfBB->exit_true = exprBB->exit_true;
-    afterIfBB->exit_false = exprBB->exit_false;
+    //afterIfBB->exit_true = exprBB->exit_true;
+    //afterIfBB->exit_false = exprBB->exit_false;
     exprBB->exit_true = thenBB;
     exprBB->exit_false = elseBB;
     thenBB->exit_true = afterIfBB;
@@ -35,6 +35,7 @@ string If::buildIR(CFG *cfg) {
         this->childElse->buildIR(cfg);
     }
     cfg->add_bb(afterIfBB);
+    return thenBB->label;
 }
 
 void If::print(int tabs) {

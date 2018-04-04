@@ -121,7 +121,7 @@ void BasicBlock::gen_asm(ostream& o) {
         it->gen_asm(o);
     }
     if(exit_false){
-        o << "jz ." << exit_false->label << endl;
+        o << "jnz ." << exit_false->label << endl;
     }
     if(exit_true){
         o << "jmp ." << exit_true->label << endl;
@@ -225,6 +225,7 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
+            o << "cmpq %rax, %rax" << endl;
             break;
         case IRInstr::cmp_lt:
             o << "movq ";
@@ -237,6 +238,7 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
+            o << "cmpq %rax, %rax" << endl;
             break;
         case IRInstr::cmp_le:
             o << "movq ";
@@ -249,6 +251,7 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
+            o << "cmpq %rax, %rax" << endl;
             break;
         case IRInstr::no:
             //todo
@@ -267,6 +270,7 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
+            o << "cmpq %rax, %rax" << endl;
             break;
         case IRInstr::cmp_gt:
             o << "movq ";
@@ -279,6 +283,7 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
+            o << "cmpq %rax, %rax" << endl;
             break;
         case IRInstr::and_op:
             //todo
@@ -311,6 +316,7 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << "%rbx, %rax" << endl;
             o << "movq ";
             o <<"%rax, " << parseArg(params[0]) << endl;
+            o << "cmpq %rax, %rax" << endl;
             break;
     }
 }
