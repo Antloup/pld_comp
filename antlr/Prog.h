@@ -316,6 +316,26 @@ public:
     virtual antlrcpp::Any visitConstant(ProgParser::ConstantContext *ctx) override {
         if(ctx->CHARACTER())
         {
+            if(ctx->CHARACTER()->getText()[1] == '\\' && ctx->CHARACTER()->getText().size() >=2){
+                switch(ctx->CHARACTER()->getText()[2]){
+                    case '0':
+                        return 0;
+                    case 'a':
+                        return 7;
+                    case 'b':
+                        return 8;
+                    case 'f':
+                        return 12;
+                    case 'n':
+                        return 10;
+                    case 'r':
+                        return 13;
+                    case 't':
+                        return 9;
+                    case 'v':
+                        return 11;
+                }
+            }
             return (int)ctx->CHARACTER()->getText()[1];
         } else {
             return std::stoi(ctx->NUMBER()->getText());

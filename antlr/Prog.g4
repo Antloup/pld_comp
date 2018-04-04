@@ -59,5 +59,5 @@ RETURN      : 'return';
 WHILE       : 'while';
 VOID        : 'void';
 NAME        : ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-CHARACTER   : '\''.'\'';
+CHARACTER   : '\''(.|'\\'.)'\'';
 NUMBER      : ('0'..'9')+;

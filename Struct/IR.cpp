@@ -61,13 +61,15 @@ void CFG::gen_asm_prologue(ostream &o) {
 
 void CFG::gen_asm_epilogue(ostream &o) {
     if (ast) {
-        if (ast->getName()=="main") {
-            o << "leave" << endl;
-        } else {
-            o << "movq -" << size*8 << "(%rbp), %rax" <<endl;
-            o << "popq %rbp" <<endl;
-        }
+        o << "leave" << endl;
         o << "ret" << endl;
+//        if (ast->getName()=="main") {
+//            o << "leave" << endl;
+//        } else {
+//            o << "movq -" << size*8 << "(%rbp), %rax" <<endl;
+//            o << "popq %rbp" <<endl;
+//        }
+//        o << "ret" << endl;
     }
 }
 
