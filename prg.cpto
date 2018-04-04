@@ -6,10 +6,11 @@ int main(){
     int b;
     int c;
     c = 33;
-    a = 98;
+    a = 98 < c;
     b = c * 2;
     putchar(a);
     putchar(b);
+    putchar('\n');
 //    int64_t c;
 //    int64_t d;
 //    c = 4+5;
