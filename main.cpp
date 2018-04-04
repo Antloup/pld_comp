@@ -22,6 +22,10 @@ int main(int argc, char **argv){
         cerr << "Can't open file" << endl;
         return 2;
     }
+
+    string name(argv[1]);
+    ofstream file;
+    file.open(name.substr(0, name.find(".cpto")) + ".s");
     for(int i=2;i<argc;i++){
         cout << "argv:" <<argv[i] << endl;
         if((string)argv[i] == "--token") printToken = true;
@@ -75,8 +79,10 @@ int main(int argc, char **argv){
 
     //    on génère l'assembleur
     for (auto &it : prog->getCFGs()) {
-        it->gen_asm(cout);
+        it->gen_asm(file);
     }
+
+    file.close();
 
 	return 0;
 }
