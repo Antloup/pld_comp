@@ -69,7 +69,7 @@ string ExprBin::buildIR(CFG *cfg) {
             cfg->current_bb->add_IRInstr(IRInstr::cmp_gt, params);
             break;
         case ExprBinType::MODULO:
-            cfg->current_bb->add_IRInstr(IRInstr::div, params);
+            cfg->current_bb->add_IRInstr(IRInstr::modulo, params);
             break;
         case ExprBinType::DIFF:
             cfg->current_bb->add_IRInstr(IRInstr::cmp_neq, params);
