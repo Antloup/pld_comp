@@ -4,8 +4,10 @@
 int main(){
     int a;
     int b;
-    a = 97;
-    b = a + 1;
+    int c;
+    c = 33;
+    a = 98;
+    b = c * 2;
     putchar(a);
     putchar(b);
 //    int64_t c;

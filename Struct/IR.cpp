@@ -164,13 +164,22 @@ void IRInstr::gen_asm(std::ostream &o) {
             o << parseArg(params[2]) << ", %rax" << endl;
             o << "movq ";
             o << "%rax, " << parseArg(params[0]) << endl;
-            //todo
             break;
         case IRInstr::sub:
-            //todo
+            o << "movq ";
+            o << parseArg(params[1]) << ", %rax" << endl;
+            o << "subq ";
+            o << parseArg(params[2]) << ", %rax" << endl;
+            o << "movq ";
+            o << "%rax, " << parseArg(params[0]) << endl;
             break;
         case IRInstr::mul:
-            //todo
+            o << "movq ";
+            o << parseArg(params[1]) << ", %rax" << endl;
+            o << "imulq ";
+            o << parseArg(params[2]) << ", %rax" << endl;
+            o << "movq ";
+            o << "%rax, " << parseArg(params[0]) << endl;
             break;
         case IRInstr::copy:
             o << "movq ";
