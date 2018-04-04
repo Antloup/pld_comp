@@ -6,7 +6,13 @@ int main(){
     int b;
     a=43;
     b=2;
-    if((a-40)<=-2*b){
+    if((a-40)<=2*b){
+        if(0){
+            putchar('W');
+        }
+        else{
+            putchar('Z');
+        }
         putchar('O');
         putchar('K');
         putchar('\n');
