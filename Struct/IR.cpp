@@ -234,7 +234,7 @@ void IRInstr::gen_asm(std::ostream &o) {
             else{
                 o << "call " << params[1] <<endl;
                 o << "movq ";
-                o << "%rcx, " << parseArg(params[0]) << endl;
+                o << "%rax, " << parseArg(params[0]) << endl;
             }
             break;
         case IRInstr::cmp_eq:
@@ -290,7 +290,7 @@ void IRInstr::gen_asm(std::ostream &o) {
             break;
         case IRInstr::ret:
             o << "movq ";
-            o << parseArg(params[0]) << ", %rcx" << endl;
+            o << parseArg(params[0]) << ", %rax" << endl;
             break;
         case IRInstr::cmp_ge:
             o << "movq ";

@@ -15,8 +15,16 @@ void hello() {
 }
 int main(){
     int a;
-    a=print();
+    a=getchar();
     hello();
-    putchar('0'+a);
+    putchar(a);
+//    if(a) {
+//        putchar('a');
+//    }
+//    else {
+//        int o;
+//        o = 5;
+//    }
+    putchar('\n');
     return 0;
 }
