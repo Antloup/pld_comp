@@ -41,7 +41,7 @@ void Function::addBlock(Block *b) {
 }
 
 void Function::buildIR(CFG* cfg) {
-    cout << "buildIR Function" << endl;
+    // cout << "buildIR Function" << endl;
     // todo : compléter cette fonction
     // todo: buildIR Param ?
     cfg->tmpVarCount = cfg->getSize();
