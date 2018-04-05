@@ -1,0 +1,8 @@
+int main(){
+    int64_t a;
+   a;
+
+    putchar(90);
+    putchar('\n');
+    return 0;
+}

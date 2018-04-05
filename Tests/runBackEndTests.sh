@@ -12,5 +12,7 @@ for file in `find BackEndTests/IfTest -name *.cpto`; do
         echo "Test $file_base OK"
         passed_tests=$((passed_tests+1));
     fi
+    rm $file_base.s
+    rm $file_base.output
 done
 echo -e "Nombre de tests passés : $passed_tests / $total_tests";

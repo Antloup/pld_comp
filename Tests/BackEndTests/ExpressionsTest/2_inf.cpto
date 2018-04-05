@@ -1,0 +1,8 @@
+int main(){
+    int64_t a;
+    a = 91;
+    a=a<90;
+    putchar(a+90);
+    putchar('\n');
+    return 0;
+}
