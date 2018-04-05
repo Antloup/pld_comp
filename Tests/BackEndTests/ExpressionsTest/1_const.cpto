@@ -1,0 +1,8 @@
+int main(){
+
+   89;
+
+    putchar(90);
+    putchar('\n');
+    return 0;
+}
