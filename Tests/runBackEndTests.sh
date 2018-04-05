@@ -9,6 +9,7 @@ for file in `find BackEndTests -name *.cpto`; do
     if [[ $result ]]; then
         echo "/!\ Test $file_base raté. :("
     else
+        echo "Test $file_base OK"
         passed_tests=$((passed_tests+1));
     fi
 done

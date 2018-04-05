@@ -1,9 +1,8 @@
 int main(){
     int64_t a;
-    a=14;
-    a = a==14;
-
-    putchar(89+a);
+    a = 44;
+   a=2*(44+1);
+    putchar(a);
     putchar('\n');
     return 0;
 }

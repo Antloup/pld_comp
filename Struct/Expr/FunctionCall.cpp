@@ -34,15 +34,6 @@ string FunctionCall::buildIR(CFG *cfg, bool isComparedToZero) {
     vector<string> params;
     string val = "";
     val = cfg->create_new_tempvar();
-
-
-//    if(function->getretType() == RetType::VOID){
-//        val = cfg->create_new_tempvar();
-//    }
-//    else{
-//        //todo : var destination retour ?
-//    }
-
     params.push_back(val); // destination
     params.push_back(function->getName()); // function label
     for(auto i : exprs){

@@ -7,16 +7,10 @@ int print(){
     putchar('\n');
     return 0;
 }
-void hello() {
-    putchar('H');
-    putchar('i');
-    putchar('\n');
-    return;
-}
+
 int main(){
     int a;
     a=print();
-    hello();
     putchar('0'+a);
     return 0;
 }
