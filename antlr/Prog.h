@@ -216,7 +216,12 @@ public:
     }
 
     virtual antlrcpp::Any visitReturnStatement(ProgParser::ReturnStatementContext *ctx) override {
-        Return* ret = new Return((Expr*)visit(ctx->expr()),this->lastFunction);
+        Return *ret;
+        if (ctx->expr()) {
+            ret = new Return((Expr*)visit(ctx->expr()),this->lastFunction);
+        } else {
+            ret = new Return(nullptr,this->lastFunction);
+        }
         return (Instr*)ret;
     }
 
