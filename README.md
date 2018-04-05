@@ -10,10 +10,10 @@ Projet de Compilation du groupe H4314
 --ir        : Affiche l'IR
 
 ## Ce qui marche:
-- Tous jusqu'à 5.9 inclus dans le sujet (https://moodle.insa-lyon.fr/mod/resource/view.php?id=42642).
+- Tout jusqu'à 5.9 inclus dans le sujet (https://moodle.insa-lyon.fr/mod/resource/view.php?id=42642).
 
 ## Ce qui ne marche pas:
-- Tous ce qu'il y a après le 5.9.
+- Tout ce qu'il y a après le 5.9.
 
 ## Écart(s) éventuel(s) par rapport au sujet:
 - Nous avons implémenté le getchar même si le sujet ne le demandait pas explicitement.
