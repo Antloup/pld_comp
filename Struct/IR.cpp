@@ -226,12 +226,11 @@ void IRInstr::gen_asm(std::ostream &o) {
             break;
         case IRInstr::call:
             if(params[1] == "putchar"){
-                //todo : convert params name to @
                 o << "movl "<< parseArg(params[2])<< ", %edi"<<endl;
                 o << "call putchar"<<endl;
             }
             else{
-                //todo
+                o << "call " << params[1] <<endl;
             }
             break;
         case IRInstr::cmp_eq:

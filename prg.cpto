@@ -1,6 +1,13 @@
 #include <iostream>
 #include "UnHeader.h"
 
+int print(){
+    putchar('P');
+    putchar('r');
+    putchar('\n');
+    return 1;
+}
+
 int main(){
     int a;
     int b;
@@ -8,7 +15,7 @@ int main(){
     i=0;
     a=0;
     b=4;
-
+    print();
 
     if((a-40)<=2*b){
 
@@ -16,8 +23,8 @@ int main(){
             int a;
             putchar('0'+i);
             i = i + 1;
-//            a = 5;
-//            putchar('0'+a);
+            a = 5;
+            putchar('0'+a);
         }
         while(b>=0){
             putchar('A');
