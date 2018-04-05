@@ -10,6 +10,8 @@ using namespace std;
 
 CFG::CFG(Function* f) : ast(f), size(0) {
     BasicBlock* prologue = new BasicBlock(this, "prologue");
+    prologue->exit_false = nullptr;
+    prologue->exit_true = nullptr;
     bbs = std::vector<BasicBlock*>(0);
     add_bb(prologue);
     current_bb = prologue;
