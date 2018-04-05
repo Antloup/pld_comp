@@ -1,6 +1,6 @@
 let passed_tests=0;
 let total_tests=0;
-for file in `find BackEndTests -name *.cpto`; do
+for file in `find BackEndTests/IfTest -name *.cpto`; do
     total_tests=$((total_tests+1));
     ../cmake-build-debug/pld_comp $file;
     file_base=`echo $file | sed "s/\.cpto//g"`;
