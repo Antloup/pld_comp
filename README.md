@@ -2,21 +2,33 @@
 Projet de Compilation du groupe H4314
 
 ## Commande d'exécution
-`./pld_comp <Fichier.cpto> <options>`
+./pld_comp <Fichier.cpto> <options>
 
 ### Options
-- `--token`     : Affiche les tokens de l'arbre
-- `--struct`    : Affiche la structure de données
-- `--ir`        : Affiche l'IR
+--token     : Affiche les tokens de l'arbre
+--struct    : Affiche la structure de données
+--ir        : Affiche l'IR
 
-## Ce qui marche:
-- Tout jusqu'à 5.9 inclus dans le sujet (https://moodle.insa-lyon.fr/mod/resource/view.php?id=42642).
+## Avancement du projet
+- Structure de données  : OK
+- IR                    : OK
+- Compilation           : OK
 
-## Ce qui ne marche pas:
-- Tout ce qu'il y a après le 5.9.
+## Implémenté
+- Points 5.1 à 5.9 du sujet
+- Génération complète de l'IR (y compris pour les points non implémentés)
+- Tests du backEnd pour notre projet
 
-## Écart(s) éventuel(s) par rapport au sujet:
-- Nous avons implémenté le `getchar` même si le sujet ne le demandait pas explicitement.
+## Non implémenté
+- Tableaux
+- Variables globales
+- Passage d'arguments aux fonctions
+- Boucles for
+
+## Spécificités
+- Utilise un fichier d'entrée d'extension ".cpto" et génère un ".s" à la racine du programme
+- Getchar
+- Utilisation de "int" tolérée pour déclarer un "int64_t"
 
 ## Développeurs
 - Nathan CASALS
@@ -26,5 +38,3 @@ Projet de Compilation du groupe H4314
 - Anthony LOUP
 - Renaud MEURISSE
 - Lucas TOULIER-ANCIAN
-
-
