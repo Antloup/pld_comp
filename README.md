@@ -9,22 +9,17 @@ Projet de Compilation du groupe H4314
 --struct    : Affiche la structure de données
 --ir        : Affiche l'IR
 
-## Avancement du projet
-- Structure de données  : OK
-- IR                    : OK
-- Compilation           : OK
-
 ## Ce qui marche:
-- Tous jusqu'à 5.9 inclus dans le sujet
+- Tout jusqu'à 5.9 inclus dans le sujet (https://moodle.insa-lyon.fr/mod/resource/view.php?id=42642).
 
-## Ce qui ne marche pas
-- Tous ce qu'il y a après le 5.9 dans le sujet.
+## Ce qui ne marche pas:
+- Tout ce qu'il y a après le 5.9.
 
-##Ecart éventuel par rapport au sujet
-- Nous avons implémenté le getchar même si le sujet ne le demander pas explicitement.
+## Écart(s) éventuel(s) par rapport au sujet:
+- Nous avons implémenté le getchar même si le sujet ne le demandait pas explicitement.
 
-##Développeurs
-- gitNathan CASALS
+## Développeurs
+- Nathan CASALS
 - Jean DEBARD
 - Bastien GUIRAUDOU
 - Quentin JODER
