@@ -1,0 +1,28 @@
+#include <iostream>
+#include "UnHeader.h"
+
+int main() {
+    int a;
+    int b;
+    a = 4;
+    b = a++;
+    if(a != b+5){
+        a = 90;
+        if(b == 5){
+            putchar('O');
+            putchar('K');
+            putchar('\n');
+        }
+        else{
+            putchar('K');
+            putchar('O');
+            putchar('\n');
+        }
+    }
+    else{
+        a = 89;
+    }
+    putchar(a);
+    putchar('\n');
+    return 1;
+}

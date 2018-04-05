@@ -325,10 +325,41 @@ void IRInstr::gen_asm(std::ostream &o) {
             }
             break;
         case IRInstr::and_op:
-            //todo
+            o << "movq $0, %rbx" << endl;
+            o << "movq ";
+            o << parseArg(params[1]) << ", %rax" << endl;
+            o << "cmpq %rax, %rbx" <<endl;
+            o << "movq ";
+            o << parseArg(params[2]) << ", %rax" << endl;
+            o << "cmove %rax, %rbx" << endl;
+            o << "cmpq %rax, %rbx" <<endl;
+            o << "movq $1, %rbx" << endl;
+            o << "cmovne %rbx, %rax" << endl;
+            o << "movq ";
+            o << "%rax, " << parseArg(params[0]) << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq %rax, %rbx" << endl;
+            }
             break;
         case IRInstr::or_op:
-            //todo
+            o << "movq $0, %rax" << endl;
+            o << "movq ";
+            o << parseArg(params[1]) << ", %rbx" << endl;
+            o << "cmpq %rax, %rbx" <<endl;
+            o << "movq $1, %rbx" << endl;
+            o << "cmovne %rbx, %rax" << endl;
+            o << "movq ";
+            o << parseArg(params[2]) << ", %rbx" << endl;
+            o << "cmpq %rax, %rbx" <<endl;
+            o << "movq $1, %rbx" << endl;
+            o << "cmovne %rbx, %rax" << endl;
+            o << "movq ";
+            o << "%rax, " << parseArg(params[0]) << endl;
+            if(isComparedToZero){
+                o <<"movq $0, %rbx"<<endl;
+                o << "cmpq %rax, %rbx" << endl;
+            }
             break;
         case IRInstr::div:
             o << "movq " << parseArg(params[1]) << ", %rax" << endl;

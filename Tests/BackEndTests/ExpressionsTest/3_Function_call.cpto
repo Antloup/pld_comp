@@ -1,0 +1,22 @@
+#include <iostream>
+#include "UnHeader.h"
+
+int print(){
+    putchar('P');
+    putchar('r');
+    putchar('\n');
+    return 0;
+}
+void hello() {
+    putchar('H');
+    putchar('i');
+    putchar('\n');
+    return;
+}
+int main(){
+    int a;
+    a=print();
+    hello();
+    putchar('0'+a);
+    return 0;
+}
