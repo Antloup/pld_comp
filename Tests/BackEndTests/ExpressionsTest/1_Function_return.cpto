@@ -2,13 +2,12 @@
 #include "UnHeader.h"
 
 void print(){
-    putchar('P');
-    putchar('r');
-    putchar('\n');
-    return 0;
+    return 1;
 }
 
 int main(){
-    print();
+    int a;
+    a=print();
+    putchar('0'+a);
     return 0;
 }
