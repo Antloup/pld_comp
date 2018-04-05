@@ -1,0 +1,14 @@
+#include <iostream>
+#include "UnHeader.h"
+
+void print(){
+    putchar('O');
+    putchar('K');
+    putchar('\n');
+    return;
+}
+
+int main() {
+    print();
+    return 1;
+}

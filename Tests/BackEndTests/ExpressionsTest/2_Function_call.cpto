@@ -1,0 +1,13 @@
+#include <iostream>
+#include "UnHeader.h"
+
+int Un(){
+    return 90;
+}
+
+int main() {
+    int b;
+    b = Un();
+    putchar(b);
+    return 1;
+}
