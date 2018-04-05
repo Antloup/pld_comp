@@ -1,5 +1,5 @@
 # pld_comp
-Projet de Compilation du groupe H4314
+Projet de compilateur du groupe H4314
 
 ## Commande d'exécution
 `./pld_comp <Fichier.cpto> <options>`
@@ -17,7 +17,7 @@ Projet de Compilation du groupe H4314
 ## Implémenté
 - Points 5.1 à 5.9 du sujet
 - Génération complète de l'IR (y compris pour les points non implémentés)
-- Tests du backEnd pour notre projet
+- Tests du back-end pour notre projet
 
 ## Non implémenté
 - Tableaux
@@ -26,9 +26,9 @@ Projet de Compilation du groupe H4314
 - Boucles for
 
 ## Spécificités
-- Utilise un fichier d'entrée d'extension ".cpto" et génère un ".s" à la racine du programme
+- Utilise un fichier d'entrée d'extension `.cpto` et génère un `.s` à la racine du programme
 - Getchar
-- Utilisation de "int" tolérée pour déclarer un "int64_t"
+- Utilisation de `int` tolérée pour déclarer un `int64_t`
 
 ## Développeurs
 - Nathan CASALS
