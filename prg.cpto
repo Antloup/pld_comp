@@ -15,7 +15,7 @@ int main(){
     i=0;
     a=0;
     b=4;
-    print();
+    b=print();
 
     if((a-40)<=2*b){
 
