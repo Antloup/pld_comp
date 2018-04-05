@@ -12,6 +12,24 @@ Projet de Compilation du groupe H4314
 ## Avancement du projet
 - Structure de données  : OK
 - IR                    : OK
-- Compilation           : En cours
+- Compilation           : OK
+
+## Ce qui marche:
+- Tous jusqu'à 5.9 inclus dans le sujet
+
+## Ce qui ne marche pas
+- Tous ce qu'il y a après le 5.9 dans le sujet.
+
+##Ecart éventuel par rapport au sujet
+- Nous avons implémenté le getchar même si le sujet ne le demander pas explicitement.
+
+##Développeurs
+- gitNathan CASALS
+- Jean DEBARD
+- Bastien GUIRAUDOU
+- Quentin JODER
+- Anthony LOUP
+- Renaud MEURISSE
+- Lucas TOULIER-ANCIAN
 
 
