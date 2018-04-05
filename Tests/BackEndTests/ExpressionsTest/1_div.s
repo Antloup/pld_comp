@@ -26,6 +26,7 @@ movq $10, -56(%rbp)
 movl -56(%rbp), %edi
 call putchar
 movq $0, -64(%rbp)
+movq -64(%rbp), %rcx
 jmp .epilogue2
 .epilogue2:
 leave

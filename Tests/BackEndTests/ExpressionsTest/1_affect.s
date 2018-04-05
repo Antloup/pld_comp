@@ -5,14 +5,11 @@ pushq %rbp
 movq %rsp, %rbp
 sub $16, %rsp
 .prologue1:
-movq $89, -16(%rbp)
+movq $90, -16(%rbp)
 movq -16(%rbp), %rax
 movq %rax, -8(%rbp)
 movq $0, %rbx
 cmpq -8(%rbp), %rbx
-movq -8(%rbp), %rax
-addq $1, %rax
-movq %rax, -8(%rbp)
 movl -8(%rbp), %edi
 call putchar
 movq $10, -40(%rbp)
