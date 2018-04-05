@@ -1,6 +1,8 @@
 int main(){
     int64_t a;
-    a = 89;
+    int_t b;
+    b=
+    a = b==1;
     a++;
     putchar(a);
     putchar('\n');

@@ -1,7 +1,7 @@
 int main(){
     int64_t a;
-    a = 89;
-    a++;
+    a = 91;
+    a--;
     putchar(a);
     putchar('\n');
     return 0;
