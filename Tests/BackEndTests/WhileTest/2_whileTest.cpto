@@ -1,0 +1,9 @@
+int main() {
+    int a;
+    a = 65;
+    while (a <= 'D') {
+        putchar(a);
+        a++;
+    }
+    putchar('\n');
+}
