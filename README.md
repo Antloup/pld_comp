@@ -5,9 +5,9 @@ Projet de compilateur du groupe H4314
 `./pld_comp <Fichier.cpto> <options>`
 
 ### Options
-`--token`     : Affiche les tokens de l'arbre
-`--struct`    : Affiche la structure de données
-`--ir`        : Affiche l'IR
+- `--token`     : Affiche les tokens de l'arbre
+- `--struct`    : Affiche la structure de données
+- `--ir`        : Affiche l'IR
 
 ## Avancement du projet
 - Structure de données  : OK
@@ -27,8 +27,9 @@ Projet de compilateur du groupe H4314
 
 ## Spécificités
 - Utilise un fichier d'entrée d'extension `.cpto` et génère un `.s` à la racine du programme
-- Getchar
+- Fonction 'Getchar' implémentée
 - Utilisation de `int` tolérée pour déclarer un `int64_t`
+- Les fonctions avec un type de retour `void` doivent se terminer par l'instruction `return;`
 
 ## Développeurs
 - Nathan CASALS
