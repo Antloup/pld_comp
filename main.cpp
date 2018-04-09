@@ -44,7 +44,7 @@ int main(int argc, char **argv){
 	ProgLexer lexer(&input);
 	
 	CommonTokenStream tokens(&lexer);
-    tokens.fill();//todo catch token recognition error and stop compilation
+    tokens.fill();
 
     //Analyse syntaxique
 	ProgParser parser(&tokens);

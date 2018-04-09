@@ -65,13 +65,6 @@ void CFG::gen_asm_epilogue(ostream &o) {
     if (ast) {
         o << "leave" << endl;
         o << "ret" << endl;
-//        if (ast->getName()=="main") {
-//            o << "leave" << endl;
-//        } else {
-//            o << "movq -" << size*8 << "(%rbp), %rax" <<endl;
-//            o << "popq %rbp" <<endl;
-//        }
-//        o << "ret" << endl;
     }
 }
 
@@ -134,7 +127,7 @@ void BasicBlock::print(ostream& o) {
     o << BLUE << "----- Block : " << label << "(" << this <<")-----" << endl;
     o << "ExitTrue : ";
     if(exit_true){
-        if(exit_true->label.size() < 1000){ //todo: weird bug when label is empty
+        if(exit_true->label.size() < 1000){ //weird bug when label is empty
             o << exit_true->label;
         }
         o << "(" << exit_true << ")" << endl;
@@ -145,7 +138,7 @@ void BasicBlock::print(ostream& o) {
 
     o << "ExitFalse : ";
     if(exit_false){
-        if(exit_false->label.size() < 1000){ //todo: weird bug when label is empty
+        if(exit_false->label.size() < 1000){ //weird bug when label is empty
             o << exit_false->label;
         }
         o << "(" << exit_false << ")" << endl;

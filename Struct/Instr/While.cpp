@@ -29,27 +29,7 @@ string While::buildIR(CFG* cfg){
     bodyBB->exit_true = testBB;
     bodyBB->exit_false = nullptr;
 
-
-
     cfg->add_bb(afterWhileBB);
-
-   // cfg->current_bb->exit_true = bodyBB;
-  //  cfg->current_bb->exit_false = afterWhileBB;
-
-
-//    beforeWhileBB = cfg→currentBB
-//    bodyBB = new BasicBlock(cfg) . it is empty
-//    testBB = new BasicBlock(cfg) . it is empty
-//    cfg→currentBB = testBB . so we ﬁll it
-//    test→buildIR(cfg)
-//    bodyBB = new BasicBlock(cfg, body) . this constructor also generates the code
-//    afterWhileBB→exitTrue = beforeWhileBB→exitTrue . pointer stitching
-//    afterWhileBB→exitFalse = beforeWhileBB→exitFalse . pointer stitching
-//    testBB→exitTrue = bodyBB . pointer stitching
-//    testBB→exitFalse = afterWhileBB . pointer stitching
-//    bodyBB→exitTrue = testBB . pointer stitching
-//    bodyBB→exitFalse = NULL . unconditional
-//    exit cfg→currentBB = afterWhileBB
 
     return "";
 

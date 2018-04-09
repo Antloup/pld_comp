@@ -91,7 +91,6 @@ public:
     BasicBlock(CFG* cfg, string entry_label);
     void gen_asm(ostream &o); /**< x86 assembly code generation for this basic block (very simple) */
 
-    //todo : ajouter type ?
     void add_IRInstr(IRInstr::Operation op, vector<string> params, bool isComparedToZero = false);
     void print(ostream& o);
 

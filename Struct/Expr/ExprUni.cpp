@@ -28,7 +28,7 @@ string ExprUni::buildIR(CFG *cfg, bool isComparedToZero) {
     string val = expr->buildIR(cfg);
     params.push_back(val);
     switch(type){
-        // todo: nb : pas de diff entre post et pre
+        // nb : pas de diff entre post et pre
         case ExprUniType::NO:
             params.push_back(val);
             params.push_back("0");
